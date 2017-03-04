@@ -1,0 +1,13 @@
+function GetUserDefaultLCID() {return 0x411;}
+function GetSystemDefaultLCID() {return 0x411;}
+System.readRegValue = function(path) {
+	if (path.indexOf("Uninstall") != -1)
+		return "1";
+	return void;
+};
+
+function ProductKeyCheck() { // 5367546E
+	return [0,1,2,3,0x6E,0x54,0x67,0x53,8,9,10,11,12];
+};
+
+System.setArgument("-debugwin","no");

@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Patch List</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  
+    <script type="text/javascript" src="https://stuk.github.io/jszip/dist/jszip.js"></script>
+    <script type="text/javascript" src="https://stuk.github.io/jszip-utils/dist/jszip-utils.js"></script>
+    <script type="text/javascript" src="https://stuk.github.io/jszip/vendor/FileSaver.js"></script>
+    <!--script type="text/javascript" src="../js/downloader.js"></script-->
+<style>
+form{margin-bottom: 0em;}
+th{padding: 0.3em; text-align: center;}
+td{padding: 0.3em;}
+td.datetime{text-align: center;}
+</style> 
+  </head>
+  
+  <body>
+
+<table id="table_all" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
+<tr>
+	<th>&nbsp;</th>
+	<th>Update Time&nbsp;<button onclick="sortTableByTime(true)">▲</button><button onclick="sortTableByTime(false)">▼</button></th>
+	<th>Name&nbsp;<button onclick="sortTableByName(true)">▲</button><button onclick="sortTableByName(false)">▼</button></th>
+</tr>
+</table>
+
+<script>
+
+var all_data = [
+	[0, "しゅがてん！", "しゅがてん！-sugarfull tempering-", ["patch.tjs", "xp3filter.tjs"]],
+	[3600, "しゅがてん！", "しゅがてん！-sugarfull tempering-2", ["patch.tjs", "xp3filter.tjs"]]
+];
+
+function DoGet(name, filelst) {
+    var Promise = window.Promise;
+    if (!Promise) {
+        Promise = JSZip.external.Promise;
+    }
+	
+    /**
+     * Fetch the content and return the associated promise.
+     * @param {String} url the url of the content to fetch.
+     * @return {Promise} the promise containing the data.
+     */
+    function urlToPromise(url) {
+        return new Promise(function(resolve, reject) {
+            JSZipUtils.getBinaryContent(url, function (err, data) {
+                if(err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    }
+	
+	var zip = new JSZip();
+	for(var i = 0; i < filelst.length; ++i) {
+		var filename = filelst[i];
+		var url = name + "/" + filename;
+		zip.file(filename, urlToPromise(url), {binary:true});
+	}
+
+	// when everything has been downloaded, we can trigger the dl
+	zip.generateAsync({type:"blob"})
+	.then(function callback(blob) {
+		// see FileSaver.js
+		saveAs(blob, name + ".zip");
+	}, function (e) {
+		alert(e);
+	});
+
+	return false;
+}
+
+function MakeTable(data) {
+	var table = document.getElementById("table_all");
+	
+	// keep title only
+    rows = table.getElementsByTagName("tr");
+	var count = table.rows.length;
+	while(--count) table.deleteRow(count); 
+	
+	var date = new Date();
+	for(var i = 0; i < data.length; ++i) {
+		var line = data[i];
+		var filelst = line[3];
+		var id = line[1]
+		
+		var tr = document.createElement('tr');
+		
+		// GET
+		var td = document.createElement('td');
+		var form = document.createElement('form');
+	//	form.action = "#";
+		form.id = id;
+		var btn = document.createElement('button');
+		btn.className = "btn btn-primary";
+		btn.appendChild(document.createTextNode('GET'));
+		btn.onclick = function() {
+			return function(){ DoGet(id, filelst); };
+		}();
+		form.appendChild(btn);
+		td.appendChild(form);
+		tr.appendChild(td);
+		
+		// time
+		date.setTime(line[0] * 1000);
+		td = document.createElement('td');
+		td.className = "datetime";
+		td.appendChild(document.createTextNode(date.toLocaleString()));
+		tr.appendChild(td);
+
+		// name
+		td = document.createElement('td');
+		td.appendChild(document.createTextNode(line[2]));
+		tr.appendChild(td);
+
+		table.appendChild(tr);
+	}
+};
+MakeTable(all_data);
+
+function sortTableByTime(newer) {
+	if (newer) all_data.sort(function(a,b){return a[0] > b[0];});
+	else all_data.sort(function(a,b){return a[0] < b[0];});
+	MakeTable(all_data);
+}
+
+function sortTableByName(reverse) {
+	if (reverse) all_data.sort(function(a,b){return a[2] > b[2];});
+	else all_data.sort(function(a,b){return a[2] < b[2];});
+	MakeTable(all_data);
+}
+</script>
+
+  </body>
+</html>
