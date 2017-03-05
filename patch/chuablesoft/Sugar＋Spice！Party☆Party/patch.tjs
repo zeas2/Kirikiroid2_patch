@@ -1,0 +1,18 @@
+function setWallPaper() {}
+
+function calc1(y, x, l) {
+	var t = Math.atan2(y, x) / Math.PI / 2;
+	if ( t < 0 ) t += 1;
+	return int(t * l + 0.5) % int(l)
+}
+
+// null functions for minigame "Katanuki" (of course not playable)
+function Plug_katStart() {}
+function Plug_katEnd() {}
+function Plug_katDraw() {}
+function Plug_katPrepare() {}
+function Plug_katPreCheck() {}
+function Plug_katCheck() {}
+function Plug_katStart() {}
+function Plug_katStart() {}
+function Plug_katStart() {}

@@ -1,0 +1,7 @@
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(filename) {
+	if(filename=="default.tjs") {
+		Scripts.exec("@set (PACKED=0)");
+	}
+	return Scripts._execStorage(filename);
+};

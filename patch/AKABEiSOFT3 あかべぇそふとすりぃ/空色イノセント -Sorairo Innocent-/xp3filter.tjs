@@ -1,8 +1,0 @@
-Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l){
-	var skip = 5 - o;
-	if(skip > 0) {
-		b.xor(skip, l - skip, h >> 12);
-	} else {
-		b.xor(0, l, h >> 12);
-	}
-});

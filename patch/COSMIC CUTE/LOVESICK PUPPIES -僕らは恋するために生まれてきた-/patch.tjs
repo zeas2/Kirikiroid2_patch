@@ -1,0 +1,14 @@
+Window.getNotificationNum = function() {return 1;};
+Window.setMessageHook = function() {};
+Window.registerExEvent = function() {};
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};

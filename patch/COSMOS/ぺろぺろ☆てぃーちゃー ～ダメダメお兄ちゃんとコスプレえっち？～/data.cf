@@ -1,0 +1,15 @@
+; ============================================================================
+; *DO NOT EDIT* this file unless you are understanding what you are doing.
+; FYI:
+;  Each line consists of NAME="VALUE" pair, VALUE is a series of
+;  \xNN, where NN is hexadecimal representation of UNICODE codepoint.
+;  For example, opt="\x61\x62\x63\x3042\x3044\x3046" means that the
+;  value of options "opt" is alphabets a, b, and c followed by Japanese
+;  Hiraganas A, I, and U.
+;  DO NOT PUT non-escaped value like opt="abc". This doesn't work and should
+;  be like opt="\x61\x62\x63".
+; ============================================================================
+usedb="\x79\x65\x73"
+hkupdaterect=""
+hkdumplayer=""
+fsmethod="\x63\x64\x73"

@@ -1,0 +1,3 @@
+kag.conductor.onScenarioLoad = function(name) {
+	if(name == "release.ks") return "[eval exp=\"tf.debugsys = 'release'\"][return]";
+};

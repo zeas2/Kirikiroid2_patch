@@ -1,0 +1,5 @@
+function WinAPI(m,f,a1,a2,a3) {
+	if(f=="MessageBoxA") return System.inform(a2, a3, 2) == 0 ? 6 : 0;
+	return 48;
+}
+function ErrorCheck() {}

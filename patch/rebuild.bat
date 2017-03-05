@@ -25,7 +25,7 @@ def checkpath(path):
 		if os.path.isdir(fullname):
 			continue
 		if name == 'external.txt':
-			for external in open(fullname).read().split('\n'):
+			for external in open(fullname).read().decode('utf8').split('\n'):
 				if not external: continue
 				mtime = os.path.getmtime('../' + external)
 				if mtime > newest: newest = mtime;

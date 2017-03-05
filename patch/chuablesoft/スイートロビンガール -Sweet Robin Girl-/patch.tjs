@@ -1,0 +1,9 @@
+function MyHideWindow() {}
+function MyShowWindow() {}
+function MyShowTaskTray() {}
+function MyGetHookMessage() {}
+function MyReleaseHookMessage() {}
+function MyshowCursol() {}
+function LittleWindow() {}
+function MyCopyFile(from, to) {}
+Storages.searchCD = function() {return ".";};
