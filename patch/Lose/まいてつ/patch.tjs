@@ -1,0 +1,46 @@
+Plugins.link("emoteplayer.dll");
+Plugins.link("textrender.dll");
+
+if(typeof TextRenderBase.getLinkNames == "undefined") {
+	TextRenderBase.getLinkNames = function() { return []; };
+}
+
+class _Randomizer {
+	var A=123456789,B=362436069,C=521288629,D;
+	function _Randomizer(seed) {this.D=seed;}
+	function rand() {
+		var T = (this.A << 11) ^ this.A;
+		T &= 0xFFFFFFFF;
+		this.A = this.B;
+		this.B = this.C;
+		this.C = this.D;
+		this.D ^= T ^ ((T ^ (D >> 11)) >> 8);
+		return this.D;
+	}
+	function dec(buf, off, len) {
+		var V = 0;
+		for(var i = 0; i < len; ++i) {
+			if(!V) V = this.rand();
+			buf[off+i]^=V;
+			V >>= 8;
+		}
+	}
+};
+Motion.ResourceManager.setEmotePSBDecryptFunc(function(buf, len){
+	var psbVersion = buf[4] + (buf[5]<<8);
+	var psbFlags;
+	if(psbVersion > 2) {
+		psbFlags = buf[6] + (buf[7]<<8);
+	} else {
+		psbFlags = 2;
+	}
+	var r = new _Randomizer(391022973);
+	if(psbFlags & 1) {
+		r.dec(buf,8,36);
+	}
+	if(psbFlags & 2) {
+		var psbOffBegin = buf[8] | (buf[9] << 8) | (buf[10]<<16) | (buf[11] << 24);
+		var psbOffEnd = buf[24] | (buf[25] << 8) | (buf[26]<<16) | (buf[27] << 24);
+		r.dec(buf,psbOffBegin,psbOffEnd-psbOffBegin);
+	}
+});

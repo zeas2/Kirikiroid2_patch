@@ -28,18 +28,21 @@ td.datetime{text-align: center;}
 <tr>
 	<th>&nbsp;</th>
 	<th>Update Time&nbsp;<button onclick="sortTableByTime(true)">▲</button><button onclick="sortTableByTime(false)">▼</button></th>
+	<th>Brand</th>
 	<th>Name&nbsp;<button onclick="sortTableByName(true)">▲</button><button onclick="sortTableByName(false)">▼</button></th>
 </tr>
 </table>
-
+<script type="text/javascript" src="alldata.js"></script>
 <script>
 
-var all_data = [
-	[0, "しゅがてん！", "しゅがてん！-sugarfull tempering-", ["patch.tjs", "xp3filter.tjs"]],
-	[3600, "しゅがてん！", "しゅがてん！-sugarfull tempering-2", ["patch.tjs", "xp3filter.tjs"]]
-];
-
 function DoGet(name, filelst) {
+/*
+	if (filelst.length == 0) {
+		window.open(name, "_blank");
+		return;
+	}
+*/
+
     var Promise = window.Promise;
     if (!Promise) {
         Promise = JSZip.external.Promise;
@@ -65,7 +68,8 @@ function DoGet(name, filelst) {
 	var zip = new JSZip();
 	for(var i = 0; i < filelst.length; ++i) {
 		var filename = filelst[i];
-		var url = name + "/" + filename;
+		var url = filename;
+		filename = filename.replace(/.*\//g, "");
 		zip.file(filename, urlToPromise(url), {binary:true});
 	}
 
@@ -92,22 +96,26 @@ function MakeTable(data) {
 	var date = new Date();
 	for(var i = 0; i < data.length; ++i) {
 		var line = data[i];
-		var filelst = line[3];
-		var id = line[1]
-		
+		var filelst = line[4];
+		var id = line[2];
 		var tr = document.createElement('tr');
 		
 		// GET
 		var td = document.createElement('td');
 		var form = document.createElement('form');
-	//	form.action = "#";
-		form.id = id;
 		var btn = document.createElement('button');
 		btn.className = "btn btn-primary";
-		btn.appendChild(document.createTextNode('GET'));
-		btn.onclick = function() {
-			return function(){ DoGet(id, filelst); };
-		}();
+		var text;
+		if(filelst.length == 0) {
+			text = "VIEW";
+		} else {
+			text = 'GET'
+		}
+		btn.appendChild(document.createTextNode(text));
+		btn.onclick = function(arg1, arg2){
+			return function(){DoGet(arg1, arg2); };
+		}(id, filelst);
+		btn.type = "button";
 		form.appendChild(btn);
 		td.appendChild(form);
 		tr.appendChild(td);
@@ -119,9 +127,15 @@ function MakeTable(data) {
 		td.appendChild(document.createTextNode(date.toLocaleString()));
 		tr.appendChild(td);
 
+		// brand
+		td = document.createElement('td');
+		td.className = "datetime";
+		td.appendChild(document.createTextNode(line[1]));
+		tr.appendChild(td);
+		
 		// name
 		td = document.createElement('td');
-		td.appendChild(document.createTextNode(line[2]));
+		td.appendChild(document.createTextNode(line[3]));
 		tr.appendChild(td);
 
 		table.appendChild(tr);

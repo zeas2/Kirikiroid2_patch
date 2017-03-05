@@ -1,0 +1,2 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setTextEncoding("utf8");

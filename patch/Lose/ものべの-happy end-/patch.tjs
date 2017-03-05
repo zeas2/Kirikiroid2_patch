@@ -1,0 +1,9 @@
+class BishamonLayer {
+	var playing = true;
+	function clear() {}
+	function loadEffect() {}
+	function setLoop() {}
+	function setPerspective() {}
+	function setMatrix() {}
+	function updateToLayer() {}
+}
