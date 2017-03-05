@@ -1,0 +1,24 @@
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};
+
+Plugins.link("LayerExMosaic.dll");
+if(typeof Layer.AddMosaic == "undefined")
+	Layer.AddMosaic = function(){};
+
+// krz window
+with(Window) {
+	.enableTouch = false;
+}
+
+Plugins.link("layerExAlpha.dll");
+if(typeof Layer.AlphaColorBlend2 == "undefined")
+	Layer.AlphaColorBlend2 = function(){};

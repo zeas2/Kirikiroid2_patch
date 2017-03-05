@@ -1,0 +1,2 @@
+Layer.setupUvMap = function() {};
+Layer.applyTexture = function() {};

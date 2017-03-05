@@ -1,0 +1,60 @@
+function fixTLGHdr(buf) {
+	// "X" -> 88, "Y" -> 89, "Z" -> 90
+	if(buf[3] == 89) { // XXXYYY -> TLG5.0
+		buf[0] = 0x54;
+		buf[1] = 0x4c;
+		buf[2] = 0x47;
+		buf[3] = 0x35;
+		buf[4] = 0x2e;
+		buf[5] = 0x30;
+		return true;
+	} else if(buf[3] == 90) { // XXXZZZ -> TLG6.0
+		buf[0] = 0x54;
+		buf[1] = 0x4c;
+		buf[2] = 0x47;
+		buf[3] = 0x36;
+		buf[4] = 0x2e;
+		buf[5] = 0x30;
+		return true;
+	}
+	return false;
+}
+
+function fixTLG(off, buf) {
+	// tricky way to fix TLG header
+	switch(off) {
+		case 0:
+		case 15:
+			if(!fixTLGHdr(buf)) {
+				// TLG6's width
+				if (off == 15) buf[0] ^= 0xAB;
+			}
+			return;
+		case 12:
+		case 27: // TLG5's width
+		case 30: // TLG6's width
+			buf[0] ^= 0xAB;
+			return;
+		case 16:
+		case 31: // TLG5's height
+		case 19:
+		case 34: // TLG6's height
+			buf[0] ^= 0xAC;
+			return;
+	}
+}
+
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len, filename)
+{
+	var key = [hash >> 8, hash >> 16, hash, hash >> 24];
+	var range1 = 101 - offset;
+	if(range1 > 0) {
+		if(range1 > len) range1 = len;
+		buf.xor(0, range1, hash >> 4);
+	}
+	if(range1 < 0) range1 = 0;
+	for(var i = range1; i < len; ++i) {
+		buf[i] ^= key[(i + offset) & 3];
+	}
+	if(offset <= 34 && filename.length > 4 && filename.substr(filename.length - 4, 4) == '.tlg') global.fixTLG(offset, buf);
+});

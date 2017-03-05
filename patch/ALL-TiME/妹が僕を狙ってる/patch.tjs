@@ -1,0 +1,6 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_CURRENT_USER\\SOFTWARE\\alltime\\alltime16PAC\\done")
+		return 12011;
+	else
+		return "";
+};

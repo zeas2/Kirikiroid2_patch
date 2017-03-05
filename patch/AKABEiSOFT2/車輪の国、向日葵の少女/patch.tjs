@@ -1,0 +1,1 @@
+Storages.searchCD = function() {return "Z:";};

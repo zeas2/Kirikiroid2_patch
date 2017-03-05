@@ -1,0 +1,2 @@
+function getCOMAPID() {return 632359509;}
+function copyCheck() {return false;}

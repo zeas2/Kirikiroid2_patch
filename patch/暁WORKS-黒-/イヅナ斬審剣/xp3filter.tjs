@@ -1,0 +1,28 @@
+/*
+class xp3buffer
+{
+	function xor(startpos, length, xorvalue); // absolute buffer pos = startpos + this.ptr
+	property ptr; // current buffer ptr
+	property count; // readonly
+}
+*/
+
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len, filename)
+{
+	var key = [
+		(hash >> 8) & 0xFF,
+		(hash >> 7) & 0xFF,
+		(hash >> 6) & 0xFF,
+		(hash >> 5) & 0xFF,
+		(hash >> 4) & 0xFF,
+		(hash >> 2) & 0xFF ];
+	var buffsize = buf.count;
+	for(var i = 0; i < buffsize; ++i) {
+		var entryoff = offset + i;
+		if(entryoff <= 100) {
+			buf[i] ^= hash >> 3;
+		} else {
+			buf[i] ^= key[entryoff & 5];
+		}
+	}
+});

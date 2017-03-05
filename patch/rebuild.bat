@@ -27,6 +27,8 @@ def checkpath(path):
 		if name == 'external.txt':
 			for external in open(fullname).read().split('\n'):
 				if not external: continue
+				mtime = os.path.getmtime('../' + external)
+				if mtime > newest: newest = mtime;
 				filelist.append('../' + external)
 			continue
 		if name == 'titles.csv':
@@ -80,6 +82,7 @@ def cmp(a, b):
 	if a[0] > b[0]: return -1
 	if a[0] < b[0]: return 1
 data.sort(cmp)
-data = 'var all_data = ' + json.encoder.JSONEncoder().encode(data) + ';';
+jsonenc = json.encoder.JSONEncoder()
+data = 'var all_data = [\n' + ',\n'.join([jsonenc.encode(n) for n in data]) + '\n];';
 
 open('alldata.js','w').write(data.encode('utf8'))

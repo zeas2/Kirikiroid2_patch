@@ -1,0 +1,4 @@
+Layer.copyTexture = function (map, tex, u, v) {
+	copyRect(0, 0, map, 0, 0, map.width, map.height);
+	doGrayScale(); // look better...
+};

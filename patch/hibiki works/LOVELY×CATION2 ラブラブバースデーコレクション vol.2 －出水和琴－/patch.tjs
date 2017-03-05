@@ -1,0 +1,5 @@
+// windowEx.dll
+Window.registerExEvent = function() {};
+Window.getNotificationNum = function() {return 0;};
+Window.setMessageHook = function() {return 0;};
+System.getDisplayMonitors = function() {return [%['x'=>0,'y'=>'0','w'=>1280,'h'=>720]];};

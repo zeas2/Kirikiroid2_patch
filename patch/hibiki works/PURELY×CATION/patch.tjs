@@ -1,0 +1,71 @@
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};
+
+
+Storages._removeAutoPath = Storages.removeAutoPath;
+Storages.removeAutoPath = function(name) {};
+
+Window.checkSignature = function() {return true;};
+
+// windowEx.dll
+System.getDisplayMonitors = function() {return [%['x'=>0,'y'=>'0','w'=>1280,'h'=>720]];};
+
+// layerExMosaic
+Layer.AddMosaic = function(){};
+
+Plugins.link("emoteplayer.dll");
+class _Randomizer {
+	var A=123456789,B=362436069,C=521288629,D;
+	function _Randomizer(seed) {this.D=seed;}
+	function rand() {
+		var T = (this.A << 11) ^ this.A;
+		T &= 0xFFFFFFFF;
+		this.A = this.B;
+		this.B = this.C;
+		this.C = this.D;
+		this.D ^= T ^ ((T ^ (D >> 11)) >> 8);
+		return this.D;
+	}
+	function dec(buf, off, len) {
+		var V = 0;
+		for(var i = 0; i < len; ++i) {
+			if(!V) V = this.rand();
+			buf[off+i]^=V;
+			V >>= 8;
+		}
+	}
+};
+Motion.ResourceManager.setEmotePSBDecryptFunc(function(buf, len){
+	var psbVersion = buf[4] + (buf[5]<<8);
+	var psbFlags;
+	if(psbVersion > 2) {
+		psbFlags = buf[6] + (buf[7]<<8);
+	} else {
+		psbFlags = 2;
+	}
+	var r = new global._Randomizer(695532908);
+	if(psbFlags & 1) {
+		r.dec(buf,8,36);
+	}
+	if(psbFlags & 2) {
+		var psbOffBegin = buf[8] | (buf[9] << 8) | (buf[10]<<16) | (buf[11] << 24);
+		var psbOffEnd = buf[24] | (buf[25] << 8) | (buf[26]<<16) | (buf[27] << 24);
+		r.dec(buf,psbOffBegin,psbOffEnd-psbOffEnd);
+	}
+});
+
+Scripts._evalStorage = Scripts.evalStorage;
+Scripts.evalStorage = function(name) {
+	if(name=="fstrd.bin") return; // do nothing
+	Scripts.evalStorage = Scripts._evalStorage;
+	return Scripts._evalStorage(name);
+};

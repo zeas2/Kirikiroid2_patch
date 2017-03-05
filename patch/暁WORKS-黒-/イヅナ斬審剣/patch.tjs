@@ -1,0 +1,23 @@
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};
+
+// windowEx.dll
+Window.registerExEvent = function() {};
+Window.getNotificationNum = function() {return 0;};
+Window.setMessageHook = function() {return 0;};
+System.getDisplayMonitors = function() {return [%['x'=>0,'y'=>'0','w'=>1280,'h'=>720]];};
+
+// runtime checking
+Math.csd01 = 1;
+Math.csd02 = 2;
+Math.csd03 = 3;
+Math.csd106 = 4;

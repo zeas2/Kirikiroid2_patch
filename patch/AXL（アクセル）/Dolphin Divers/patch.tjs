@@ -1,0 +1,2 @@
+Window.getNotificationNum = function() {return 1;};
+Window.setMessageHook = function() {};

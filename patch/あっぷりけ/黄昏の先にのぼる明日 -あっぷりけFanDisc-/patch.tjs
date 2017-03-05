@@ -1,0 +1,21 @@
+class Process {
+	function Process() {}
+	function terminate() {}
+	function execute() {}
+	function run() {return false;}
+	var status = false;
+}
+
+class MahjongMsg {
+	function checkExist() {return false;}
+	function init() {}
+	function start(){}
+	function done(){}
+	function drawToLayer(){}
+	function sendKeyDown(key, shift){}
+	function sendKeyUp(key, shift){}
+	function sendMouseMove(x, y, shift){}
+	function sendMouseDown(x, y, button, shift){}
+	function sendMouseUp(x, y, button, shift){}
+	var state = false;
+}

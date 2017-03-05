@@ -1,0 +1,38 @@
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};
+
+// LayerExAlpha
+Layer.ExMaskRect                           = function(){};
+Layer.ExMaskRect2                         = function(){};
+Layer.LightForAlpha                        = function(){};
+Layer.LuminanceForAlpha               = function(){};
+Layer.LevelMaskRect                       = function(){};
+Layer.LevelMaskRect2                     = function(){};
+Layer.MaskImageRideRect              = function(){};
+Layer.MaskImageRideRect2            = function(){};
+Layer.MaskImageRideRect3            = function(){};
+Layer.MaskImageRideRect4            = function(){};
+Layer.MaskImageRideRect5            = function(){};
+Layer.MaskImageRideRect7            = function(){};
+Layer.MaskImageRideRect8            = function(){};
+Layer.AlphaBorderInnerRect            = function(){};
+Layer.AlphaBorderImageCoverRect = function(){};
+Layer.MaskImageEffectRect            = function(){};
+
+// LayerExMosaic
+Layer.AddMosaic = function(){};
+
+// layerExColor
+Layer.TranslucentColorBlend = function(){};
+
+// MenuFocus.dll
+System.menuFocus = function(){};

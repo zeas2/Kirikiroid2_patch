@@ -1,0 +1,14 @@
+
+with(global.CSVParser){
+	.parseStorage = function (filename, utf8) {this.parse([].load(filename).join('\n'));}; //for utf-16 CSV
+	.initStorage = function (filename) {this.StorageBuffer = [].load(filename); this.StorageBuffer.reverse();};
+	.getNextLine = function () {
+		if (this.StorageBuffer!==void) {
+			var retData=this.StorageBuffer.pop();
+			if (retData!==void) {
+				if (retData.length == 0) return [];
+				return retData.split('\t');
+			}
+		}
+	};
+};

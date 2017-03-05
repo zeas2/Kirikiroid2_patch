@@ -1,0 +1,10 @@
+class Motion
+{
+	class ResourceManager{
+	}
+}
+System.addFont = function() {};
+var _Plugins_link = Plugins.link;
+Plugins.link = function(name) {
+	if(name != "addFont.dll") _Plugins_link(name);
+};

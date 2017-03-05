@@ -1,0 +1,4 @@
+System.setArgument("-dbstyle", "auto");
+System.setArgument("-waitvsync", "yes");
+System.setArgument("-debugwin", "no");
+VideoOverlay.setBounds = function(){};

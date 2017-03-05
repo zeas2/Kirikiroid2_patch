@@ -1,0 +1,30 @@
+// alternative for layeredwindow
+with(Scripts) {._execStorage = .execStorage;}
+with(Layer) { // fix function not implemented in layerExAlpha.dll
+    if(typeof .TranslucentColorBlend == "undefined") .TranslucentColorBlend=function(){};
+    if(typeof .AlphaColorBlend == "undefined") .AlphaColorBlend=function(){};
+    if(typeof .AlphaColorBlend2 == "undefined") .AlphaColorBlend2=function(){};
+}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'CustomYesNoDialog.tjs') {
+		YesNoDialogWindow.updateButton = function() {
+			bgLayer.opacity = 255;
+			pileLayer.visible = false;
+		};
+	}
+};
+Plugins.link("layerExRaster.dll");
+function(f) {
+    for(var i = 0; i < f.count; ++i) {
+        var n = f[i];
+        if (typeof global.Layer[n] == "undefined")
+            global.Layer[n] = function(){};
+    }
+} ([
+    "copyNotInterpolationRaster",
+    "copyInterpolationRaster",
+    "copyVerticalRaster",
+    "copyVerticalNotInterpolationRaster",
+    "copyVerticalInterpolationRaster"
+]);

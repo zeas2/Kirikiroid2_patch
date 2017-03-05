@@ -1,0 +1,15 @@
+Plugins.link("layerExAlpha.dll");
+
+if (typeof Layer.LightForAlpha == "undefined") Layer.LightForAlpha = function() {};
+if (typeof Layer.LuminanceForAlpha == "undefined") Layer.LuminanceForAlpha = function() {};
+if (typeof Layer.LevelMaskRect2 == "undefined") Layer.LevelMaskRect2 = function() {};
+if (typeof Layer.MaskImageRideRect == "undefined") Layer.MaskImageRideRect = function() {};
+if (typeof Layer.MaskImageRideRect2 == "undefined") Layer.MaskImageRideRect2 = function() {};
+if (typeof Layer.MaskImageRideRect3 == "undefined") Layer.MaskImageRideRect3 = function() {};
+if (typeof Layer.MaskImageRideRect4 == "undefined") Layer.MaskImageRideRect4 = function() {};
+if (typeof Layer.MaskImageRideRect5 == "undefined") Layer.MaskImageRideRect5 = function() {};
+if (typeof Layer.MaskImageRideRect7 == "undefined") Layer.MaskImageRideRect7 = function() {};
+if (typeof Layer.MaskImageRideRect8 == "undefined") Layer.MaskImageRideRect8 = function() {};
+if (typeof Layer.AlphaBorderInnerRect == "undefined") Layer.AlphaBorderInnerRect = function() {};
+if (typeof Layer.AlphaBorderImageCoverRect == "undefined") Layer.AlphaBorderImageCoverRect = function() {};
+if (typeof Layer.MaskImageEffectRect == "undefined") Layer.MaskImageEffectRect = function() {};
