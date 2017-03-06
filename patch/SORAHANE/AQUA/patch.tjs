@@ -1,0 +1,41 @@
+class HttpRequest {
+	function HttpRequest() {}
+	function open() {}
+	function setRequestHeader() {}
+	function send() {}
+	function sendStorage() {}
+	function abort() {}
+	function getAllResponseHeaders() {return %[];}
+	function getResponseHeader() {return "";}
+	function getResponseText() {return "";}
+	var readyState = 0;
+	var response = "";
+	var responseData = <% 00 %>;
+	var status = 404;
+	var statusText = "Not Found";
+	var contentType = "text/html";
+	var contentTypeEncoding = "utf-8";
+	var contentLength = 0;
+	function onReadyStateChange() {}
+	function onProgress() {}
+};
+with(HttpRequest) {
+	.UNINITIALIZED = 0; ///
+	.OPEN = 1;          ///
+	.SENT = 2;          ///
+	.RECEIVING = 3;     ///
+	.LOADED = 4;        ///
+};
+
+Window.getNotificationNum = function() {return 1;};
+Window.setMessageHook = function() {};
+
+// hook for DohPatch
+global._origExecStorage = Scripts.execStorage;
+global.Scripts.execStorage = function(file) {
+	global._origExecStorage(*);
+	if(file == "custom.tjs") {
+		global.Scripts.execStorage = global._origExecStorage;
+		global.CustomOption.getDohVisible = function() {return true;};
+	}
+};

@@ -1,0 +1,8 @@
+System.getMonitorInfo = function () {
+	return %["monitor" => %["x" => 0, "y" => 0, "w" => 1280, "h" => 720]];
+};
+Layer._orig_beginTransition = Layer.beginTransition;
+Layer.beginTransition = function(method, arg*) {
+	if(method == "mosaicin" || method == "mosaicout") method = "mosaic";
+	return _orig_beginTransition(method, arg*);
+};

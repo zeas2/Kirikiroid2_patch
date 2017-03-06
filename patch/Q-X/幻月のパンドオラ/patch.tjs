@@ -1,0 +1,8 @@
+class gfxFire {
+function gfxFire() {
+	Debug.message("gfxFire construct");
+}
+function finalize() {
+	Debug.message("gfxFire finalize");
+}
+}
