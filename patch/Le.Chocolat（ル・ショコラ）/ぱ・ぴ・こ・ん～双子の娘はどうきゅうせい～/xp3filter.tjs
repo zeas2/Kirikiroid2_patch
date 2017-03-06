@@ -1,0 +1,23 @@
+var klist = (const) %[
+	'.tjs' => 1,
+	'.ks' =>  1,
+	'.asd' => 1
+];
+
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf, len, filename) {
+	if (offset >= 256)
+		return;
+
+	var ext = filename.substr(filename.length-4);
+	if(ext[1] == '.') ext = ext.substr(1); // .ks
+	if(ext == '.dll') return;
+	var l = klist[ext] ? 0x7FFFFFFF : 256;
+
+	var k = [hash, hash >> 8, hash >> 16, hash >> 24];
+	
+	if (l < offset + len) len = l - offset;
+	for(var i = 0; i < len; ++i) {
+		var off = offset + i;
+		buf[i] ^= off ^ k[off & 3];
+	}
+});

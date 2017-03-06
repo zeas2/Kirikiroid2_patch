@@ -1,0 +1,4 @@
+Window.checkSignature = function(i) { return onCheckSignatureDone(i, 0, 1); };
+Window.isSignatureChecking = function() { return true; };
+function hotKeyHook() {}
+function getWindowToClientOffset() {return %["x"=>0,"y"=>0];}

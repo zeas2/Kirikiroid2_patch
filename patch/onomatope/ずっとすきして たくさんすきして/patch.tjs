@@ -1,0 +1,1683 @@
+class WIN32Dialog {
+	class Header {
+		/**
+		 * 内容を設定する
+		 * @param elm 辞書配列
+		 * elm = %[ helpID, exStyle, style, x, y, cx, cy, menu, windowClass, title, pointSize, weight, italic, charset, typeFace ];
+		 * 詳細は DLGTEMPLATEEX の定義を参照のこと
+		 */
+		function store(elm) {}
+
+		/**
+		 * ダイアログアイテムの個数
+		 */
+		var dlgItems = 0;
+	}
+	class Items {
+		/**
+		 * 内容を設定する
+		 * @param elm 辞書配列
+		 * elm = %[ helpID, exStyle, style, x, y, cx, cy, id, windowClass, title ];
+		 * 詳細は DLGITEMTEMPLATEEX の定義を参照のこと
+		 * extraCount と付属データは未実装につき定義できません。
+		 */
+		function store(elm) {}
+	}
+	/**
+	 * コンストラクタ
+	 * @param owner イベントコールバック用のオーナーを設定。nullかthisで自分自身へ送る。
+	 */
+	function WIN32Dialog(owner) {}
+
+	/**
+	 * ダイアログリソースを読み込む
+	 * @param dllfile  dllファイル（ローカルストレージ形式）
+	 * @param resource ダイアログリソース名
+	 */
+	function loadResource(dllfile, resource) {}
+
+	/**
+	 * ダイアログテンプレートを生成する
+	 * @param header ダイアログテンプレートヘッダ  （WIN32Dialog.Headerクラスのインスタンスであること）
+	 * @param items* ダイアログテンプレートアイテム（WIN32Dialog.Items クラスのインスタンスであること）
+	 */
+	function makeTemplate(header, items*) {}
+
+	/**
+	 * ダイアログを開く
+	 * @param window 親ウィンドウ(吉里吉里の Window クラス)，省略時またはvoid時は親なし
+	 * あらかじめ makeTemplate でダイアログテンプレートが生成されているか
+	 * または loadResource でダイアログリソースの読み込んでいること
+	 * makeTemplate より loadResource のデータ優先されるので注意
+	 */
+	function open(window) {}
+	
+	/**
+	 * ダイアログを閉じる
+	 * @param result EndDialog APIに渡す結果値
+	 */
+	function close(result) {}
+
+	/**
+	 * GetDlgItem のラッパー
+	 * @param id ダイアログアイテムのID
+	 * @return ダイアログアイテムのHWND
+	 */
+	function getItem(id) {}
+
+	/**
+	 * GetDlgCtrlID のラッパー
+	 * @param hwnd ダイアログアイテムのHWND
+	 * @return ダイアログアイテムのID
+	 */
+	function getItemID(hwnd) {}
+
+	/**
+	 * GetClassName のラッパー
+	 * @param id ダイアログアイテムのID
+	 * @return ダイアログアイテムのクラス名
+	 */
+	function getItemClassName(id) {}
+
+	/**
+	 * Get/SetDlgItemInt/Text のラッパー
+	 * @param id    ダイアログアイテムのID
+	 * @param value 設定する値（setの場合のみ）
+	 * @return      取得結果（getの場合のみ）
+	 */
+	function setItemInt(id, value) {}
+	function getItemInt(id) {}
+	function setItemText(id, value) {}
+	function getItemText(id) {}
+
+	/**
+	 * アイテムの有効・無効を設定・取得する
+	 * @param id    ダイアログアイテムのID
+	 * @param value 有効・無効の設定（setの場合のみ）
+	 * @return      取得結果（getの場合のみ）
+	 */
+	function setItemEnabled(id, value) {}
+	function getItemEnabled(id) {}
+
+	/**
+	 * アイテムにフォーカスを設定する
+	 * @param id    ダイアログアイテムのID
+	 */
+	function setItemFocus(id) {}
+
+	/**
+	 * アイテムの位置・大きさを変更・取得する
+	 * @param id    ダイアログアイテムのID
+	 * @param x     ダイアログアイテムのX座標
+	 * @param y     ダイアログアイテムのY座標
+	 * @param w     ダイアログアイテムの幅
+	 * @param h     ダイアログアイテムの高さ
+	 */
+	function setItemPos( id, x, y) {}
+	function setItemSize(id, w, h) {}
+	function getItemLeft(id) {}
+	function getItemTop(id) {}
+	function getItemWidth(id) {}
+	function getItemHeight(id) {}
+
+	/**
+	 * アイテムにBitmapを設定する
+	 * @param id    ダイアログアイテムのID
+	 * @param bmp   ビットマップに設定するWIN32Dialog.Bitmapのインスタンス
+	 *              WIN32DialogEXではLayerインスタンスが指定可能
+	 */
+	function setItemBitmap(id, bmp) {}
+
+	/**
+	 * SendDlgItemMessage のラッパー
+	 * @param id     ダイアログアイテムのID
+	 * @param msg    送るメッセージ
+	 * @param wparam 送るwparam
+	 * @param lparam 送るlparam
+	 * @return LRESULT
+	 */
+	function sendItemMessage(id, msg, wparam, lparam) {}
+
+	/**
+	 * GetDialogBaseUnit のラッパー
+	 * @return 結果辞書(%[ h:水平単位, v:垂直単位 ])
+	 */
+	function getBaseUnits() {}
+
+	/**
+	 * MapDialogRect のラッパー
+	 * @param rect 矩形領域辞書配列(%[ left, top, right, bottom ])
+	 * @return 結果辞書配列(%[ left, top, right, bottom ])
+	 */
+	function mapRect(rect) {}
+
+	/**
+	 * InvalidateRect のラッパー
+	 * @param rect 矩形領域辞書配列(%[ left, top, right, bottom ])
+	 * @param erase 消去するかどうかフラグ
+	 * @return 成功ならtrue
+	 */
+	function invalidateRect(rect, erase) {}
+
+	/**
+	 * ダイアログ座標を設定
+	 * @param x x座標
+	 * @param y y座標
+	 * ダイアログ表示中以外はエラーになるので注意。onInitなどにて座標を変更すること
+	 */
+	function setPos(x, y) {}
+
+	/**
+	 * ダイアログの大きさを設定
+	 * @param w width
+	 * @param h height
+	 * ダイアログ表示中以外はエラーになるので注意。
+	 */
+	function setSize(w, h) {}
+
+	/**
+	 * ダイアログサイズの取得
+	 * 読み取り専用。サイズの変更はできないので注意
+	 */
+	var left   = 0;
+	var top    = 0;
+	var width  = 0;
+	var height = 0;
+
+	/**
+	 * WM_INITDIALOG のコールバック
+	 * @param msg    DlgProc のメッセージ == WM_INITDIALOG
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 * コールバックはownerに対して呼ばれるので注意してください
+	 * owner.onInitが未定義なら何もしません。
+	 */
+	function onInit(msg, wparam, lparam) {}
+
+	/**
+	 * WM_COMMAND のコールバック
+	 * @param msg    DlgProc のメッセージ == WM_COMMAND
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 * コールバックはownerに対して呼ばれるので注意してください。
+	 * owner.onCommandが未定義なら何もしません。
+	 */
+	function onCommand(msg, wparam, lparam) {}
+
+	/**
+	 * WM_HSCROLL のコールバック
+	 * @param msg    DlgProc のメッセージ == WM_HSCROLL
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 */
+	function onHScroll(msg, wparam, lparam) {}
+
+	/**
+	 * WM_VSCROLL のコールバック
+	 * @param msg    DlgProc のメッセージ == WM_VSCROLL
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 */
+	function onVScroll(msg, wparam, lparam) {}
+
+	/**
+	 * WM_NOTIFY のコールバック
+	 * @param wparam DlgProc のWPARAM
+	 * @param notify HMHDRアクセス用クラス
+	 */
+	function onNotify(msg, wparam, lparam) {}
+
+	/**
+	 * WM_KEYDOWN のコールバック
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 */
+	function onKeyDown(wparam, lparam)
+	{
+	}
+
+	/**
+	 * WM_KEYUP のコールバック
+	 * @param wparam DlgProc のWPARAM
+	 * @param lparam DlgProc のLPARAM
+	 */
+	function onKeyUp(wparam, lparam)
+	{
+	}
+
+	/**
+	 * MessageBox のラッパー
+	 * @param window  オーナーwindow（指定しない場合はnullを渡すこと）
+	 * @param text    メッセージテキスト
+	 * @param caption ダイアログボックスのキャプション
+	 * @param type    表示するボタンやアイコンのフラグの組み合わせ
+	 * @return        押されたボタンのID
+	 * type に独自フラグ MB_OWNER_CENTER を設定するとオーナーウィンドウの中央に表示しようとする
+	 * （ただしダイアログが画面外になる場合はデスクトップの中央になる）
+	 */
+	/*static*/function messageBox(window, text, caption, type) {}
+
+	/**
+	 * ChooseColor のラッパー
+	 * @param window  オーナーwindow（指定しない場合はnullを渡すこと）
+	 * @param elm     オプション（辞書または省略可能）
+	 *                %[ color:初期選択色, palette:[ パレット色1, ... , パレット色16 ],
+	 *                   disableCustomColor:色の作成を無効にする, openCustomColor:色作成を最初から開いた状態にする ]
+	 * @return        選択された色(0xRRGGBB) キャンセル時はvoid
+	 *                elm.palette が渡された場合は，その内容も更新される
+	 */
+	/*static*/function chooseColor(window, elm) {}
+
+	/**
+	 * モードレスダイアログ用のフラグ
+	 * trueならばモードレス状態でダイアログを開きます。
+	 * モードレスではダイアログのstyleにWS_VISIBLEを指定しない場合は
+	 * open()時に自動で表示されないので注意してください。
+	 */
+	var modeless = 0;
+
+	/**
+	 * ダイアログのウィンドウハンドル
+	 */
+	var HWND = 0;
+
+	/**
+	 * ダイアログのアイコン画像
+	 *   WIN32Dialog.Bitmapクラスのインスタンス:その画像
+	 *   null:実行ファイルのアイコン
+	 *   void:アイコンなし
+	 */
+	var icon = 0;
+
+	/**
+	 * ダイアログを open しているかどうか
+	 */
+	var isValid = 0;
+
+	/**
+	 * ShowWindow のラッパー
+	 * @param nCmdShow SW_*フラグ
+	 * 主にモードレスダイアログ用です。
+	 */
+	function show(nCmdShow) {}
+
+	/**
+	 * InitCommonControls, InitCommonControlsEx のラッパー
+	 * @param icc 初期化フラグ ICC_*(～Exのみ)
+	 * @return    成功したか(～Exのみ)
+	 */
+	function initCommonControls() {}
+	function initCommonControlsEx(icc) {}
+
+	/**
+	 * プロパティシートを表示する（常にモーダル：モードレスは未実装）
+	 * @param window  オーナーwindow（指定しない場合はnullを渡すこと）
+	 * @param sheets  シート情報（WIN32Dialogインスタンスの配列）
+	 * @param elm     オプション（辞書または省略可能）
+	 *                %[ caption:プロパティシートタイトル, page:初期ページ番号, icon:アイコン ]
+	 * @return        ::PropertySheetの返り値
+	 */
+	/*static*/function openPropertySheet(window, sheets, elm) {}
+
+	function propSheetMessage(msg, wparam, lparam) {} //< PSM_* メッセージをプロパティシートウィンドウに送信する
+	function setMessageResult(value) {} //< DWL_MSGRESULTの値を設定する
+	var propsheet = 0; //< プロパティシートとして表示中かどうか
+
+	/**
+	 * プログレスダイアログを表示する
+	 * @param id      プログレスバーのダイアログアイテムID（progressValueプロパティで更新される対象）
+	 * @param window  [optional] オーナーwindow (void=オーナーなし,null=Application)
+	 * @param dsapp   [optional] プログレス表示中はアプリケーションウィンドウを無効にするか
+	 * @param breathe [optional] progressValueのsetterでbreatheするかどうか
+	 * @return        成功したらtrue
+	 *
+	 * プログレスダイアログのstyleにはWS_VISIBLEを指定しないこと
+	 * 閉じるときは必ず closeProgress() を使用すること
+	 * プログレス表示の場合，onInit以外のコールバックは来ないので注意
+	 */
+	function openProgress(id, window, dsapp, breathe) {}
+
+	function closeProgress() {}                     //< プログレスダイアログを閉じる
+	var progress         = 0; //< プログレス状態かどうか
+	var progressValue    = 0; //< プログレスバーを更新する（0-100の数値 or 負数の場合マーキー状態の速度）
+	var progressCanceled = 0; //< プログレスがキャンセルされたかどうか（※対象ボタンはIDCANCEL固定）
+
+	/**
+	 * タブコントロールを利用する.
+
+//	利用手順を検討中
+	 * insertTab(IDC_TAB, 0, "基本") {} // タブを追加
+	 * // deleteTab(IDC_TAB, 0) {} // タブを削除
+	 * // deleteAllTab(IDC_TAB) {} // タブをすべて削除
+	 * var dlg = new WIN32Dialog() {} dlg.loadResource("resource.dll", "INNER") {} // Border=None, Style=Child にしたダイアログ
+	 * selectTab(IDC_TAB, dlg) {} // 表示
+	 * insertTab(IDC_TAB, 1, "拡張") {}
+	 * var dlg2 = new WIN32Dialog() {} dlg2.loadResource("resource.dll", "INNER2") {}
+	 * dlg.show(SW_HIDE) {}
+	 * selectTab(IDC_TAB, dlg2) {} // 切り替え
+	 * // onNotify で notify->code == TCN_SELCHANGE かつ notify->idFrom == IDC_TAB の場合にユーザーによるタブの切り替え
+	 * // getCurSel(tab_id) でタブの番号を取得し、対応するダイアログを SW_SHOW、それ以外を SW_HIDE する
+	 * // タブ番号と対応するダイアログは自分で管理すること
+	 * ※ dlg,dlg2 の open は selectTab されたときに行われるので、show(SW_HIDE) するときは isValid で open されているか確認のこと
+
+	 */
+	function insertTab(tab_id, pos, label) {}
+	function deleteTab(tab_id, pos) {}
+	function deleteAllTab(tab_id) {}
+	function getCurSel(tab_id) {}
+	function selectTab(tab_id, dialog) {}
+
+	/**
+	 * ScrollInfo の設定
+	 * @param id スクロールバーのダイアログアイテムID
+	 * @param pos スライダーの位置
+	 * @param min 取りうる最小の値
+	 * @param max 取りうる最大の値
+	 * @param page ページの値
+	 */
+	function setScrollInfo(id, pos, min, max, page) {}
+
+	/**
+	 * ScrollInfo の取得
+	 * @param id スクロールバーのダイアログアイテムID
+	 * @return %[pos, min, max, page]
+	 */
+	function getScrollInfo(id) {}
+}
+
+with(WIN32Dialog) {
+	// Window Long index
+	.GWL_STYLE = 0;
+	.GWL_WNDPROC = 0;
+	.GWL_HINSTANCE = 0;
+	.GWL_HWNDPARENT = 0;
+	.GWL_STYLE = 0;
+	.GWL_EXSTYLE = 0;
+	.GWL_USERDATA = 0;
+	.GWL_ID = 0;
+
+	// Dialog Long index
+	.DWL_DLGPROC = 0;
+	.DWL_MSGRESULT = 0;
+	.DWL_USER = 0;
+
+	// Window Styles
+	.WS_OVERLAPPED = 0;
+	.WS_POPUP = 0;
+	.WS_CHILD = 0;
+	.WS_MINIMIZE = 0;
+	.WS_VISIBLE = 0;
+	.WS_DISABLED = 0;
+	.WS_CLIPSIBLINGS = 0;
+	.WS_CLIPCHILDREN = 0;
+	.WS_MAXIMIZE = 0;
+	.WS_CAPTION = 0;
+	.WS_BORDER = 0;
+	.WS_DLGFRAME = 0;
+	.WS_VSCROLL = 0;
+	.WS_HSCROLL = 0;
+	.WS_SYSMENU = 0;
+	.WS_THICKFRAME = 0;
+	.WS_GROUP = 0;
+	.WS_TABSTOP = 0;
+
+	.WS_MINIMIZEBOX = 0;
+	.WS_MAXIMIZEBOX = 0;
+
+	.WS_TILED = 0;
+	.WS_ICONIC = 0;
+	.WS_SIZEBOX = 0;
+	.WS_TILEDWINDOW = 0;
+
+	.WS_OVERLAPPEDWINDOW = 0;
+	.WS_POPUPWINDOW = 0;
+	.WS_CHILDWINDOW = 0;
+
+	.WS_EX_DLGMODALFRAME = 0;
+	.WS_EX_NOPARENTNOTIFY = 0;
+	.WS_EX_TOPMOST = 0;
+	.WS_EX_ACCEPTFILES = 0;
+	.WS_EX_TRANSPARENT = 0;
+	.WS_EX_MDICHILD = 0;
+	.WS_EX_TOOLWINDOW = 0;
+	.WS_EX_WINDOWEDGE = 0;
+	.WS_EX_CLIENTEDGE = 0;
+	.WS_EX_CONTEXTHELP = 0;
+	.WS_EX_RIGHT = 0;
+	.WS_EX_LEFT = 0;
+	.WS_EX_RTLREADING = 0;
+	.WS_EX_LTRREADING = 0;
+	.WS_EX_LEFTSCROLLBAR = 0;
+	.WS_EX_RIGHTSCROLLBAR = 0;
+	.WS_EX_CONTROLPARENT = 0;
+	.WS_EX_STATICEDGE = 0;
+	.WS_EX_APPWINDOW = 0;
+	.WS_EX_OVERLAPPEDWINDOW = 0;
+	.WS_EX_PALETTEWINDOW = 0;
+
+	.WS_EX_LAYERED = 0;
+
+	.WS_EX_NOINHERITLAYOUT = 0;
+	.WS_EX_LAYOUTRTL = 0;
+
+	.WS_EX_COMPOSITED = 0;
+
+
+	.WS_EX_NOACTIVATE = 0;
+
+
+	// Dialog Box Command IDs
+	.IDOK = 0;
+	.IDCANCEL = 0;
+	.IDABORT = 0;
+	.IDRETRY = 0;
+	.IDIGNORE = 0;
+	.IDYES = 0;
+	.IDNO = 0;
+	.IDCLOSE = 0;
+	.IDHELP = 0;
+
+	.IDTRYAGAIN = 0;
+
+
+	.IDCONTINUE = 0;
+
+
+	.IDTIMEOUT = 0;
+
+
+	// Edit Control Styles
+	.ES_LEFT = 0;
+	.ES_CENTER = 0;
+	.ES_RIGHT = 0;
+	.ES_MULTILINE = 0;
+	.ES_UPPERCASE = 0;
+	.ES_LOWERCASE = 0;
+	.ES_PASSWORD = 0;
+	.ES_AUTOVSCROLL = 0;
+	.ES_AUTOHSCROLL = 0;
+	.ES_NOHIDESEL = 0;
+	.ES_OEMCONVERT = 0;
+	.ES_READONLY = 0;
+	.ES_WANTRETURN = 0;
+	.ES_NUMBER = 0;
+
+	// Edit Control Notification Codes
+	.EN_SETFOCUS = 0;
+	.EN_KILLFOCUS = 0;
+	.EN_CHANGE = 0;
+	.EN_UPDATE = 0;
+	.EN_ERRSPACE = 0;
+	.EN_MAXTEXT = 0;
+	.EN_HSCROLL = 0;
+	.EN_VSCROLL = 0;
+
+	.EN_ALIGN_LTR_EC = 0;
+
+
+	.EN_ALIGN_RTL_EC = 0;
+
+
+	// Edit control EM_SETMARGIN parameters
+	.EC_LEFTMARGIN = 0;
+	.EC_RIGHTMARGIN = 0;
+	.EC_USEFONTINFO = 0;
+	// wParam of EM_GET/SETIMESTATUS
+
+	.EMSIS_COMPOSITIONSTRING = 0;
+
+	// lParam for EMSIS_COMPOSITIONSTRING
+
+	.EIMES_GETCOMPSTRATONCE = 0;
+
+
+	.EIMES_CANCELCOMPSTRINFOCUS = 0;
+
+
+	.EIMES_COMPLETECOMPSTRKILLFOCUS = 0;
+
+
+	// Edit Control Messages
+	.EM_GETSEL = 0;
+	.EM_SETSEL = 0;
+	.EM_GETRECT = 0;
+	.EM_SETRECT = 0;
+	.EM_SETRECTNP = 0;
+	.EM_SCROLL = 0;
+	.EM_LINESCROLL = 0;
+	.EM_SCROLLCARET = 0;
+	.EM_GETMODIFY = 0;
+	.EM_SETMODIFY = 0;
+	.EM_GETLINECOUNT = 0;
+	.EM_LINEINDEX = 0;
+	.EM_SETHANDLE = 0;
+	.EM_GETHANDLE = 0;
+	.EM_GETTHUMB = 0;
+	.EM_LINELENGTH = 0;
+	.EM_REPLACESEL = 0;
+	.EM_GETLINE = 0;
+	.EM_LIMITTEXT = 0;
+	.EM_CANUNDO = 0;
+	.EM_UNDO = 0;
+	.EM_FMTLINES = 0;
+	.EM_LINEFROMCHAR = 0;
+	.EM_SETTABSTOPS = 0;
+	.EM_SETPASSWORDCHAR = 0;
+	.EM_EMPTYUNDOBUFFER = 0;
+	.EM_GETFIRSTVISIBLELINE = 0;
+	.EM_SETREADONLY = 0;
+	.EM_SETWORDBREAKPROC = 0;
+	.EM_GETWORDBREAKPROC = 0;
+	.EM_GETPASSWORDCHAR = 0;
+	.EM_SETMARGINS = 0;
+	.EM_GETMARGINS = 0;
+	.EM_SETLIMITTEXT = 0;
+	.EM_GETLIMITTEXT = 0;
+	.EM_POSFROMCHAR = 0;
+	.EM_CHARFROMPOS = 0;
+
+	.EM_SETIMESTATUS = 0;
+
+
+	.EM_GETIMESTATUS = 0;
+
+
+	// EDITWORDBREAKPROC code values
+	.WB_LEFT = 0;
+	.WB_RIGHT = 0;
+	.WB_ISDELIMITER = 0;
+
+	// Button Control Styles
+	.BS_PUSHBUTTON = 0;
+	.BS_DEFPUSHBUTTON = 0;
+	.BS_CHECKBOX = 0;
+	.BS_AUTOCHECKBOX = 0;
+	.BS_RADIOBUTTON = 0;
+	.BS_3STATE = 0;
+	.BS_AUTO3STATE = 0;
+	.BS_GROUPBOX = 0;
+	.BS_USERBUTTON = 0;
+	.BS_AUTORADIOBUTTON = 0;
+
+	.BS_PUSHBOX = 0;
+
+	.BS_OWNERDRAW = 0;
+
+	.BS_TYPEMASK = 0;
+
+	.BS_LEFTTEXT = 0;
+	.BS_TEXT = 0;
+	.BS_ICON = 0;
+	.BS_BITMAP = 0;
+	.BS_LEFT = 0;
+	.BS_RIGHT = 0;
+	.BS_CENTER = 0;
+	.BS_TOP = 0;
+	.BS_BOTTOM = 0;
+	.BS_VCENTER = 0;
+	.BS_PUSHLIKE = 0;
+	.BS_MULTILINE = 0;
+	.BS_NOTIFY = 0;
+	.BS_FLAT = 0;
+	.BS_RIGHTBUTTON = 0;
+
+	// User Button Notification Codes
+	.BN_CLICKED = 0;
+	.BN_PAINT = 0;
+	.BN_HILITE = 0;
+	.BN_UNHILITE = 0;
+	.BN_DISABLE = 0;
+	.BN_DOUBLECLICKED = 0;
+	.BN_PUSHED = 0;
+	.BN_UNPUSHED = 0;
+	.BN_DBLCLK = 0;
+	.BN_SETFOCUS = 0;
+	.BN_KILLFOCUS = 0;
+
+	// Button Control Messages
+	.BM_GETCHECK = 0;
+	.BM_SETCHECK = 0;
+	.BM_GETSTATE = 0;
+	.BM_SETSTATE = 0;
+	.BM_SETSTYLE = 0;
+	.BM_CLICK = 0;
+	.BM_GETIMAGE = 0;
+	.BM_SETIMAGE = 0;
+
+	.BM_SETDONTCLICK = 0;
+
+	.BST_UNCHECKED = 0;
+	.BST_CHECKED = 0;
+	.BST_INDETERMINATE = 0;
+	.BST_PUSHED = 0;
+	.BST_FOCUS = 0;
+
+	// Static Control Constants
+	.SS_LEFT = 0;
+	.SS_CENTER = 0;
+	.SS_RIGHT = 0;
+	.SS_ICON = 0;
+	.SS_BLACKRECT = 0;
+	.SS_GRAYRECT = 0;
+	.SS_WHITERECT = 0;
+	.SS_BLACKFRAME = 0;
+	.SS_GRAYFRAME = 0;
+	.SS_WHITEFRAME = 0;
+	.SS_USERITEM = 0;
+	.SS_SIMPLE = 0;
+	.SS_LEFTNOWORDWRAP = 0;
+	.SS_OWNERDRAW = 0;
+	.SS_BITMAP = 0;
+	.SS_ENHMETAFILE = 0;
+	.SS_ETCHEDHORZ = 0;
+	.SS_ETCHEDVERT = 0;
+	.SS_ETCHEDFRAME = 0;
+	.SS_TYPEMASK = 0;
+
+	.SS_REALSIZECONTROL = 0;
+
+	.SS_NOPREFIX = 0;
+	.SS_NOTIFY = 0;
+	.SS_CENTERIMAGE = 0;
+	.SS_RIGHTJUST = 0;
+	.SS_REALSIZEIMAGE = 0;
+	.SS_SUNKEN = 0;
+
+	.SS_EDITCONTROL = 0;
+
+	.SS_ENDELLIPSIS = 0;
+	.SS_PATHELLIPSIS = 0;
+	.SS_WORDELLIPSIS = 0;
+	.SS_ELLIPSISMASK = 0;
+
+	// Static Control Mesages
+	.STM_SETICON = 0;
+	.STM_GETICON = 0;
+	.STM_SETIMAGE = 0;
+	.STM_GETIMAGE = 0;
+	.STN_CLICKED = 0;
+	.STN_DBLCLK = 0;
+	.STN_ENABLE = 0;
+	.STN_DISABLE = 0;
+
+	.STM_MSGMAX = 0;
+
+
+	// Dialog Styles
+	.DS_ABSALIGN = 0;
+	.DS_SYSMODAL = 0;
+	.DS_LOCALEDIT = 0;
+	.DS_SETFONT = 0;
+	.DS_MODALFRAME = 0;
+	.DS_NOIDLEMSG = 0;
+	.DS_SETFOREGROUND = 0;
+	.DS_3DLOOK = 0;
+	.DS_FIXEDSYS = 0;
+	.DS_NOFAILCREATE = 0;
+	.DS_CONTROL = 0;
+	.DS_CENTER = 0;
+	.DS_CENTERMOUSE = 0;
+	.DS_CONTEXTHELP = 0;
+	.DS_SHELLFONT = 0;
+
+	.DS_USEPIXELS = 0;
+
+
+	.DM_GETDEFID = 0;
+	.DM_SETDEFID = 0;
+	.DM_REPOSITION = 0;
+	// Returned in HIWORD() of DM_GETDEFID result if msg is supported
+	.DC_HASDEFID = 0;
+
+	// Dialog Codes
+	.DLGC_WANTARROWS = 0;
+	.DLGC_WANTTAB = 0;
+	.DLGC_WANTALLKEYS = 0;
+	.DLGC_WANTMESSAGE = 0;
+	.DLGC_HASSETSEL = 0;
+	.DLGC_DEFPUSHBUTTON = 0;
+	.DLGC_UNDEFPUSHBUTTON = 0;
+	.DLGC_RADIOBUTTON = 0;
+	.DLGC_WANTCHARS = 0;
+	.DLGC_STATIC = 0;
+	.DLGC_BUTTON = 0;
+
+	// Listbox Return Values
+	.LB_CTLCODE = 0;
+	.LB_OKAY = 0;
+	.LB_ERR = 0;
+	.LB_ERRSPACE = 0;
+
+	// Listbox Notification Codes
+	.LBN_ERRSPACE = 0;
+	.LBN_SELCHANGE = 0;
+	.LBN_DBLCLK = 0;
+	.LBN_SELCANCEL = 0;
+	.LBN_SETFOCUS = 0;
+	.LBN_KILLFOCUS = 0;
+
+	.LB_ADDSTRING = 0;
+	.LB_INSERTSTRING = 0;
+	.LB_DELETESTRING = 0;
+	.LB_SELITEMRANGEEX = 0;
+	.LB_RESETCONTENT = 0;
+	.LB_SETSEL = 0;
+	.LB_SETCURSEL = 0;
+	.LB_GETSEL = 0;
+	.LB_GETCURSEL = 0;
+	.LB_GETTEXT = 0;
+	.LB_GETTEXTLEN = 0;
+	.LB_GETCOUNT = 0;
+	.LB_SELECTSTRING = 0;
+	.LB_DIR = 0;
+	.LB_GETTOPINDEX = 0;
+	.LB_FINDSTRING = 0;
+	.LB_GETSELCOUNT = 0;
+	.LB_GETSELITEMS = 0;
+	.LB_SETTABSTOPS = 0;
+	.LB_GETHORIZONTALEXTENT = 0;
+	.LB_SETHORIZONTALEXTENT = 0;
+	.LB_SETCOLUMNWIDTH = 0;
+	.LB_ADDFILE = 0;
+	.LB_SETTOPINDEX = 0;
+	.LB_GETITEMRECT = 0;
+	.LB_GETITEMDATA = 0;
+	.LB_SETITEMDATA = 0;
+	.LB_SELITEMRANGE = 0;
+	.LB_SETANCHORINDEX = 0;
+	.LB_GETANCHORINDEX = 0;
+	.LB_SETCARETINDEX = 0;
+	.LB_GETCARETINDEX = 0;
+	.LB_SETITEMHEIGHT = 0;
+	.LB_GETITEMHEIGHT = 0;
+	.LB_FINDSTRINGEXACT = 0;
+	.LB_SETLOCALE = 0;
+	.LB_GETLOCALE = 0;
+	.LB_SETCOUNT = 0;
+	.LB_INITSTORAGE = 0;
+	.LB_ITEMFROMPOINT = 0;
+
+	.LB_MULTIPLEADDSTRING = 0;
+
+
+	.LB_GETLISTBOXINFO = 0;
+
+
+	.LB_MSGMAX = 0;
+
+
+	// Listbox Styles
+	.LBS_NOTIFY = 0;
+	.LBS_SORT = 0;
+	.LBS_NOREDRAW = 0;
+	.LBS_MULTIPLESEL = 0;
+	.LBS_OWNERDRAWFIXED = 0;
+	.LBS_OWNERDRAWVARIABLE = 0;
+	.LBS_HASSTRINGS = 0;
+	.LBS_USETABSTOPS = 0;
+	.LBS_NOINTEGRALHEIGHT = 0;
+	.LBS_MULTICOLUMN = 0;
+	.LBS_WANTKEYBOARDINPUT = 0;
+	.LBS_EXTENDEDSEL = 0;
+	.LBS_DISABLENOSCROLL = 0;
+	.LBS_NODATA = 0;
+	.LBS_NOSEL = 0;
+
+	.LBS_COMBOBOX = 0;
+
+	.LBS_STANDARD = 0;
+
+	// Combo Box return Values
+	.CB_OKAY = 0;
+	.CB_ERR = 0;
+	.CB_ERRSPACE = 0;
+
+	// Combo Box Notification Codes
+	.CBN_ERRSPACE = 0;
+	.CBN_SELCHANGE = 0;
+	.CBN_DBLCLK = 0;
+	.CBN_SETFOCUS = 0;
+	.CBN_KILLFOCUS = 0;
+	.CBN_EDITCHANGE = 0;
+	.CBN_EDITUPDATE = 0;
+	.CBN_DROPDOWN = 0;
+	.CBN_CLOSEUP = 0;
+	.CBN_SELENDOK = 0;
+	.CBN_SELENDCANCEL = 0;
+
+	// Combo Box styles
+	.CBS_SIMPLE = 0;
+	.CBS_DROPDOWN = 0;
+	.CBS_DROPDOWNLIST = 0;
+	.CBS_OWNERDRAWFIXED = 0;
+	.CBS_OWNERDRAWVARIABLE = 0;
+	.CBS_AUTOHSCROLL = 0;
+	.CBS_OEMCONVERT = 0;
+	.CBS_SORT = 0;
+	.CBS_HASSTRINGS = 0;
+	.CBS_NOINTEGRALHEIGHT = 0;
+	.CBS_DISABLENOSCROLL = 0;
+	.CBS_UPPERCASE = 0;
+	.CBS_LOWERCASE = 0;
+
+	// Combo Box messages
+	.CB_GETEDITSEL = 0;
+	.CB_LIMITTEXT = 0;
+	.CB_SETEDITSEL = 0;
+	.CB_ADDSTRING = 0;
+	.CB_DELETESTRING = 0;
+	.CB_DIR = 0;
+	.CB_GETCOUNT = 0;
+	.CB_GETCURSEL = 0;
+	.CB_GETLBTEXT = 0;
+	.CB_GETLBTEXTLEN = 0;
+	.CB_INSERTSTRING = 0;
+	.CB_RESETCONTENT = 0;
+	.CB_FINDSTRING = 0;
+	.CB_SELECTSTRING = 0;
+	.CB_SETCURSEL = 0;
+	.CB_SHOWDROPDOWN = 0;
+	.CB_GETITEMDATA = 0;
+	.CB_SETITEMDATA = 0;
+	.CB_GETDROPPEDCONTROLRECT = 0;
+	.CB_SETITEMHEIGHT = 0;
+	.CB_GETITEMHEIGHT = 0;
+	.CB_SETEXTENDEDUI = 0;
+	.CB_GETEXTENDEDUI = 0;
+	.CB_GETDROPPEDSTATE = 0;
+	.CB_FINDSTRINGEXACT = 0;
+	.CB_SETLOCALE = 0;
+	.CB_GETLOCALE = 0;
+	.CB_GETTOPINDEX = 0;
+	.CB_SETTOPINDEX = 0;
+	.CB_GETHORIZONTALEXTENT = 0;
+	.CB_SETHORIZONTALEXTENT = 0;
+	.CB_GETDROPPEDWIDTH = 0;
+	.CB_SETDROPPEDWIDTH = 0;
+	.CB_INITSTORAGE = 0;
+
+	.CB_MULTIPLEADDSTRING = 0;
+
+
+	.CB_GETCOMBOBOXINFO = 0;
+
+
+	.CB_MSGMAX = 0;
+
+
+	// Scroll Bar Styles
+	.SBS_HORZ = 0;
+	.SBS_VERT = 0;
+	.SBS_TOPALIGN = 0;
+	.SBS_LEFTALIGN = 0;
+	.SBS_BOTTOMALIGN = 0;
+	.SBS_RIGHTALIGN = 0;
+	.SBS_SIZEBOXTOPLEFTALIGN = 0;
+	.SBS_SIZEBOXBOTTOMRIGHTALIGN = 0;
+	.SBS_SIZEBOX = 0;
+	.SBS_SIZEGRIP = 0;
+
+	// Scroll bar messages
+	.SBM_SETPOS = 0;
+	.SBM_GETPOS = 0;
+	.SBM_SETRANGE = 0;
+	.SBM_SETRANGEREDRAW = 0;
+	.SBM_GETRANGE = 0;
+	.SBM_ENABLE_ARROWS = 0;
+	.SBM_SETSCROLLINFO = 0;
+	.SBM_GETSCROLLINFO = 0;
+
+	.SBM_GETSCROLLBARINFO = 0;
+
+	.SIF_RANGE = 0;
+	.SIF_PAGE = 0;
+	.SIF_POS = 0;
+	.SIF_DISABLENOSCROLL = 0;
+	.SIF_TRACKPOS = 0;
+	.SIF_ALL = 0;
+
+	// Scroll bar option
+	.SB_LINEUP = 0;
+	.SB_LINEUP = 0;
+	.SB_LINELEFT = 0;
+	.SB_LINEDOWN = 0;
+	.SB_LINERIGHT = 0;
+	.SB_PAGEUP = 0;
+	.SB_PAGELEFT = 0;
+	.SB_PAGEDOWN = 0;
+	.SB_PAGERIGHT = 0;
+	.SB_THUMBPOSITION = 0;
+	.SB_THUMBTRACK = 0;
+	.SB_TOP = 0;
+	.SB_LEFT = 0;
+	.SB_BOTTOM = 0;
+	.SB_RIGHT = 0;
+	.SB_ENDSCROLL = 0;
+
+	// Font Weights
+	.FW_DONTCARE = 0;
+	.FW_THIN = 0;
+	.FW_EXTRALIGHT = 0;
+	.FW_LIGHT = 0;
+	.FW_NORMAL = 0;
+	.FW_MEDIUM = 0;
+	.FW_SEMIBOLD = 0;
+	.FW_BOLD = 0;
+	.FW_EXTRABOLD = 0;
+	.FW_HEAVY = 0;
+
+	// ShowWindow options
+	.SW_HIDE = 0;
+	.SW_SHOWNORMAL = 0;
+	.SW_NORMAL = 0;
+	.SW_SHOWMINIMIZED = 0;
+	.SW_SHOWMAXIMIZED = 0;
+	.SW_MAXIMIZE = 0;
+	.SW_SHOWNOACTIVATE = 0;
+	.SW_SHOW = 0;
+	.SW_MINIMIZE = 0;
+	.SW_SHOWMINNOACTIVE = 0;
+	.SW_SHOWNA = 0;
+	.SW_RESTORE = 0;
+	.SW_SHOWDEFAULT = 0;
+	.SW_FORCEMINIMIZE = 0;
+
+	// for MessageBox
+	.MB_ABORTRETRYIGNORE = 0;
+	.MB_CANCELTRYCONTINUE = 0;
+	.MB_HELP = 0;
+	.MB_OK = 0;
+	.MB_OKCANCEL = 0;
+	.MB_RETRYCANCEL = 0;
+	.MB_YESNO = 0;
+	.MB_YESNOCANCEL = 0;
+	.MB_ICONEXCLAMATION = 0;
+	.MB_ICONWARNING = 0;
+	.MB_ICONINFORMATION = 0;
+	.MB_ICONASTERISK = 0;
+	.MB_ICONQUESTION = 0;
+	.MB_ICONSTOP = 0;
+	.MB_ICONERROR = 0;
+	.MB_ICONHAND = 0;
+	.MB_DEFBUTTON1 = 0;
+	.MB_DEFBUTTON2 = 0;
+	.MB_DEFBUTTON3 = 0;
+	.MB_DEFBUTTON4 = 0;
+	.MB_APPLMODAL = 0;
+	.MB_SYSTEMMODAL = 0;
+	.MB_TASKMODAL = 0;
+	.MB_DEFAULT_DESKTOP_ONLY = 0;
+	.MB_RIGHT = 0;
+	.MB_RTLREADING = 0;
+	.MB_SETFOREGROUND = 0;
+	.MB_TOPMOST = 0;
+
+	.MB_SERVICE_NOTIFICATION = 0;
+
+
+	.MB_SERVICE_NOTIFICATION_NT3X = 0;
+
+
+	.MB_OWNER_CENTER = 0;
+
+
+	// InitCommonControlsEx parameters
+	.ICC_LISTVIEW_CLASSES = 0;
+	.ICC_TREEVIEW_CLASSES = 0;
+	.ICC_BAR_CLASSES = 0;
+	.ICC_TAB_CLASSES = 0;
+	.ICC_UPDOWN_CLASS = 0;
+	.ICC_PROGRESS_CLASS = 0;
+	.ICC_HOTKEY_CLASS = 0;
+	.ICC_ANIMATE_CLASS = 0;
+	.ICC_WIN95_CLASSES = 0;
+	.ICC_DATE_CLASSES = 0;
+	.ICC_USEREX_CLASSES = 0;
+	.ICC_COOL_CLASSES = 0;
+
+	.ICC_INTERNET_CLASSES = 0;
+	.ICC_PAGESCROLLER_CLASS = 0;
+	.ICC_NATIVEFNTCTL_CLASS = 0;
+
+
+	.ICC_STANDARD_CLASSES = 0;
+	.ICC_LINK_CLASS = 0;
+
+	// Trackbar Styles
+	.TBS_AUTOTICKS = 0;
+	.TBS_VERT = 0;
+	.TBS_HORZ = 0;
+	.TBS_TOP = 0;
+	.TBS_BOTTOM = 0;
+	.TBS_LEFT = 0;
+	.TBS_RIGHT = 0;
+	.TBS_BOTH = 0;
+	.TBS_NOTICKS = 0;
+	.TBS_ENABLESELRANGE = 0;
+	.TBS_FIXEDLENGTH = 0;
+	.TBS_NOTHUMB = 0;
+
+	.TBS_TOOLTIPS = 0;
+
+
+	.TBS_REVERSED = 0;
+
+
+	.TBS_DOWNISLEFT = 0;
+
+
+
+	.TBS_NOTIFYBEFOREMOVE = 0;
+
+
+	.TBS_TRANSPARENTBKGND = 0;
+
+	// Trackbar Messages
+	.TBM_GETPOS = 0;
+	.TBM_GETRANGEMIN = 0;
+	.TBM_GETRANGEMAX = 0;
+	.TBM_GETTIC = 0;
+	.TBM_SETTIC = 0;
+	.TBM_SETPOS = 0;
+	.TBM_SETRANGE = 0;
+	.TBM_SETRANGEMIN = 0;
+	.TBM_SETRANGEMAX = 0;
+	.TBM_CLEARTICS = 0;
+	.TBM_SETSEL = 0;
+	.TBM_SETSELSTART = 0;
+	.TBM_SETSELEND = 0;
+	.TBM_GETPTICS = 0;
+	.TBM_GETTICPOS = 0;
+	.TBM_GETNUMTICS = 0;
+	.TBM_GETSELSTART = 0;
+	.TBM_GETSELEND = 0;
+	.TBM_CLEARSEL = 0;
+	.TBM_SETTICFREQ = 0;
+	.TBM_SETPAGESIZE = 0;
+	.TBM_GETPAGESIZE = 0;
+	.TBM_SETLINESIZE = 0;
+	.TBM_GETLINESIZE = 0;
+	.TBM_GETTHUMBRECT = 0;
+	.TBM_GETCHANNELRECT = 0;
+	.TBM_SETTHUMBLENGTH = 0;
+	.TBM_GETTHUMBLENGTH = 0;
+
+	.TBM_SETTOOLTIPS = 0;
+	.TBM_GETTOOLTIPS = 0;
+	.TBM_SETTIPSIDE = 0;
+	// TrackBar Tip Side flags
+	.TBTS_TOP = 0;
+	.TBTS_LEFT = 0;
+	.TBTS_BOTTOM = 0;
+	.TBTS_RIGHT = 0;
+
+	.TBM_SETBUDDY = 0;
+	.TBM_GETBUDDY = 0;
+
+
+	.TBM_SETUNICODEFORMAT = 0;
+	.TBM_GETUNICODEFORMAT = 0;
+
+	.TB_LINEUP = 0;
+	.TB_LINEDOWN = 0;
+	.TB_PAGEUP = 0;
+	.TB_PAGEDOWN = 0;
+	.TB_THUMBPOSITION = 0;
+	.TB_THUMBTRACK = 0;
+	.TB_TOP = 0;
+	.TB_BOTTOM = 0;
+	.TB_ENDTRACK = 0;
+
+	.TBCD_TICS = 0;
+	.TBCD_THUMB = 0;
+	.TBCD_CHANNEL = 0;
+
+
+	.TRBN_THUMBPOSCHANGING = 0;
+
+
+	// Progress
+
+	.PBS_SMOOTH = 0;
+	.PBS_VERTICAL = 0;
+
+	.PBM_SETRANGE = 0;
+	.PBM_SETPOS = 0;
+	.PBM_DELTAPOS = 0;
+	.PBM_SETSTEP = 0;
+	.PBM_STEPIT = 0;
+//	.PBM_SETRANGE32 = 0;
+	.PBM_GETRANGE = 0;
+	.PBM_GETPOS = 0;
+
+	.PBM_SETBARCOLOR = 0;
+
+
+	.PBM_SETBKCOLOR = 0;
+
+
+	.PBS_MARQUEE = 0;
+	.PBM_SETMARQUEE = 0;
+
+
+	.PBS_SMOOTHREVERSE = 0;
+	.PBM_GETSTEP = 0;
+	.PBM_GETBKCOLOR = 0;
+	.PBM_GETBARCOLOR = 0;
+	.PBM_SETSTATE = 0;
+	.PBM_GETSTATE = 0;
+	.PBST_NORMAL = 0;
+	.PBST_ERROR = 0;
+	.PBST_PAUSED = 0;
+
+
+	// ListView
+	.LVS_ICON = 0;
+	.LVS_REPORT = 0;
+	.LVS_SMALLICON = 0;
+	.LVS_LIST = 0;
+	.LVS_TYPEMASK = 0;
+	.LVS_SINGLESEL = 0;
+	.LVS_SHOWSELALWAYS = 0;
+	.LVS_SORTASCENDING = 0;
+	.LVS_SORTDESCENDING = 0;
+	.LVS_SHAREIMAGELISTS = 0;
+	.LVS_NOLABELWRAP = 0;
+	.LVS_AUTOARRANGE = 0;
+	.LVS_EDITLABELS = 0;
+	.LVS_OWNERDATA = 0;
+	.LVS_NOSCROLL = 0;
+	.LVS_TYPESTYLEMASK = 0;
+	.LVS_ALIGNTOP = 0;
+	.LVS_ALIGNLEFT = 0;
+	.LVS_ALIGNMASK = 0;
+	.LVS_OWNERDRAWFIXED = 0;
+	.LVS_NOCOLUMNHEADER = 0;
+	.LVS_NOSORTHEADER = 0;
+	.LVS_EX_GRIDLINES = 0;
+	.LVS_EX_SUBITEMIMAGES = 0;
+	.LVS_EX_CHECKBOXES = 0;
+	.LVS_EX_TRACKSELECT = 0;
+	.LVS_EX_HEADERDRAGDROP = 0;
+	.LVS_EX_FULLROWSELECT = 0;
+	.LVS_EX_ONECLICKACTIVATE = 0;
+	.LVS_EX_TWOCLICKACTIVATE = 0;
+	.LVS_EX_FLATSB = 0;
+	.LVS_EX_REGIONAL = 0;
+	.LVS_EX_INFOTIP = 0;
+	.LVS_EX_UNDERLINEHOT = 0;
+	.LVS_EX_UNDERLINECOLD = 0;
+	.LVS_EX_MULTIWORKAREAS = 0;
+	.LVS_EX_LABELTIP = 0;
+	.LVS_EX_BORDERSELECT = 0;
+	.LVS_EX_DOUBLEBUFFER = 0;
+	.LVS_EX_HIDELABELS = 0;
+	.LVS_EX_SINGLEROW = 0;
+	.LVS_EX_SNAPTOGRID = 0;
+	.LVS_EX_SIMPLESELECT = 0;
+	.LVS_EX_JUSTIFYCOLUMNS = 0;
+	.LVS_EX_TRANSPARENTBKGND = 0;
+	.LVS_EX_TRANSPARENTSHADOWTEXT = 0;
+	.LVS_EX_AUTOAUTOARRANGE = 0;
+	.LVS_EX_HEADERINALLVIEWS = 0;
+	.LVS_EX_AUTOCHECKSELECT = 0;
+	.LVS_EX_AUTOSIZECOLUMNS = 0;
+	.LVS_EX_COLUMNSNAPPOINTS = 0;
+	.LVS_EX_COLUMNOVERFLOW = 0;
+
+	.LVM_FIRST = 0;
+	.LVM_GETBKCOLOR = 0;
+	.LVM_SETBKCOLOR = 0;
+	.LVM_GETIMAGELIST = 0;
+	.LVM_SETIMAGELIST = 0;
+	.LVM_GETITEMCOUNT = 0;
+	.LVM_GETITEMA = 0;
+	.LVM_GETITEMW = 0;
+	.LVM_SETITEMA = 0;
+	.LVM_SETITEMW = 0;
+	.LVM_INSERTITEMA = 0;
+	.LVM_INSERTITEMW = 0;
+	.LVM_DELETEITEM = 0;
+	.LVM_DELETEALLITEMS = 0;
+	.LVM_GETCALLBACKMASK = 0;
+	.LVM_SETCALLBACKMASK = 0;
+	.LVM_GETNEXTITEM = 0;
+	.LVM_FINDITEMA = 0;
+	.LVM_FINDITEMW = 0;
+	.LVM_GETITEMRECT = 0;
+	.LVM_SETITEMPOSITION = 0;
+	.LVM_GETITEMPOSITION = 0;
+	.LVM_GETSTRINGWIDTHA = 0;
+	.LVM_GETSTRINGWIDTHW = 0;
+	.LVM_HITTEST = 0;
+	.LVM_ENSUREVISIBLE = 0;
+	.LVM_SCROLL = 0;
+	.LVM_REDRAWITEMS = 0;
+	.LVM_ARRANGE = 0;
+	.LVM_EDITLABELA = 0;
+	.LVM_EDITLABELW = 0;
+	.LVM_GETEDITCONTROL = 0;
+	.LVM_GETCOLUMNA = 0;
+	.LVM_GETCOLUMNW = 0;
+	.LVM_SETCOLUMNA = 0;
+	.LVM_SETCOLUMNW = 0;
+	.LVM_INSERTCOLUMNA = 0;
+	.LVM_INSERTCOLUMNW = 0;
+	.LVM_DELETECOLUMN = 0;
+	.LVM_GETCOLUMNWIDTH = 0;
+	.LVM_SETCOLUMNWIDTH = 0;
+	.LVM_GETHEADER = 0;
+	.LVM_CREATEDRAGIMAGE = 0;
+	.LVM_GETVIEWRECT = 0;
+	.LVM_GETTEXTCOLOR = 0;
+	.LVM_SETTEXTCOLOR = 0;
+	.LVM_GETTEXTBKCOLOR = 0;
+	.LVM_SETTEXTBKCOLOR = 0;
+	.LVM_GETTOPINDEX = 0;
+	.LVM_GETCOUNTPERPAGE = 0;
+	.LVM_GETORIGIN = 0;
+	.LVM_UPDATE = 0;
+	.LVM_SETITEMSTATE = 0;
+	.LVM_GETITEMSTATE = 0;
+	.LVM_GETITEMTEXTA = 0;
+	.LVM_GETITEMTEXTW = 0;
+	.LVM_SETITEMTEXTA = 0;
+	.LVM_SETITEMTEXTW = 0;
+	.LVM_SETITEMCOUNT = 0;
+	.LVM_SORTITEMS = 0;
+	.LVM_SETITEMPOSITION32 = 0;
+	.LVM_GETSELECTEDCOUNT = 0;
+	.LVM_GETITEMSPACING = 0;
+	.LVM_GETISEARCHSTRINGA = 0;
+	.LVM_GETISEARCHSTRINGW = 0;
+	.LVM_SETICONSPACING = 0;
+	.LVM_SETEXTENDEDLISTVIEWSTYLE = 0;
+	.LVM_GETEXTENDEDLISTVIEWSTYLE = 0;
+	.LVM_GETSUBITEMRECT = 0;
+	.LVM_SUBITEMHITTEST = 0;
+	.LVM_SETCOLUMNORDERARRAY = 0;
+	.LVM_GETCOLUMNORDERARRAY = 0;
+	.LVM_SETHOTITEM = 0;
+	.LVM_GETHOTITEM = 0;
+	.LVM_SETHOTCURSOR = 0;
+	.LVM_GETHOTCURSOR = 0;
+	.LVM_APPROXIMATEVIEWRECT = 0;
+	.LVM_SETWORKAREAS = 0;
+	.LVM_GETWORKAREAS = 0;
+	.LVM_GETNUMBEROFWORKAREAS = 0;
+	.LVM_GETSELECTIONMARK = 0;
+	.LVM_SETSELECTIONMARK = 0;
+	.LVM_SETHOVERTIME = 0;
+	.LVM_GETHOVERTIME = 0;
+	.LVM_SETTOOLTIPS = 0;
+	.LVM_GETTOOLTIPS = 0;
+	.LVM_SORTITEMSEX = 0;
+	.LVM_SETBKIMAGEA = 0;
+	.LVM_SETBKIMAGEW = 0;
+	.LVM_GETBKIMAGEA = 0;
+	.LVM_GETBKIMAGEW = 0;
+	.LVM_SETSELECTEDCOLUMN = 0;
+	.LVM_SETVIEW = 0;
+	.LVM_GETVIEW = 0;
+	.LVM_INSERTGROUP = 0;
+	.LVM_SETGROUPINFO = 0;
+	.LVM_GETGROUPINFO = 0;
+	.LVM_REMOVEGROUP = 0;
+	.LVM_MOVEGROUP = 0;
+	.LVM_GETGROUPCOUNT = 0;
+	.LVM_GETGROUPINFOBYINDEX = 0;
+	.LVM_MOVEITEMTOGROUP = 0;
+	.LVM_GETGROUPRECT = 0;
+	.LVM_SETGROUPMETRICS = 0;
+	.LVM_GETGROUPMETRICS = 0;
+	.LVM_ENABLEGROUPVIEW = 0;
+	.LVM_SORTGROUPS = 0;
+	.LVM_INSERTGROUPSORTED = 0;
+	.LVM_REMOVEALLGROUPS = 0;
+	.LVM_HASGROUP = 0;
+	.LVM_GETGROUPSTATE = 0;
+	.LVM_GETFOCUSEDGROUP = 0;
+	.LVM_SETTILEVIEWINFO = 0;
+	.LVM_GETTILEVIEWINFO = 0;
+	.LVM_SETTILEINFO = 0;
+	.LVM_GETTILEINFO = 0;
+	.LVM_SETINSERTMARK = 0;
+	.LVM_GETINSERTMARK = 0;
+	.LVM_INSERTMARKHITTEST = 0;
+	.LVM_GETINSERTMARKRECT = 0;
+	.LVM_SETINSERTMARKCOLOR = 0;
+	.LVM_GETINSERTMARKCOLOR = 0;
+	.LVM_GETSELECTEDCOLUMN = 0;
+	.LVM_ISGROUPVIEWENABLED = 0;
+	.LVM_GETOUTLINECOLOR = 0;
+	.LVM_SETOUTLINECOLOR = 0;
+	.LVM_CANCELEDITLABEL = 0;
+	.LVM_MAPINDEXTOID = 0;
+	.LVM_MAPIDTOINDEX = 0;
+	.LVM_ISITEMVISIBLE = 0;
+	.LVM_GETEMPTYTEXT = 0;
+	.LVM_GETFOOTERRECT = 0;
+	.LVM_GETFOOTERINFO = 0;
+	.LVM_GETFOOTERITEMRECT = 0;
+	.LVM_GETFOOTERITEM = 0;
+	.LVM_GETITEMINDEXRECT = 0;
+	.LVM_SETITEMINDEXSTATE = 0;
+	.LVM_GETNEXTITEMINDEX = 0;
+
+	.LVM_SETUNICODEFORMAT = 0;
+	.LVM_GETUNICODEFORMAT = 0;
+
+	// ～A/W場合分け
+	//.LVM_GETITEM = 0;
+	//.LVM_SETITEM = 0;
+	//.LVM_INSERTITEM = 0;
+	//.LVM_EDITLABEL = 0;
+	//.LVM_GETISEARCHSTRING = 0;
+	//.LVM_SETBKIMAGE = 0;
+	//.LVM_GETBKIMAGE = 0;
+
+	.LVNI_ALL = 0;
+	.LVNI_FOCUSED = 0;
+	.LVNI_SELECTED = 0;
+	.LVNI_CUT = 0;
+	.LVNI_DROPHILITED = 0;
+	.LVNI_STATEMASK = 0;
+	.LVNI_VISIBLEORDER = 0;
+	.LVNI_PREVIOUS = 0;
+	.LVNI_VISIBLEONLY = 0;
+	.LVNI_SAMEGROUPONLY = 0;
+	.LVNI_ABOVE = 0;
+	.LVNI_BELOW = 0;
+	.LVNI_TOLEFT = 0;
+	.LVNI_TORIGHT = 0;
+	.LVNI_DIRECTIONMASK = 0;
+
+	.LVN_ITEMCHANGING = 0;
+	.LVN_ITEMCHANGED = 0;
+	.LVN_INSERTITEM = 0;
+	.LVN_DELETEITEM = 0;
+	.LVN_DELETEALLITEMS = 0;
+	.LVN_BEGINLABELEDITA = 0;
+	.LVN_BEGINLABELEDITW = 0;
+	.LVN_ENDLABELEDITA = 0;
+	.LVN_ENDLABELEDITW = 0;
+	.LVN_COLUMNCLICK = 0;
+	.LVN_BEGINDRAG = 0;
+	.LVN_BEGINRDRAG = 0;
+	.LVN_ODCACHEHINT = 0;
+	.LVN_ODFINDITEMA = 0;
+	.LVN_ODFINDITEMW = 0;
+	.LVN_ITEMACTIVATE = 0;
+	.LVN_ODSTATECHANGED = 0;
+	.LVN_HOTTRACK = 0;
+	.LVN_GETDISPINFOA = 0;
+	.LVN_GETDISPINFOW = 0;
+	.LVN_SETDISPINFOA = 0;
+	.LVN_SETDISPINFOW = 0;
+	.LVN_KEYDOWN = 0;
+	.LVN_MARQUEEBEGIN = 0;
+	.LVN_GETINFOTIPA = 0;
+	.LVN_GETINFOTIPW = 0;
+	.LVN_INCREMENTALSEARCHA = 0;
+	.LVN_INCREMENTALSEARCHW = 0;
+	.LVN_COLUMNDROPDOWN = 0;
+	.LVN_COLUMNOVERFLOWCLICK = 0;
+	.LVN_BEGINSCROLL = 0;
+	.LVN_ENDSCROLL = 0;
+	.LVN_LINKCLICK = 0;
+	.LVN_GETEMPTYMARKUP = 0;
+
+	// ～A/W場合分け
+	//.LVN_ODFINDITEM = 0;
+	//.LVN_BEGINLABELEDIT = 0;
+	//.LVN_ENDLABELEDIT = 0;
+	//.LVN_GETDISPINFO = 0;
+	//.LVN_SETDISPINFO = 0;
+	//.LVN_GETINFOTIP = 0;
+	//.LVN_INCREMENTALSEARCH = 0;
+
+	// TabControl Styles
+	.TCS_SCROLLOPPOSITE = 0;
+	.TCS_BOTTOM = 0;
+	.TCS_RIGHT = 0;
+	.TCS_MULTISELECT = 0;
+	.TCS_FLATBUTTONS = 0;
+	.TCS_FORCEICONLEFT = 0;
+	.TCS_FORCELABELLEFT = 0;
+	.TCS_HOTTRACK = 0;
+	.TCS_VERTICAL = 0;
+	.TCS_TABS = 0;
+	.TCS_BUTTONS = 0;
+	.TCS_SINGLELINE = 0;
+	.TCS_MULTILINE = 0;
+	.TCS_RIGHTJUSTIFY = 0;
+	.TCS_FIXEDWIDTH = 0;
+	.TCS_RAGGEDRIGHT = 0;
+	.TCS_FOCUSONBUTTONDOWN = 0;
+	.TCS_OWNERDRAWFIXED = 0;
+	.TCS_TOOLTIPS = 0;
+	.TCS_FOCUSNEVER = 0;
+	.TCS_EX_FLATSEPARATORS = 0;
+	.TCS_EX_REGISTERDROP = 0;
+
+	// TabControl Messages
+	.TCM_GETIMAGELIST = 0;
+	.TCM_SETIMAGELIST = 0;
+	.TCM_GETITEMCOUNT = 0;
+	.TCIF_TEXT = 0;
+	.TCIF_IMAGE = 0;
+	.TCIF_RTLREADING = 0;
+	.TCIF_PARAM = 0;
+	.TCIF_STATE = 0;
+	.TCIS_BUTTONPRESSED = 0;
+	.TCIS_HIGHLIGHTED = 0;
+
+	.TCM_DELETEITEM = 0;
+	.TCM_DELETEALLITEMS = 0;
+	.TCM_GETITEMRECT = 0;
+	.TCM_GETCURSEL = 0;
+	.TCM_SETCURSEL = 0;
+	.TCHT_NOWHERE = 0;
+	.TCHT_ONITEMICON = 0;
+	.TCHT_ONITEMLABEL = 0;
+	.TCHT_ONITEM = 0;
+
+	.TCM_HITTEST = 0;
+	.TCM_SETITEMEXTRA = 0;
+	.TCM_ADJUSTRECT = 0;
+	.TCM_SETITEMSIZE = 0;
+	.TCM_REMOVEIMAGE = 0;
+	.TCM_SETPADDING = 0;
+	.TCM_GETROWCOUNT = 0;
+	.TCM_GETTOOLTIPS = 0;
+	.TCM_SETTOOLTIPS = 0;
+	.TCM_GETCURFOCUS = 0;
+	.TCM_SETCURFOCUS = 0;
+	.TCM_SETMINTABWIDTH = 0;
+	.TCM_DESELECTALL = 0;
+	.TCM_HIGHLIGHTITEM = 0;
+	.TCM_SETEXTENDEDSTYLE = 0;
+	.TCM_GETEXTENDEDSTYLE = 0;
+	.TCM_SETUNICODEFORMAT = 0;
+	.TCM_GETUNICODEFORMAT = 0;
+
+	// TabControl Notification
+	.TCN_KEYDOWN = 0;
+	.TCN_SELCHANGE = 0;
+	.TCN_SELCHANGING = 0;
+	.TCN_GETOBJECT = 0;
+	.TCN_FOCUSCHANGE = 0;
+
+
+	////////////////
+	// OwnerDraw用
+	.ODT_BUTTON = 0;
+	.ODT_COMBOBOX = 0;
+	.ODT_LISTBOX = 0;
+	.ODT_MENU = 0;
+	.ODT_LISTVIEW = 0;
+	.ODT_STATIC = 0;
+	.ODT_TAB = 0;
+
+	.ODA_DRAWENTIRE = 0;
+	.ODA_FOCUS = 0;
+	.ODA_SELECT = 0;
+
+	.ODS_CHECKED = 0;
+	.ODS_DISABLED = 0;
+	.ODS_FOCUS = 0;
+	.ODS_GRAYED = 0;
+	.ODS_SELECTED = 0;
+	.ODS_COMBOBOXEDIT = 0;
+	.ODS_DEFAULT = 0;
+
+
+	////////////////
+	// PropertySheet用
+
+	.PSN_SETACTIVE = 0;
+	.PSN_KILLACTIVE = 0;
+	.PSN_APPLY = 0;
+	.PSN_RESET = 0;
+	.PSN_HELP = 0;
+	.PSN_WIZBACK = 0;
+	.PSN_WIZNEXT = 0;
+	.PSN_WIZFINISH = 0;
+	.PSN_QUERYCANCEL = 0;
+
+	.PSN_GETOBJECT = 0;
+
+
+	.PSN_TRANSLATEACCELERATOR = 0;
+	.PSN_QUERYINITIALFOCUS = 0;
+
+
+	.PSNRET_NOERROR = 0;
+	.PSNRET_INVALID = 0;
+	.PSNRET_INVALID_NOCHANGEPAGE = 0;
+	.PSNRET_MESSAGEHANDLED = 0;
+
+	.PSM_SETCURSEL = 0;
+	.PSM_REMOVEPAGE = 0;
+	.PSM_ADDPAGE = 0;
+	.PSM_CHANGED = 0;
+	.PSM_RESTARTWINDOWS = 0;
+	.PSM_REBOOTSYSTEM = 0;
+	.PSM_CANCELTOCLOSE = 0;
+	.PSM_QUERYSIBLINGS = 0;
+	.PSM_UNCHANGED = 0;
+	.PSM_APPLY = 0;
+	.PSM_SETTITLE = 0;
+	.PSM_SETWIZBUTTONS = 0;
+	.PSM_PRESSBUTTON = 0;
+	.PSM_SETCURSELID = 0;
+	.PSM_SETFINISHTEXT = 0;
+	.PSM_GETTABCONTROL = 0;
+	.PSM_ISDIALOGMESSAGE = 0;
+	.PSM_GETCURRENTPAGEHWND = 0;
+	.PSM_INSERTPAGE = 0;
+
+	.PSM_SETHEADERTITLE = 0;
+	.PSM_SETHEADERSUBTITLE = 0;
+	.PSM_HWNDTOINDEX = 0;
+	.PSM_INDEXTOHWND = 0;
+	.PSM_PAGETOINDEX = 0;
+	.PSM_INDEXTOPAGE = 0;
+	.PSM_IDTOINDEX = 0;
+	.PSM_INDEXTOID = 0;
+	.PSM_GETRESULT = 0;
+	.PSM_RECALCPAGESIZES = 0;
+
+
+	.PSM_SETNEXTTEXT = 0;
+	.PSM_SHOWWIZBUTTONS = 0;
+	.PSM_ENABLEWIZBUTTONS = 0;
+	.PSM_SETBUTTONTEXT = 0;
+
+
+	.PSM_SETHEADERBITMAP = 0;
+	.PSM_SETHEADERBITMAPRESOURCE = 0;
+
+
+	.PSWIZB_BACK = 0;
+	.PSWIZB_NEXT = 0;
+	.PSWIZB_FINISH = 0;
+	.PSWIZB_DISABLEDFINISH = 0;
+	.PSWIZBF_ELEVATIONREQUIRED = 0;
+
+	.PSWIZB_CANCEL = 0;
+	.PSWIZB_SHOW = 0;
+	.PSWIZB_RESTORE = 0;
+
+
+	.PSWIZF_SETCOLOR = 0;
+
+
+	.PSBTN_BACK = 0;
+	.PSBTN_NEXT = 0;
+	.PSBTN_FINISH = 0;
+	.PSBTN_OK = 0;
+	.PSBTN_APPLYNOW = 0;
+	.PSBTN_CANCEL = 0;
+	.PSBTN_HELP = 0;
+	.PSBTN_MAX = 0;
+
+	.ID_PSRESTARTWINDOWS = 0;
+	.ID_PSREBOOTSYSTEM = 0;
+
+	.WIZ_CXDLG = 0;
+	.WIZ_CYDLG = 0;
+	.WIZ_CXBMP = 0;
+	.WIZ_BODYX = 0;
+	.WIZ_BODYCX = 0;
+
+	.PROP_SM_CXDLG = 0;
+	.PROP_SM_CYDLG = 0;
+	.PROP_MED_CXDLG = 0;
+	.PROP_MED_CYDLG = 0;
+	.PROP_LG_CXDLG = 0;
+	.PROP_LG_CYDLG = 0;
+
+	.TCN_SELCHANGE = 0;	
+	.TCN_SELCHANGING = 0;
+
+	.TCN_GETOBJECT = 0;
+
+
+	.TCN_FOCUSCHANGE = 0;
+
+	.TCN_KEYDOWN = 0;
+	
+	// Control classes
+	.BUTTON = 0x0080;
+	.EDIT  = 0x0081;
+	.STATIC = 0x0082;
+	.LISTBOX = 0x0083;
+	.SCROLLBAR = 0x0084;
+	.COMBOBOX = 0x0085;
+}
+
+Window.startMouseHook = function() {};
+
+class Motion
+{
+	class ResourceManager{
+	}
+}
+Window.getNotificationNum = function() {return 1;};
+Window.setMessageHook = function() {};
+
+var MB_RETRYCANCEL = 0;
+var MB_ICONEXCLAMATION = 0;
+
+function messageBox(dummy, text, title) {
+	return System.inform(title, text, 2) == 0;
+}
+
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(filename) {
+	if(filename=="default.tjs") {
+		Scripts.exec("@set (PACKED=0)");
+	}
+	return Scripts._execStorage(filename);
+};

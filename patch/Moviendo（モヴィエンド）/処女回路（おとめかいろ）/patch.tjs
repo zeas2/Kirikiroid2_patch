@@ -1,0 +1,18 @@
+var __rand_for_shuffle = new Math.RandomGenerator(System.getTickCount());
+
+Array.shuffle = function() { // Fisher - Yates shuffle
+    for(var i = this.count - 1; i > 0; --i) {
+        var idx = __rand_for_shuffle.random32() % (i + 1);
+        var t = this[idx]; this[idx] = this[i]; this[i] = t;
+    }
+};
+
+var tpmbYesNo = 0;
+var tpmbIconQuestion = 0;
+var tpmbApplModal = 0;
+var tppbYes = 0; // System.inform returns the index of button. "Yes" is the first one.
+var tppbNo = 1;
+var tppbCancel = 2;
+System.messageBox = function(wnd, message, caption, flag) {
+	return System.inform(message, caption, 2);
+};

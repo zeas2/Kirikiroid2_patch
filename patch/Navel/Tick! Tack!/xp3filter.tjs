@@ -1,0 +1,31 @@
+var t2 = []; t2[31] = 0;
+{
+    var k = 0xEC36498;
+    for(var i = 0; i < 29; ++i) {
+        t2[i] = k;
+        k &= 0xFFFFFFF8;
+        k = (k << 21) | (k >> 8);
+    }
+}
+
+Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l,f){
+	h &= 0x7FFFFFFF;
+	var k = (h << 31) | h;
+	var t1 = []; t1[31] = 0;
+	for(var i = 0; i < 31; ++i) {
+		t1[i] = k;
+		k &= 0xFFFFFFFE;
+		k = (k << 23) | (k >> 8);
+	}
+//    if(f == "data.xp3") { // f is entry name, not archive name!
+//        for(var i = 0; i < l; ++i) {
+//            b[i] ^= t1[(o + i) % 0x1F];
+//        }
+//    } else
+	{
+        for(var i = 0; i < l; ++i) {
+            var pos = o + i;
+            b[i] ^= t1[pos % 0x1F] ^ global.t2[pos % 29];
+        }
+    }
+});

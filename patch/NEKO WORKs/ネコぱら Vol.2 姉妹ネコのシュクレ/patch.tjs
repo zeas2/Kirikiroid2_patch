@@ -1,0 +1,23 @@
+Plugins.link("emoteplayer.dll");
+
+Motion.ResourceManager.setEmotePSBDecryptSeed(742877301);
+
+try {
+	&Motion.Player.useD3D = 0;
+	&Motion.EmotePlayer.useD3D = 0;
+} catch (e) {
+	with(Motion.Player) {
+		.useD3D = 0;
+	}
+	with(Motion.EmotePlayer) {
+		.useD3D = 0;
+	}
+}
+
+System.getCurrentUILangName = function() {
+	return "";
+};
+
+System.getCurrentLocaleName = function() {
+	return "";
+};

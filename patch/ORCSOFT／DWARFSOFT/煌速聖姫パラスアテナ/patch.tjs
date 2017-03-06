@@ -1,0 +1,7 @@
+&System.versionInformation = "Kirikiri ZZZ";
+with(Window) { // krz function stub
+	.setDesktopWidth = function() {};
+	.setDesktopHeight = function() {};
+	.enableTouch = false;
+	.fullScreened = false;
+};

@@ -1,0 +1,11 @@
+Plugins.link("emoteplayer.dll");
+
+Motion.ResourceManager.setEmotePSBDecryptSeed(742877301);
+
+System.getCurrentUILangName = function() {
+	return "";
+};
+
+System.getCurrentLocaleName = function() {
+	return "";
+};

@@ -1,0 +1,19 @@
+Plugins.link("win32dialog.dll");
+if(typeof(WIN32Dialog.Header)=="undefined") {
+	Scripts.execStorage(System.exePath + "win32dialog.tjs");
+}
+Window.startMouseHook = function() {};
+
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(name) {
+	var ret = global.Scripts._execStorage(name);
+	if(name == "custom.tjs") {
+		InputSettingDialog.start = function() {};
+		DialogSettingDialog.start = function() {};
+		MsgSpeedSettingDialog.start = function() {};
+		VolumeSettingDialog.start = function() {};
+		MsgBgOpacSettingDialog.start = function() {};
+		global.Scripts.execStorage = global.Scripts._execStorage;
+	}
+	return ret;
+};

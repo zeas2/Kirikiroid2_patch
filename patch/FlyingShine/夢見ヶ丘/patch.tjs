@@ -1,0 +1,16 @@
+function xp3SignCheck() {
+	return true;
+}
+function hotKeyHook() {}
+
+var _execStorage = Scripts.execStorage;
+Scripts.execStorage = function(name) {
+	if(name == "MessageLayer.tjs") {
+		_execStorage(System.exePath + "messagelayer.tjs");
+		Scripts.execStorage = _execStorage;
+		invalidate _execStorage;
+		delete _execStorage;
+	} else {
+		return _execStorage(name);
+	}
+};

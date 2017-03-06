@@ -1,0 +1,15 @@
+Plugins.orig_link = Plugins.link;
+Plugins.link = function(dll) {
+	global.Plugins.orig_link(*);
+	if(dll == "PackinOne.dll") {
+		global.Plugins.orig_link("csvParser.dll");
+	}
+};
+System.setArgument("-debugwin", "yes");
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(filename) {
+	if(filename=="default.tjs") {
+		Scripts.exec("@set (PACKED=0)");
+	}
+	return Scripts._execStorage(filename);
+};
