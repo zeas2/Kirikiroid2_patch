@@ -1,0 +1,2 @@
+System.getFontInfoMap = function() { return %[]; };
+//System.setArgument("-fontedge", "no");

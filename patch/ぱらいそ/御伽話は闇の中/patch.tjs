@@ -1,0 +1,10 @@
+with (Window) {
+	.maximize = function(b){this.maximized = b;};
+	.resetWindowIcon = function(){};
+	.registerExEvent = function(){this.maximized = false;};
+};
+
+Plugins.getList = function(){return ["windowex.dll"];};
+System.getMonitorInfo = function() {return %[
+	"work" => %['x' => 0, 'y' => 0, 'w' => 1280, 'h' => 720],
+];};

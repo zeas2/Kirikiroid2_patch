@@ -1,0 +1,5 @@
+with (Window) {
+	.disableResize = function(){};
+	.maximize = function(b){this.maximized = b;};
+	.registerExEvent = function(){this.exSystemMenu = void;this.maximized = false;};
+};

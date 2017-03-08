@@ -1,0 +1,4 @@
+Window.registerExEvent = function() {};
+Window.isActive = function() {return true;};
+System.clipCursor = function() {};
+System.getSystemMetrics = function() {return 24;/*CYMENU*/};

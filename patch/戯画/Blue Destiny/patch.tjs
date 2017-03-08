@@ -1,0 +1,5 @@
+function DtAltDataCheck() {return true;}
+function DtHashCheck() {return true;}
+function DtTofCheck() {return true;}
+function DtAlt1Check() {return true;}
+function DtAlt2Check() {return true;}

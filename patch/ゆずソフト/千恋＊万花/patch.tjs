@@ -1,0 +1,7 @@
+Plugins.link("motionplayer.dll");
+if(typeof Motion.D3DAdaptor == "undefined") {
+	with(Motion.Player) { .useD3D = 0; }
+} else {
+	&Motion.Player.useD3D = 0;
+}
+System.setArgument("-hdresomode", "1080");

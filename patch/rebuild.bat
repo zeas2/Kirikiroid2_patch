@@ -68,13 +68,14 @@ def addpath(name, defbrand, path):
 for name in os.listdir(rootpath):
 	path = rootpath + "/" + name
 	if os.path.isdir(path):
-		print name.encode(sys.getfilesystemencoding())
+#		print name.encode(sys.getfilesystemencoding())
 		for subname in os.listdir(path):
 			fullname = path + '/' + subname
 			if os.path.isdir(fullname):
-				print subname.encode(sys.getfilesystemencoding())
+#				print subname.encode(sys.getfilesystemencoding())
 				addpath(subname, name, fullname)
 		addpath(name, '', path)
+print '%d Titles' % len(data)
 
 #sort by time
 def cmp(a, b):

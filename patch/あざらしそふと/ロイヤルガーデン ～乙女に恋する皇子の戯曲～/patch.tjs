@@ -1,0 +1,9 @@
+if (typeof (global._KAGLoadScript) === "undefined") {
+	global._KAGLoadScript = global.KAGLoadScript;
+	global.KAGLoadScript = function() {
+		Plugins.link("plugin/PackinOne.dll");
+		global.KAGLoadScript = global._KAGLoadScript;
+		delete global._KAGLoadScript;
+		global.KAGLoadScript(*);
+	};
+}

@@ -1,0 +1,6 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\trust\\banibani\\done")
+		return 6023;
+	else
+		return "";
+};

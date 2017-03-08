@@ -1,0 +1,47 @@
+function cutMask(lay, x, y, mask, l, t, w, h) {
+	var face = lay.face;
+	lay.face = dfMask;
+	lay.copyRect(x, y, mask, l, t, w, h);
+	lay.face = face;
+}
+
+class Mod2DC {
+	var intX, intY;
+
+	function intersectRect(l1, t1, r1, b1, l2, t2, r2, b2) {
+		return l1 <= r2 && l2 <= r1 && t1 <= b2 && t2 <= b1;
+	}
+	function intersectLineSegment(x1, y1, x2, y2, x3, y3, x4, y4) {
+		var x21 = x2 - x1, y21 = y2 - y1;
+		var x23 = x4 - x3, y23 = y4 - y3;
+		var result = false;
+		var y24 = x21 * y23 - y21 * x23;
+		if(y24 != 0.0) {
+			var x17 = x3 - x1, y17 = y3 - y1;
+			var x24 = (y23 * x17 - x23 * y17) / y24;
+			var v20 = (y21 * x17 - x21 * y17) / y24;
+			var x10 = x24 * x21, y10 = y24 * y21;
+			var x11 = x1 + x10, y11 = y1 + y10;
+			intX = x11; intY = y11;
+			if(x24 > 0.0 && x24 <= 1.0 && v20 > 0.0 && v20 <= 1.0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	function intersectionX() {
+		return intX;
+	}
+	function intersectionY() {
+		return intY;
+	}
+}
+
+class RegistoryKey {
+	function RegistoryKey(path) {}
+	function write() {}
+	function read() {}
+}
+
+function bm88CheckVersionOrLater() {return true;}
+&Window.mouseCursorState = mcsVisible;

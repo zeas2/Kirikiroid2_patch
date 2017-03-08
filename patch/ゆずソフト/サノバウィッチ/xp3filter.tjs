@@ -1,0 +1,6 @@
+Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l){
+	var k = h ^ 0x1DDB6E7A;
+	k = h ^ 0x7A ^ (k >> 8) ^ (k >> 16) ^ (k >> 24);
+	if(!(k & 0xFF)) k = 208;
+	b.xor(0,l,k);
+});

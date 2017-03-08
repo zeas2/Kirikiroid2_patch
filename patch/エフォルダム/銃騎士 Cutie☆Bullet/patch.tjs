@@ -1,0 +1,8 @@
+Plugins.orig_link = Plugins.link;
+Plugins.link = function(dll) {
+	global.Plugins.orig_link(*);
+	if(dll == "PackinOne.dll") {
+		global.Plugins.orig_link("csvParser.dll");
+	}
+};
+System.setArgument("-debugwin", "yes");

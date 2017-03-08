@@ -1,0 +1,21 @@
+Plugins.link("windowEx.dll");
+
+Window.getClientRect = function() {
+	return %[
+	'x' => this.left,
+	'y' => this.top,
+	'w' => this.width,
+	'h' => this.height
+	];
+};
+
+System.getMonitorInfo = function() { // call from KAGWindow
+	PopupMenuWindow.showModal = function(){};
+	var r = %['x' => 0, 'y'=>0, 'w'=>System.desktopWidth, 'h'=>System.desktopHeight];
+	return %[
+		'name' => 'default monitor',
+		'primary' => true,
+		'monitor' => r,
+		'work' => r
+	];
+};

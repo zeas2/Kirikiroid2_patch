@@ -1,0 +1,1 @@
+function AdjustMoni() {return %['left'=>0, 'top'=>0, 'right'=>800, 'bottom'=>600];}

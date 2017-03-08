@@ -1,0 +1,7 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\stellar\\renzokurapePAC\\done") {
+		return 7011;
+	} else {
+		return void;
+	}
+};

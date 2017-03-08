@@ -1,0 +1,5 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_CURRENT_USER\\SOFTWARE\\alltime\\alltime14PAC\\done") return 11013;
+	return "";
+};
+System.expandEnvString = function() {return "";};

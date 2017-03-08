@@ -1,0 +1,49 @@
+class VoiceCheckConductor extends KAGParser{
+
+	function VoiceCheckConductor(){
+		super.KAGParser(...);
+	}
+
+	function finalize(){
+		super.finalize(...);
+	}
+	function assign(ref) {
+		super.assign(ref);
+		(Dictionary.assign incontextof macros)(ref.macros);
+		delete macros.eruby;
+	}
+
+	function getTextLength(){
+		var count = 0;
+		var obj;
+
+		debugLevel = tkdlNone;
+		while(true){
+			obj = getNextTag();
+			if(obj===void) break;
+			if(obj.tagname=="counttext") break;
+			if(obj.tagname=="scenarioend") break;
+
+			if(obj.tagname=="ch") count++;
+
+		}
+		return count;
+	}
+
+	function checkNextText(){
+		var flg = 0;
+		var obj;
+
+		debugLevel = tkdlNone;
+		while(true){
+			obj = getNextTag();
+			if(obj===void) break;
+			if(obj.tagname=="counttext") flg = 1;
+			if(obj.tagname=="scenarioend") break;
+			if(obj.tagname=="l") break;
+
+		}
+		return flg;
+	}
+
+}

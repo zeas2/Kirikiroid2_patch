@@ -1,0 +1,7 @@
+Plugins.link("util_generic.dll");
+Plugins.link("KAGParserExb.dll");
+
+function flashTaskBar() {}
+System.calculateSHA256 = function(s) {
+	return Digest.sha256(s, tpdmLittleEndian);
+};

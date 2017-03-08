@@ -1,0 +1,13 @@
+function GetUserDefaultLCID() {return 0x411;}
+function GetSystemDefaultLCID() {return 0x411;}
+class Motion { class ResourceManager {} }
+function ProductKeyCheck() {
+	return [0,0,0,0,0x6B,0x53,0x6F,0x4B,8,9,10,11,12];
+}
+System._readRegValue = System.readRegValue;
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{AA5DA152-9642-47ED-9559-6A4954EABE0D}\\__ProductKey__") {
+		return "4B65536B";
+	}
+	return global.System._readRegValue(path);
+};

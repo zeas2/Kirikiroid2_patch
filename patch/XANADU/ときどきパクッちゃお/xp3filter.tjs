@@ -1,0 +1,28 @@
+var klist = (const) %[
+	'.tjs' => (const) [0xd1, 0x8b, 0x95, 0x8c, 0x7FFFFFFF],
+	'.ks' =>  (const) [0xd1, 0x94, 0x8c, 0xff, 0x7FFFFFFF],
+	'.asd' => (const) [0xd1, 0x9e, 0x8c, 0x9b, 0x7FFFFFFF],
+	'.ogg' => (const) [0xd1, 0x90, 0x98, 0x98, 0x100],
+	'.tlg' => (const) [0xd1, 0x8b, 0x93, 0x98, 0x100],
+	'.mpg' => (const) [0xd1, 0x92, 0x8f, 0x98, 0x100],
+	'.png' => (const) [0xd1, 0x8f, 0x91, 0x98, 0x100]
+];
+
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf, len, filename) {
+	var ext = filename.substr(filename.length-4);
+	if(ext[1] == '.') ext = ext.substr(1); // .ks
+	var k = klist[ext];
+	/*
+	if(k === void) {
+		buf[0] = 0;
+		Debug.message('---------------\n' + filename + '\n--------------');
+		return;
+	}
+	*/
+	var l = k[4];
+	if (l < offset + len) len = l - offset;
+	for(var i = 0; i < len; ++i) {
+		var off = offset + i;
+		buf[i] ^= k[off & 3];
+	}
+});

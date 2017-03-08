@@ -1,0 +1,4 @@
+// patch for warete
+
+class WIN32Dialog {};
+class Pad {};

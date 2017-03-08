@@ -1,0 +1,5 @@
+class GamepadPort {
+	var count;
+	function initialize() { this.count = 0; }
+	function getController() { return %[]; }
+};

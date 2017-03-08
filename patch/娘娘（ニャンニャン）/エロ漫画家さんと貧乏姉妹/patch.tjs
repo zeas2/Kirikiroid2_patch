@@ -1,0 +1,19 @@
+function GetUserDefaultLCID() {return 0x0411;}
+function GetSystemDefaultLCID() {return 0x0411;}
+function ProductKeyWriteRegistory() {}
+/*
+function ProductKeyCheck() {
+	var ret = [];
+	ret[13] = 0;
+	ret[7] = 0x54;
+	ret[6] = 0x72;
+	ret[5] = 0x69;
+	ret[4] = 0x70;
+	return ret;
+}
+System.readRegValue = function(path) {
+	var prefix = "\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+	if(path.substr(0, prefix.length) == prefix) return "1";
+	return "";
+};
+*/

@@ -1,0 +1,3 @@
+Plugins.link("motionplayer.dll");
+
+Motion.Player.varibleKeys = [];
