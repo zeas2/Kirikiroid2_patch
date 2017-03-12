@@ -1,0 +1,5 @@
+function DtYesNoBox(title, text) {
+	return System.inform(title, text, 2) == 0;
+}
+function DtTofCheck() { return true; }
+function DtHashCheck() {return true; }

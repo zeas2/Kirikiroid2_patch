@@ -1,0 +1,25 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf, len)
+{
+	var bufoff = 0;
+	var l = 0xA3E - offset;
+	if(l > 0xA3E) l = 0xA3E;
+	if(l > 0) {
+		if(l > len) l = len;
+		buf.xor(bufoff, l, 0xAC);
+		bufoff += l;
+		offset += l;
+		len -= l;
+	}
+	l = 0xE1DD - offset;
+	if(l > 55199) l = 55199;
+	if(l > len) l = len;
+	if(l > 0) {
+		buf.xor(bufoff, l, 0xD3);
+		bufoff += l;
+		offset += l;
+		len -= l;
+	}
+	if(len > 0) {
+		buf.xor(bufoff, len, 0x8F);
+	}
+});

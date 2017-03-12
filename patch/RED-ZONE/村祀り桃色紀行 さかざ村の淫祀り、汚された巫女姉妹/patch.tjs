@@ -1,5 +1,0 @@
-Plugins.link("fstat.dll");
-Plugins.link("extrans.dll");
-Plugins.link("layerExImage.dll");
-Plugins.link("csvParser.dll");
-Plugins.link("windowEx.dll");

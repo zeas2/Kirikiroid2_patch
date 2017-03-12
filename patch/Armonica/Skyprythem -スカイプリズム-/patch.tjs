@@ -1,4 +1,0 @@
-Plugins.link("csvParser.dll");
-Plugins.link("layerExImage.dll");
-Plugins.link("extrans.dll");
-Plugins.link("layerExMovie.dll");

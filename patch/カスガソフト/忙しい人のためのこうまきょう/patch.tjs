@@ -1,0 +1,4 @@
+function messagebox(title, text) {
+	return System.inform(title, text, 2) == 0;
+}
+function drawFFTGraph() {};

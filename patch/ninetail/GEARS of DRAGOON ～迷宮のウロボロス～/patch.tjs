@@ -1,0 +1,17 @@
+Plugins.link("perspective.dll");
+Plugins.link("layerExImage.dll");
+function drawFFTGraph() {}
+with(Layer) {
+.addLight = function(level) {
+	if(level >= 255) return;
+	light(level / 255 * 128 - 128, level / 255 * 100 - 100);
+	};
+.doBoxBlur = function() {};
+.perspectiveCopy2 = .perspectiveCopy;
+.perspectiveCopy = function(s, x, y, w, h, p1, p2, p3, p4, p5, p6, p7, p8, c) {
+	if(c <= 0) return;
+	s.addLight(c);
+	perspectiveCopy2(s, x, y, w, h, p1, p2, p3, p4, p5, p6, p7, p8);
+};
+.drawLine = function() {};
+}

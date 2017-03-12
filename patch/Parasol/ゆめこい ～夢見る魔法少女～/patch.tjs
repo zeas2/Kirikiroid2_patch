@@ -1,3 +1,0 @@
-Plugins.link("extrans.dll");
-Plugins.link("fstat.dll");
-Plugins.link("layerExImage.dll");

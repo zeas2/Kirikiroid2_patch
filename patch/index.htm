@@ -26,6 +26,12 @@ td.datetime{text-align: center;}
 
 <table id="table_all" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
 <tr>
+	<td colspan="4">
+	Filter:<input style="width: 60%;" type="text" oninput="doFilterName(this.value)"/>
+	<span id="title_count" style="right: 0px; position: absolute; margin: 3px;">Titles</span>
+	</td>
+</tr>
+<tr>
 	<th>&nbsp;</th>
 	<th>Update Time&nbsp;<button onclick="sortTableByTime(true)">▲</button><button onclick="sortTableByTime(false)">▼</button></th>
 	<th>Brand</th>
@@ -34,7 +40,7 @@ td.datetime{text-align: center;}
 </table>
 <script type="text/javascript" src="alldata.js"></script>
 <script>
-
+var filter_data;
 function DoGet(name, filelst) {
 /*
 	if (filelst.length == 0) {
@@ -86,12 +92,15 @@ function DoGet(name, filelst) {
 }
 
 function MakeTable(data) {
+	var title_count = document.getElementById("title_count");
+	title_count.removeChild(title_count.firstChild);
+	title_count.appendChild(document.createTextNode("" + data.length + "/" + all_data.length + " Titles"));
 	var table = document.getElementById("table_all");
 	
 	// keep title only
     rows = table.getElementsByTagName("tr");
 	var count = table.rows.length;
-	while(--count) table.deleteRow(count); 
+	while(--count > 1) table.deleteRow(count); 
 	
 	var date = new Date();
 	for(var i = 0; i < data.length; ++i) {
@@ -141,30 +150,44 @@ function MakeTable(data) {
 		table.appendChild(tr);
 	}
 };
-MakeTable(all_data);
+function doFilterName(pattern) {
+	if (pattern.length) {
+		filter_data = [];
+		for(var i = 0; i < all_data.length; ++i) {
+			var text = all_data[i];
+			if (text[3].indexOf(pattern) != -1 || text[1].indexOf(pattern) != -1) {
+				filter_data.push(text);
+			}
+		}
+	} else {
+		filter_data = all_data;
+	}
+	MakeTable(filter_data);
+}
+doFilterName("");
 
 function sortTableByTime(newer) {
-	if (newer) all_data.sort(function(a,b){
+	if (newer) filter_data.sort(function(a,b){
 		if (a[0] > b[0]) return 1;
 		if (a[0] < b[0]) return -1;
 		return 0;
 	});
-	else all_data.sort(function(a,b){
+	else filter_data.sort(function(a,b){
 		if (a[0] > b[0]) return -1;
 		if (a[0] < b[0]) return 1;
 		return 0;
 	});
-	MakeTable(all_data);
+	MakeTable(filter_data);
 }
 
 function sortTableByName(reverse) {
-	if (reverse) all_data.sort(function(a,b){
+	if (reverse) filter_data.sort(function(a,b){
 		return a[2].localeCompare(b[2]);
 	});
-	else all_data.sort(function(a,b){
+	else filter_data.sort(function(a,b){
 		return b[2].localeCompare(a[2]);
 	})
-	MakeTable(all_data);
+	MakeTable(filter_data);
 }
 </script>
 
