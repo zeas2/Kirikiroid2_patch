@@ -1,0 +1,16 @@
+var OSVersion = %[
+	majorVersion : 7,
+	majorVersion : 1,
+	vfWindows2000 : 0,
+	checkVersion : function() { return 0; },
+];
+
+var Network = %[
+	isInternetConnected : false,
+	stop : function() {},
+];
+
+class Downloader {
+	function downloadHTTPToBuffer() {return false;}
+	function addPostDataEncoded() {}
+}
