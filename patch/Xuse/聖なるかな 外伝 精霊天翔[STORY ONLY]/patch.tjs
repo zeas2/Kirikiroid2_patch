@@ -19,3 +19,5 @@ class KuritanSys  {
 	function activate() {}
 	function deactivate() {}
 }
+
+Window.registerIMEEvent = function() {};
