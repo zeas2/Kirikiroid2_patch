@@ -156,7 +156,7 @@ function doFilterName(pattern) {
 		filter_data = [];
 		for(var i = 0; i < all_data.length; ++i) {
 			var text = all_data[i];
-			if (text[3].toLowerCase().indexOf(pattern) != -1 || text[1].indexOf(pattern) != -1) {
+			if (text[3].toLowerCase().indexOf(pattern) != -1 || text[1].toLowerCase().indexOf(pattern) != -1) {
 				filter_data.push(text);
 			}
 		}

@@ -1,0 +1,21 @@
+// disable all STG part
+
+class KuritanSys  {
+	var isSTGRunning;
+	var isResetConfirm;
+	function KuritanSys() {
+		this.isSTGRunning = false;
+		this.isResetConfirm = false;
+		&Window.drawDevice = void;
+	}
+	function startSTG() { isSTGRunning = true; return true; }
+	function stopSTG() { isSTGRunning = false; return true; }
+	function executeSTG() { return true; }
+	function exitSTG() {}
+	function getEixtSTGDat() { return void; }
+	function InitCgMask() {}
+	function ReleaseCgMask() {}
+	function ExcuteCgMask() {}
+	function activate() {}
+	function deactivate() {}
+}
