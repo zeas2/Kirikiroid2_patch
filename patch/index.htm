@@ -39,7 +39,7 @@ td.datetime{text-align: center;}
 </tr>
 </table>
 <script type="text/javascript" src="alldata.js"></script>
-<script>
+<script type="text/javascript">
 var filter_data;
 function DoGet(name, filelst) {
 /*
@@ -80,13 +80,21 @@ function DoGet(name, filelst) {
 	}
 
 	// when everything has been downloaded, we can trigger the dl
-	zip.generateAsync({type:"blob"})
-	.then(function callback(blob) {
-		// see FileSaver.js
-		saveAs(blob, name + ".zip");
-	}, function (e) {
-		alert(e);
-	});
+	if (JSZip.support.blob) {
+		zip.generateAsync({type:"blob"})
+		.then(function callback(blob) {
+			// see FileSaver.js
+			saveAs(blob, name + ".zip");
+		}, function (e) {
+			alert(e);
+		});
+	} else {
+		zip.generateAsync({type:"base64"}).then(function (base64) {
+			location.href="data:application/zip;base64," + base64;
+		}, function (e) {
+			alert(e);
+		});
+	}
 
 	return false;
 }
