@@ -1,0 +1,16 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len)
+{
+	var a = hash * 21, b = hash * 0xE0, c = hash * 43, d = hash * 0xCA;
+	for(var i = 0; i < len; ++i) {
+		var off = offset + i;
+		if(off < 0x7b) {
+			buf[i] ^= a;
+		} else if(off < 0xF6) {
+			buf[i] += b;
+		} else if(off < 0x171) {
+			buf[i] ^= c;
+		} else {
+			buf[i] += d;
+		}
+	}
+});

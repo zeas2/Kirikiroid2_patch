@@ -1,0 +1,2 @@
+Storages.searchCD = function() {return System.exePath;};
+System.setArgument("-debugwin", "no");

@@ -83,7 +83,7 @@ def cmp(a, b):
 	if a[0] > b[0]: return -1
 	if a[0] < b[0]: return 1
 data.sort(cmp)
-jsonenc = json.encoder.JSONEncoder()
-data = 'var all_data = [\n' + ',\n'.join([jsonenc.encode(n) for n in data]) + '\n];';
+
+data = u'var all_data = [\n' + u',\n'.join([json.dumps(n, ensure_ascii=False, encoding="utf-8") for n in data]) + u'\n];';
 
 open('alldata.js','w').write(data.encode('utf8'))
