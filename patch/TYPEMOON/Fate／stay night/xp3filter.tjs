@@ -1,0 +1,23 @@
+/*
+class xp3buffer
+{
+	function xor(startpos, length, xorvalue); // absolute buffer pos = startpos + this.ptr
+	property ptr; // current buffer ptr
+	property count; // readonly
+}
+*/
+
+
+class cxdecFATE
+{
+    function cxdec_decode(hash, offset, buf/*xp3buffer*/, len)
+    {
+		var xor1 = 0x13 - offset;
+		var xor2 = 0x2EA29 - offset;
+		if(xor1 >=0 && xor1 < len) buf[xor1] ^= 1;
+		if(xor2 >=0 && xor2 < len) buf[xor2] ^= 3;
+        buf.xor(0, len, 0x36);
+    }
+}
+
+Storages.setXP3ArchiveExtractionFilter((new cxdecFATE()).cxdec_decode);

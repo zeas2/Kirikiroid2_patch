@@ -10,8 +10,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
   
-    <script type="text/javascript" src="https://stuk.github.io/jszip/dist/jszip.js"></script>
-    <script type="text/javascript" src="https://stuk.github.io/jszip-utils/dist/jszip-utils.js"></script>
+    <script type="text/javascript" src="https://stuk.github.io/jszip/dist/jszip.min.js"></script>
+	<script type="text/javascript" src="https://stuk.github.io/jszip-utils/dist/jszip-utils.min.js"></script>
+	
     <script type="text/javascript" src="https://stuk.github.io/jszip/vendor/FileSaver.js"></script>
     <!--script type="text/javascript" src="../js/downloader.js"></script-->
 <style>
@@ -19,12 +20,23 @@ form{margin-bottom: 0em;}
 th{padding: 0.3em; text-align: center;}
 td{padding: 0.3em;}
 td.datetime{text-align: center;}
+.floatPanel {
+	position: fixed;
+	background: #f0f0fd;
+	margin: 4em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+    -box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+}
 </style> 
   </head>
   
   <body>
 
-<table id="table_all" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
+<table id="table_all" align="center" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
 <tr>
 	<td colspan="4">
 	Filter:<input style="width: 60%;" type="text" oninput="doFilterName(this.value)"/>
@@ -38,16 +50,27 @@ td.datetime{text-align: center;}
 	<th>Title&nbsp;<button onclick="sortTableByName(true)">▲</button><button onclick="sortTableByName(false)">▼</button></th>
 </tr>
 </table>
+<script type="text/javascript">
+function ClosePanel() {
+	var floatPanel = document.getElementById("floatPanel");
+	floatPanel.style.display = "none";
+}
+</script>
+<div id="floatPanel" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; margin: 0; display: none;">
+	<div class="floatPanel">
+		<div style="padding: 1em">
+			<h2 id="floatPanelTitle" align="center">TITLE</h2><br>
+			<table id="floatPanelTable" border="2" align="center"></table><br>
+			<div style="text-align: center;">
+			<button class="btn btn-primary" onclick="ClosePanel()">BACK</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script type="text/javascript" src="alldata.js"></script>
 <script type="text/javascript">
 var filter_data;
 function DoGet(name, filelst) {
-/*
-	if (filelst.length == 0) {
-		window.open(name, "_blank");
-		return;
-	}
-*/
 
     var Promise = window.Promise;
     if (!Promise) {
@@ -79,10 +102,10 @@ function DoGet(name, filelst) {
 		zip.file(filename, urlToPromise(url), {binary:true});
 	}
 
+	
 	// when everything has been downloaded, we can trigger the dl
 	if (JSZip.support.blob) {
-		zip.generateAsync({type:"blob"})
-		.then(function callback(blob) {
+		zip.generateAsync({type:"blob"}).then(function (blob) {
 			// see FileSaver.js
 			saveAs(blob, name + ".zip");
 		}, function (e) {
@@ -97,6 +120,33 @@ function DoGet(name, filelst) {
 	}
 
 	return false;
+}
+
+function DoShowFileList(name, filelst) {
+	var floatPanel = document.getElementById("floatPanel");
+	floatPanel.style.display = "block";
+	var floatPanelTitle = document.getElementById("floatPanelTitle");
+	while (floatPanelTitle.firstChild) {
+		floatPanelTitle.removeChild(floatPanelTitle.firstChild);
+	}
+	floatPanelTitle.appendChild(document.createTextNode(name));
+	var floatPanelTable = document.getElementById("floatPanelTable");
+	while (floatPanelTable.firstChild) {
+		floatPanelTable.removeChild(floatPanelTable.firstChild);
+	}
+	for(var i = 0; i < filelst.length; ++i) {
+		var url = filelst[i];
+		var a = document.createElement('a');
+		a.href = url;
+		a.appendChild(document.createTextNode(url));
+		var h = document.createElement('h3');
+		h.appendChild(a);
+		var td = document.createElement('td');
+		td.appendChild(h);
+		var tr = document.createElement('tr');
+		tr.appendChild(td);
+		floatPanelTable.appendChild(tr);
+	}
 }
 
 function MakeTable(data) {
@@ -152,7 +202,13 @@ function MakeTable(data) {
 		
 		// name
 		td = document.createElement('td');
-		td.appendChild(document.createTextNode(line[3]));
+		var a = document.createElement('a');
+		a.href = "#";
+		a.onclick = function(arg1, arg2) {
+			return function(){DoShowFileList(arg1, arg2);};
+		}(line[3], filelst);
+		a.appendChild(document.createTextNode(line[3]))
+		td.appendChild(a);
 		tr.appendChild(td);
 
 		table.appendChild(tr);

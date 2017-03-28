@@ -1,0 +1,176 @@
+Plugins.link("fstat.dll");
+
+// dirlist.dll
+function getDirList() {return [];}
+
+// drawer.dll
+function drawLine(lay, x1, y1, x2, y2, clr) {
+	Debug.message("----------- plugin method: drawLine");
+	}
+function drawAALine(lay, x1, y1, x2, y2, clr) {
+	Debug.message("----------- plugin method: drawAALine");
+	}
+function drawAATriangle() { }
+
+// filter.dll
+function Smudge(param) {
+	Debug.message("----------- plugin method: Smudge");
+	}
+function Blur(elm) {
+	var level = elm.level;
+	elm.layer.doBoxBlur(level, level);
+}
+function Lens(elm) {}
+function InitLens() {}
+function ReleaseLens() {}
+function Noise(param) {
+	Debug.message("----------- plugin method: Noise");
+	}
+function Contrast(param) {
+	Debug.message("----------- plugin method: Contrast");
+	}
+function initHaze(p) {
+	Debug.message("----------- plugin method: initHaze");
+	}
+function doHaze(param) {
+	Debug.message("----------- plugin method: doHaze");
+	}
+function endHaze() {
+	Debug.message("----------- plugin method: endHaze");
+	}
+function Stretch(param) {
+	Debug.message("----------- plugin method: Stretch");
+	param.dest.stretchBlend(
+		param.dleft, param.dtop, param.dwidth, param.dheight, param.src,
+		param.sleft, param.stop, param.swidth, param.sheight, param.opacity);
+}
+function Vortex(param) {}
+
+// resize.dll
+function AreaAverageReducation(org, dst) {
+	dst.operateStretch(0, 0, dst.imageWidth, dst.imageHeight, org, 0, 0, org.imageWidth, org.imageHeight, omOpaque,, stFastLinear);
+}
+
+// firespark.dll
+function initFireSpark(lay, param) {
+	Debug.message("----------- plugin method: initFireSpark");
+}
+function drawFireSpark(param) {
+	Debug.message("----------- plugin method: drawFireSpark");
+	}
+function changeFireSpark(param) {
+	Debug.message("----------- plugin method: changeFireSpark");
+	}
+function finishFireSpark() {
+	Debug.message("----------- plugin method: finishFireSpark");
+	}
+
+// slideopen.dll
+function initSlideOpen(obj) {}
+function drawSlideOpen() {}
+function finishSlideOpen() {}
+
+// util.dll
+function enumFont(win, fonts) {}
+function DeleteFile(filepath) {
+	Storages.deleteFile(filepath);
+}
+function MoveFile(from, to) {
+	Storages.moveFile(from, to);
+}
+function CopyFile(from, to) {
+	Storages.copyFile(from, to, false);
+}
+function GetFileSize(filepath) {
+	if(!Storages.isExistentStorage(filepath)) {
+		return -1;
+	}
+	return Storages.fstat(filepath).size;
+}
+function GetFileTime() {return 0;}
+function enabledIME() {}
+function SetClipboardText() {}
+function GetDatetime() {
+	var d = new Date();
+	var ret = %[];
+	ret.mon = d.getMonth();
+	ret.day = d.getDay();
+	ret.hour = d.getHours();
+	ret.minute = d.getMinutes();
+	ret.second = d.getSeconds();
+}
+function CreateDirectory(dir) {
+	Storages.createDirectory(dir);
+}
+function IsActiveWindow(win) {
+	return true;
+}
+function SelectDirectory(_title, initdir) {
+	return Storages.extractStoragePath(
+		Storages.selectFile(%[initialDir: initdir, title: _title])
+	);
+}
+function ExistDirectory(dir) {
+	return Storages.isExistentDirectory(dir) == true;
+}
+
+// wallpaper.dll
+function setwallpaper() {}
+function getwallpaper() {return "";}
+
+var orig_execStorage = Scripts.execStorage;
+Scripts.execStorage = function(name) {
+	orig_execStorage(name);
+	if(name == "Override.tjs") {
+		if(Storages.isExistentStorage(System.exePath + "Override2.tjs"))
+		orig_execStorage(System.exePath + "Override2.tjs");
+	} else if(name == "init.tjs") {
+		global.drawSpeaker = function(bgimage="wm_sub")
+		{
+			with(kag)
+			{
+				var name	= f.nextSpeaker;
+				if(name == "")
+				{
+					.current.fillRect(0, 0, 231, 43, 0x00000000);
+					if(.currentWithBack)
+						.current.comp.fillRect(0, 0, 231, 43, 0x00000000);
+				}
+				else
+				{
+					var layer = new Layer(kag, .current);
+					layer.loadImages(bgimage);
+					layer.type	= ltAlpha;
+					var func = function(target, img, name)
+					{
+						with(target)
+						{
+							.setDrawFace(dfAuto);
+							.fillRect(0, 0, img.imageWidth, img.imageHeight, 0x00000000);
+							.operateRect(0, 0, img, 0, 0, img.imageWidth, img.imageHeight, omAlpha, kag.sflags.messageFrameOpacity);
+							.font.height	= .defaultFontSize;
+							var fw = .font.getTextWidth(name);
+							var w = .defaultFontSize * 8;
+							with(kag.current)
+							{
+								var	l = (w - fw)>>1, t = 7;
+								if(.edge)
+									target.drawText(l, t, name, .chColor, 255, .antialiased, .edgeEmphasis, .edgeColor, .edgeExtent, 0, 0);
+								else if(.shadow)
+									target.drawText(l, t, name, .chColor, 255, .antialiased, 255, .shadowColor, 0, 2, 2);
+								else
+									target.drawText(l, t, name, .chColor, 255, .antialiased);
+							}
+						}
+					};
+					func(.current, layer, name);
+					if(.currentWithBack)
+						func(.current.comp, layer, name);
+					invalidate layer;
+				}
+				f.currentSpeaker	= name;
+				f.resetSpeaker		= false;
+			}
+		};
+	}
+};

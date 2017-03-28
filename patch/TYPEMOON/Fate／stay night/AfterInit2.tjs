@@ -1,0 +1,12 @@
+kag.tagHandlers.eval = function(elm) 
+{
+	if(elm.exp == void) return 0;
+	var exp = elm.exp;
+	if(exp == "var tx=mp.cx+mp.mx, ty=mp.cy+mp.my, src=kag.back.base") {
+		exp = "global.tx=mp.cx+mp.mx; global.ty=mp.cy+mp.my; global.src=kag.back.base";
+	} else {
+		exp = exp.replace(/var /, "global.");
+	}
+	exp!;
+	return 0;
+} incontextof kag;
