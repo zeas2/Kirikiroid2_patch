@@ -22,5 +22,17 @@ Plugins.link("layerExAlpha.dll");
 if(typeof Layer.AlphaColorBlend2 == "undefined")
 	Layer.AlphaColorBlend2 = function(){};
 	
+Plugins.link("layerExRaster.dll");
+if(typeof Layer.copyNotInterpolationRaster == "undefined")
+	Layer.copyNotInterpolationRaster = function(){};
+if(typeof Layer.copyInterpolationRaster == "undefined")
+	Layer.copyInterpolationRaster = function(){};
+if(typeof Layer.copyVerticalRaster == "undefined")
+	Layer.copyVerticalRaster = function(){};
+if(typeof Layer.copyVerticalNotInterpolationRaster == "undefined")
+	Layer.copyVerticalNotInterpolationRaster = function(){};
+if(typeof Layer.copyVerticalInterpolationRaster == "undefined")
+	Layer.copyVerticalInterpolationRaster = function(){};
+	
 Window.checkSignature = function() {return 1;};
 Window.stopCheckSignature = function() {};
