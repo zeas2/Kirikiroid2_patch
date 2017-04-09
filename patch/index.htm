@@ -70,7 +70,7 @@ function ClosePanel() {
 <script type="text/javascript" src="alldata.js"></script>
 <script type="text/javascript">
 var filter_data;
-function DoGet(name, filelst) {
+function DoGet(name, filelst, sender) {
 
     var Promise = window.Promise;
     if (!Promise) {
@@ -102,19 +102,32 @@ function DoGet(name, filelst) {
 		zip.file(filename, urlToPromise(url), {binary:true});
 	}
 
-	
+	sender.disabled = true;
 	// when everything has been downloaded, we can trigger the dl
 	if (JSZip.support.blob) {
-		zip.generateAsync({type:"blob"}).then(function (blob) {
+		zip.generateAsync({type:"blob"}, function(metadata){
+			var text = metadata.percent.toFixed(2) + "%";
+			sender.removeChild(sender.firstChild);
+			sender.appendChild(document.createTextNode(text));
+		}).then(function (blob) {
 			// see FileSaver.js
-			saveAs(blob, name + ".zip");
+			sender.removeChild(sender.firstChild);
+			sender.appendChild(document.createTextNode("SAVE"));
+			sender.disabled = false;
+			sender.onclick = function() {
+				saveAs(blob, name + ".zip");
+			};
+			sender.onclick();
 		}, function (e) {
+			sender.disabled = false;
 			alert(e);
 		});
 	} else {
 		zip.generateAsync({type:"base64"}).then(function (base64) {
 			location.href="data:application/zip;base64," + base64;
+			sender.disabled = false;
 		}, function (e) {
+			sender.disabled = false;
 			alert(e);
 		});
 	}
@@ -179,9 +192,9 @@ function MakeTable(data) {
 			text = 'GET'
 		}
 		btn.appendChild(document.createTextNode(text));
-		btn.onclick = function(arg1, arg2){
-			return function(){DoGet(arg1, arg2); };
-		}(id, filelst);
+		btn.onclick = function(arg1, arg2, sender){
+			return function(){DoGet(arg1, arg2, sender); };
+		}(id, filelst, btn);
 		btn.type = "button";
 		form.appendChild(btn);
 		td.appendChild(form);
