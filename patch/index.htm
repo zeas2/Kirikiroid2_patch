@@ -39,7 +39,7 @@ td.datetime{text-align: center;}
 <table id="table_all" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
 <tr>
 	<td colspan="4">
-	Filter:<input style="width: 60%;" type="text" oninput="doFilterName(this.value)"/>
+	Filter:<input style="width: 60%;" type="text" oninput="onFilterInput(this.value)"/>
 	<span id="title_count" style="right: 0px; position: absolute; margin: 3px;">Titles</span>
 	</td>
 </tr>
@@ -105,7 +105,7 @@ function DoGet(name, filelst, sender) {
 	sender.disabled = true;
 	// when everything has been downloaded, we can trigger the dl
 	if (JSZip.support.blob) {
-		zip.generateAsync({type:"blob"}, function(metadata){
+		zip.generateAsync({type:"blob", mimeType: "application/octet-stream"}, function(metadata){
 			var text = metadata.percent.toFixed(2) + "%";
 			sender.removeChild(sender.firstChild);
 			sender.appendChild(document.createTextNode(text));
@@ -123,7 +123,7 @@ function DoGet(name, filelst, sender) {
 			alert(e);
 		});
 	} else {
-		zip.generateAsync({type:"base64"}).then(function (base64) {
+		zip.generateAsync({type:"base64", mimeType: "application/octet-stream"}).then(function (base64) {
 			location.href="data:application/zip;base64," + base64;
 			sender.disabled = false;
 		}, function (e) {
@@ -227,6 +227,7 @@ function MakeTable(data) {
 		table.appendChild(tr);
 	}
 };
+var _timerID = 0;
 function doFilterName(pattern) {
 	if (pattern.length) {
 		pattern = pattern.toLowerCase();
@@ -243,6 +244,14 @@ function doFilterName(pattern) {
 	MakeTable(filter_data);
 }
 doFilterName("");
+function onFilterInput(pattern) {
+	if (_timerID) {
+		window.clearTimeout(_timerID);
+	}
+	_timerID = window.setTimeout(function(){
+		doFilterName(pattern);
+	}, 330);
+}
 
 function sortTableByTime(newer) {
 	if (newer) filter_data.sort(function(a,b){
