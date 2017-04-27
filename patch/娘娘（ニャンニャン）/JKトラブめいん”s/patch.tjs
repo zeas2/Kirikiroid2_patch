@@ -1,3 +1,4 @@
+System.setArgument("-debugwin", "no");
 function GetUserDefaultLCID() {return 0x0411;}
 function GetSystemDefaultLCID() {return 0x0411;}
 function ProductKeyWriteRegistory() {}
