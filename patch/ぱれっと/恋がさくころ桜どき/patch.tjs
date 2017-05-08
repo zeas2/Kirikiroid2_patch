@@ -1,7 +1,6 @@
 System.setArgument("-debugwin", "no");
 function GetUserDefaultLCID() {return 0x411;}
 function GetSystemDefaultLCID() {return 0x411;}
-class Motion { class ResourceManager {} }
 function ProductKeyCheck() {
 	return [0,0,0,0,0x6B,0x53,0x6F,0x4B,8,9,10,11,12];
 }

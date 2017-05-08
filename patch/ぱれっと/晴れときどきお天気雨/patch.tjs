@@ -1,4 +1,3 @@
 System.setArgument("-debugwin", "no");
 function GetUserDefaultLCID() {return 0x411;}
 function GetSystemDefaultLCID() {return 0x411;}
-class Motion { class ResourceManager {} }

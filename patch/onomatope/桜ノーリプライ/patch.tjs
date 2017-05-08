@@ -1,6 +1,1 @@
 System.setArgument("-checkpadding", "{AA346F18-A92E-4302-9B20-GV1ZE3VHVE0C}");
-class Motion
-{
-	class ResourceManager{
-	}
-}

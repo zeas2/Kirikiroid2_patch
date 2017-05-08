@@ -1,9 +1,3 @@
-class Motion
-{
-	class ResourceManager{
-	}
-}
-
 Window.registerExEvent = function() {};
 Window.getNotificationNum = function() {return 0;};
 Window.setMessageHook = function() {return 0;};

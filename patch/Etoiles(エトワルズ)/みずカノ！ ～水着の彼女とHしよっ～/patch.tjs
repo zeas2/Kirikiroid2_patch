@@ -1,7 +1,2 @@
-class Motion
-{
-	class ResourceManager{
-	}
-}
 Window.getNotificationNum = function() {return 1;};
 Window.setMessageHook = function() {};

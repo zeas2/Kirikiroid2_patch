@@ -1,8 +1,2 @@
-class Motion
-{
-	class ResourceManager{
-	}
-}
-
 Layer.setupUvMap = function() {};
 Layer.applyTexture = function() {};
