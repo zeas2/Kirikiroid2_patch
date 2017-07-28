@@ -1,0 +1,10 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setArchiveDelimiter('#');
+
+KAGParser.onScenarioLoad = function(name) {
+	if (name == "first.ks") {
+		return '*start\n[jump storage="title.ks" target="*start"]';
+	}
+	return void;
+};
+
