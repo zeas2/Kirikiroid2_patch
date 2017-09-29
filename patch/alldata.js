@@ -1,4 +1,5 @@
 var all_data = [
+[1506703814, "バグシステム", "ヘイズマン -THE LOCAL HERO-", "ヘイズマン -THE LOCAL HERO-", ["../tools/krz_xp3conv.exe", "バグシステム/ヘイズマン -THE LOCAL HERO-/patch.tjs", "バグシステム/ヘイズマン -THE LOCAL HERO-/xp3filter.tjs"]],
 [1501258098, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.1", ["../tools/krz_xp3conv.exe", "フロントウイング/グリザイア ファントムトリガー/xp3filter.tjs"]],
 [1501258098, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.2", ["../tools/krz_xp3conv.exe", "フロントウイング/グリザイア ファントムトリガー/xp3filter.tjs"]],
 [1495805536, "ExTry", "春色吐息－禁録・水蜜桃の姉妹たち－", "春色吐息－禁録・水蜜桃の姉妹たち－", ["../patch/old_core_patch/Override2.tjs", "ExTry/春色吐息－禁録・水蜜桃の姉妹たち－/patch.tjs", "ExTry/春色吐息－禁録・水蜜桃の姉妹たち－/patch2.xp3"]],

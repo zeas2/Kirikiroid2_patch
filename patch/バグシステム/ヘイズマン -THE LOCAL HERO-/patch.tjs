@@ -1,0 +1,16 @@
+System.setArgument("-debugwin", "no");
+// wumtrack.dll
+WaveSoundBuffer.multiTrackOpenCallbacks = []; // TODO
+WaveSoundBuffer.rebindMultiTrackID = function() {};
+WaveSoundBuffer.setMultiTrackMask = function() {};
+
+WaveSoundBuffer._open = WaveSoundBuffer.open;
+WaveSoundBuffer.open = function(name) {
+	if (Storages.extractStorageExt(name).toLowerCase() == ".mtrk") {
+		// [].load(name);
+		// redirect to actual name
+		return global.WaveSoundBuffer._open(name.substr(1, 5) + ".ogg");
+	} else {
+		return global.WaveSoundBuffer._open(*);
+	}
+};
