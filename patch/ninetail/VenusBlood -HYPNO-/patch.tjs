@@ -1,0 +1,14 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setTextEncoding("utf8");
+
+Plugins.link("layerExRaster.dll");
+if(Layer.copyRaster === void) {
+	Layer.copyRasterHW2 = function(){};
+} else {
+	Layer.copyRasterHW2 = function(x, y, l, lines, z0, z1, w, h){
+		var tmplay = global.kag.temporaryLayer;
+		tmplay.setSize(l.width, l.height);
+		tmplay.copyRaster(l, 16, 128, 2000, System.getTickCount());
+		copyRect(x, y, tmplay, 0, 0, w, h);
+	};
+}
