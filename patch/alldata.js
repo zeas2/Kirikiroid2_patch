@@ -1,5 +1,4 @@
 var all_data = [
-[1507995752, "ninetail", "VenusBlood -HYPNO-", "VenusBlood -HYPNO-", ["ninetail/VenusBlood -HYPNO-/patch.tjs"]],
 [1506703814, "バグシステム", "ヘイズマン -THE LOCAL HERO-", "ヘイズマン -THE LOCAL HERO-", ["../tools/krz_xp3conv.exe", "バグシステム/ヘイズマン -THE LOCAL HERO-/patch.tjs", "バグシステム/ヘイズマン -THE LOCAL HERO-/xp3filter.tjs"]],
 [1501258098, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.1", ["../tools/krz_xp3conv.exe", "フロントウイング/グリザイア ファントムトリガー/xp3filter.tjs"]],
 [1501258098, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.2", ["../tools/krz_xp3conv.exe", "フロントウイング/グリザイア ファントムトリガー/xp3filter.tjs"]],
