@@ -12,3 +12,71 @@ if(Layer.copyRaster === void) {
 		copyRect(x, y, tmplay, 0, 0, w, h);
 	};
 }
+
+Plugins.link("perspective.dll");
+Layer.copyPRaster2 = function( dx, dy, dw, dh, src, sx, sy, sw, sh,
+					x1, y1, x2, y2, x3, y3, x4, y4, s, type ) {
+	//var tmplay = global.kag.temporaryLayer;
+	//tmplay.setSize(dw, dh);
+	perspectiveCopy(src, sx, sy, sw, sh, x1, y1, x2, y2, x4, y4, x3, y3);
+	//operateRect(dx, dy, tmplay, 0, 0, dw, dh);
+};
+
+Layer.multiProDArr = function (arr, ret, ox, oy, oz, tx, ty, tz, s, w, h, v0, v1) {
+	var count = arr.count;
+	ret[count - 1] = 0; // pre-alloc
+	// limitation
+	if (tx > 20 && tx < 15 * oz) {
+		tx = oz / 15;
+	}
+	//dm("args = [%f, %f, %f], [%f, %f, %f], %f, %f, %f".sprintf(ox, oy, oz, tx, ty, tz, s, w, h));
+	for (var i = 0; i < count; i += 3) {
+		//dm("p = %f, %f, %f".sprintf(arr[i], arr[i+1], arr[i+2]));
+		var x = ox + arr[i];
+		var y = oy + arr[i+1];
+		var z = oz + arr[i+2];
+		if ( tz != 0.0 ) {
+			var a = Math.cos(tz * 0.0174532925); // Math.PI / 180
+			var b = Math.sin(tz * 0.0174532925);
+			var c = x * a - b * y;
+			var d = x * b + a * y;
+			x = c;
+			y = d;
+		}
+		if ( ty != 0.0 ) {
+			var a = Math.cos(ty * 0.0174532925);
+			var b = Math.sin(ty * 0.0174532925);
+			var c = a * z - b * x;
+			var d = b * z + a * x;
+			z = c;
+			x = d;
+		}
+		if ( tx != 0.0 ) {
+			var a = Math.cos(tx * 0.0174532925);
+			var b = Math.sin(tx * 0.0174532925);
+			var c = a * z + b * y;
+			var d = a * y - b * z;
+			z = c;
+			y = d;
+		}
+		if ( s != 1.0 ) {
+			x *= s;
+			y *= s;
+			z *= s;
+		}
+		var cw = w * 0.5;
+		var ch = h * 0.5;
+		var xx = cw * (x * 0.55) + cw;
+		var yy = ch - ch * y;
+		xx *= v0;
+		yy *= v0;
+		if ( z != 0.0 ) {
+			xx *= 1.0 / z;
+			yy *= 1.0 / z;
+		}
+		ret[i] = cw + xx;
+		ret[i + 1] = ch + yy;
+		ret[i + 2] = z;
+		//dm("o = %f, %f, %f".sprintf(ret[i], ret[i+1], ret[i+2]));
+	}
+};
