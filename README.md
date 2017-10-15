@@ -10,4 +10,6 @@ File Structure
 Cytrus021's Custom
 ------------------
 - Add Patch
-Parasol 桜ひとひら恋もよう
+
+|Brand|Title|Version|
+|Parasol|桜ひとひら恋もよう|v1.02|
