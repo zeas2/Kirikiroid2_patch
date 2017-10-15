@@ -9,5 +9,5 @@ File Structure
 
 Cytrus021's Custom
 ------------------
--Add Patch
+- Add Patch
 Parasol 桜ひとひら恋もよう
