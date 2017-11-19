@@ -12,3 +12,12 @@ Scripts.execStorage = function(name) {
 		};
 	}
 };
+
+// to fix some color issue
+Layer._adjustGamma = Layer.adjustGamma;
+Layer.adjustGamma = function(rgamma=1.0, rfloor=0, rceil=255, ggamma=1.0, gfloor=0, gceil=255, bgamma=1.0, bfloor=0, bceil=255) {
+	if (rgamma == 0) rgamma = 1;
+	if (ggamma == 0) ggamma = 1;
+	if (bgamma == 0) bgamma = 1;
+	global.Layer._adjustGamma(rgamma, rfloor, rceil, ggamma, gfloor, gceil, bgamma, bfloor, bceil);
+};
