@@ -1,0 +1,2 @@
+Window.registerExEvent = function(){};
+@set (kirikiriz=1)

@@ -1,0 +1,2 @@
+tools/krz_xp3conv.exe
+patch/ALcot ハニカム/キミのとなりで恋してる！ -THE RESPECTIVE HAPPINESS-/xp3filter.tjs
