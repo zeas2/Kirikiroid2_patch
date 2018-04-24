@@ -1,2 +1,0 @@
-function xp3SignCheck() {return true;}
-function hotKeyHook() {}

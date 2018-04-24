@@ -1,7 +1,8 @@
 Patch Library for Kirikiroid2
 =============================
 
-Patch list [https://zeas2.github.io/Kirikiroid2_patch/patch]
+[Patch list](https://zeas2.github.io/Kirikiroid2_patch/patch)
+------------
 
 File Structure
 --------------

@@ -1,3 +1,0 @@
-function xp3SignCheck() { return true; }
-function hotKeyHook() {}
-function getWindowToClientOffset() {return %[x=>0,y=>0];}
