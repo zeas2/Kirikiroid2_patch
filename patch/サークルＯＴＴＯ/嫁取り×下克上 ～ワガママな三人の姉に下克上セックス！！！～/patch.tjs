@@ -1,0 +1,3 @@
+Plugins.link("emoteplayer.dll");
+
+Motion.ResourceManager.setEmotePSBDecryptSeed(1270695586);
