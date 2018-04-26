@@ -1,0 +1,7 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\alltime\\husaPAC\\done") {
+		return 8013;
+	} else {
+		return void;
+	}
+};
