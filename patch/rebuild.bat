@@ -62,7 +62,11 @@ def addpath(name, defbrand, path):
 	titlelist = result['title']
 	if not titlelist:
 		titlelist.append([defbrand, name])
-	for brand, title in titlelist:
+	for line in titlelist:
+		if len(line) != 2:
+			print path
+		brand = line[0]
+		title = line[1]
 		data.append([mtime, brand, name, title, filelist])
 
 for name in os.listdir(rootpath):
