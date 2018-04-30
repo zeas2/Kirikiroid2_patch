@@ -39,3 +39,30 @@ Motion.ResourceManager.setEmotePSBDecryptFunc(function(buf, len){
 		r.dec(buf,psbOffBegin,psbOffEnd-psbOffEnd);
 	}
 });
+
+Plugins.link("layerExAlpha.dll");
+with(Layer) { // fix function not implemented in layerExAlpha.dll
+    if(typeof .TranslucentColorBlend == "undefined") .TranslucentColorBlend=function(){};
+    if(typeof .AlphaColorBlend == "undefined") .AlphaColorBlend=function(){};
+    if(typeof .AlphaColorBlend2 == "undefined") .AlphaColorBlend2=function(){};
+}
+
+Plugins.link("layerExRaster.dll");
+if(typeof Layer.copyNotInterpolationRaster == "undefined")
+	Layer.copyNotInterpolationRaster = function(){};
+if(typeof Layer.copyInterpolationRaster == "undefined")
+	Layer.copyInterpolationRaster = function(){};
+if(typeof Layer.copyVerticalRaster == "undefined")
+	Layer.copyVerticalRaster = function(){};
+if(typeof Layer.copyVerticalNotInterpolationRaster == "undefined")
+	Layer.copyVerticalNotInterpolationRaster = function(){};
+if(typeof Layer.copyVerticalInterpolationRaster == "undefined")
+	Layer.copyVerticalInterpolationRaster = function(){};
+
+Plugins.link("LayerExColor.dll");
+if(typeof Layer.TranslucentColorBlend == "undefined")
+	Layer.TranslucentColorBlend = function(){};
+
+Plugins.link("LayerExMosaic.dll");
+if(typeof Layer.AddMosaic == "undefined")
+	Layer.AddMosaic = function(){};
