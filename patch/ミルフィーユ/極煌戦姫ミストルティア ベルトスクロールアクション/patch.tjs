@@ -1,5 +1,8 @@
+if (typeof global.GamepadPort == "undefined") {
 class GamepadPort {
 	var count;
 	function initialize() { this.count = 0; }
 	function getController() { return %[]; }
 };
+}
+&Window.waitVSync = 0; // fix white screen issue
