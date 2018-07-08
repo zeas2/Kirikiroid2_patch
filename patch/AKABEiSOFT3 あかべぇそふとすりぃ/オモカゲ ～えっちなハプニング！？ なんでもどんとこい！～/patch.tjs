@@ -3,7 +3,9 @@ with(Scripts) {._execStorage = .execStorage;}
 with(Layer) { // fix function not implemented in layerExAlpha.dll
     if(typeof .TranslucentColorBlend == "undefined") .TranslucentColorBlend=function(){};
     if(typeof .AlphaColorBlend == "undefined") .AlphaColorBlend=function(){};
-    if(typeof .AlphaColorBlend2 == "undefined") .AlphaColorBlend2=function(){};
+    if(typeof .AlphaColorBlend2 == "undefined") .AlphaColorBlend2=function(r,g,b,r2,g2,b2){
+		this.fillRect(0, 0, this.width, this.height, 0);
+	};
 }
 Scripts.execStorage = function(name) {
 	Scripts._execStorage(*);
