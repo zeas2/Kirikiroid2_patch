@@ -1,0 +1,12 @@
+Plugins.link("kirikiroid2.dll");
+if (typeof System.getLanguage == "undefined") {
+	System.getLanguage = function() { return "ja_jp";};
+}
+class Steam {
+	function getLanguage() {
+		return System.getLanguage() == "ja_jp" ? "jp" : "en";
+	}
+	function setAchievement() {}
+}
+Steam.initialized = true;
+Steam.achievementsCount = 0;
