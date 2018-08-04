@@ -31,34 +31,101 @@ td.datetime{text-align: center;}
     -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
     -box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
 }
+table tr:nth-child(even){ 
+	background: #F8F8F8; 
+}
+tr:hover{
+	background: #FFFFBB !important; 
+}
+@media(min-width: 1700px){
+	#floatPanel{
+		position: fixed; 
+		top: 20%; 
+		left: 27%;  
+		display: none;
+	}
+}
+@media (min-width: 1200px) and (max-width: 1699px) {
+	#floatPanel{
+		position: fixed; 
+		top: 20%; 
+		left: 20%;  
+		display: none;
+	}
+} 
+@media (min-width: 992px) and (max-width: 1199px) {
+	#floatPanel{
+		position: fixed; 
+		top: 20%; 
+		left: 17%;  
+		display: none;
+	}
+	.floatPanel{
+		width: 600px;
+	}
+} 
+@media (min-width: 768px) and (max-width: 991px) {
+	#floatPanel{
+		position: fixed; 
+		top: 15%; 
+		left: 16.5%;  
+		display: none;
+	}
+	.floatPanel{
+		width: 600px;
+	}
+} 
+@media (min-width: 480px) and (max-width: 767px) {
+	#floatPanel{
+		position: fixed; 
+		top: 20%; 
+		left: 5%;  
+		display: none;
+	}
+} 
+@media (max-width: 479px) {
+	#floatPanel{
+		position: fixed; 
+		top: 20%; 
+		left: 5%;  
+		display: none;
+	}
+}
 </style> 
   </head>
   
   <body>
-
-<table id="table_all" border="3" style="left: 50%; position: relative; transform: translate(-50%, 0%);">
-<tr>
-	<td colspan="4">
-	Filter:<input style="width: 60%;" type="text" oninput="onFilterInput(this.value)"/>
-	<span id="title_count" style="right: 0px; position: absolute; margin: 3px;">Titles</span>
-	</td>
-</tr>
-<tr>
-	<th>&nbsp;</th>
-	<th>Update Time&nbsp;<button onclick="sortTableByTime(true)">▲</button><button onclick="sortTableByTime(false)">▼</button></th>
-	<th>Brand</th>
-	<th>Title&nbsp;<button onclick="sortTableByName(true)">▲</button><button onclick="sortTableByName(false)">▼</button></th>
-</tr>
-</table>
+    <div class="container">
+		<div class="row">
+			<table class="table table-bordered col-sm-10" id="table_all" border="3">
+				<tr>
+					<td colspan="4">
+					<div class="input-group col-sm-12">
+					<div class="input-group-addon">Filter:</div>
+					<input class="form-control" type="text" oninput="onFilterInput(this.value)"/>
+					<span class="input-group-addon" id="title_count">Titles</span>
+					</div>
+					</td>
+				</tr>
+				<tr style="background: #ffffff;">
+					<th>&nbsp;</th>
+					<th style="width:25%">Update Time&nbsp;<button onclick="sortTableByTime(true)">▲</button><button onclick="sortTableByTime(false)">▼</button></th>
+					<th style="width:25%">Brand</th>
+					<th>Title&nbsp;<button onclick="sortTableByName(true)">▲</button><button onclick="sortTableByName(false)">▼</button></th>
+				</tr>
+			</table>
+		</div>
+	</div>
 <script type="text/javascript">
 function ClosePanel() {
 	var floatPanel = document.getElementById("floatPanel");
 	floatPanel.style.display = "none";
 }
 </script>
-<div id="floatPanel" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; margin: 0; display: none;">
+<div id="floatPanel">
 	<div class="floatPanel">
-		<div style="padding: 1em">
+		<div style="padding: 1em; position:relative">
+			<button class="btn btn-primary close" onclick="ClosePanel()" style="position:absolute;top:10;right:15">X</button>
 			<h2 id="floatPanelTitle" align="center">TITLE</h2><br>
 			<table id="floatPanelTable" border="2" align="center"></table><br>
 			<div style="text-align: center;">
