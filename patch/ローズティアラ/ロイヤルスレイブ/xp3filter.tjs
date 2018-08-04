@@ -1,0 +1,24 @@
+function () {
+var loff = [0,5,13,17,23,69,71,216,589,1490,2851,6535,7164,12373,35052,51833,58815,87290,100393,116338,121656,0x7FFFFFFF];
+var lxor = [0x50,0x4C,0xC3,0x89,0xB6,0x26,0x79,0x06,0x7C,0x46,0x31,0x50,0xE4,0x4F,0x68,0x25,0x93,0x0A,0xBD,0x76,0x55,0];
+var llen = [];
+for (var i = 0; i < 20; ++i) {
+	llen.add(loff[i + 1] - loff[i]);
+}
+llen.add(100000000 - loff[20]);
+Storages.setXP3ArchiveExtractionFilter(function(hash,off,buf,len){
+	var loff = this[0], llen = this[1], lxor = this[2];
+	var seg = off < 6534 ? 10 : 20;
+	while (off < loff[seg]) --seg;
+	for (var l = loff[seg + 1] - off; len > 0;) {
+		if (l > len) {
+			buf.xor(0, len, lxor[seg]);
+			break;
+		}
+		buf.xor(0, l, lxor[seg]);
+		buf.ptr += l;
+		len -= l;
+		l = llen[++seg];
+	}
+} incontextof [loff, llen, lxor]);
+}();

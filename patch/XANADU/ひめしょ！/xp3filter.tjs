@@ -1,0 +1,15 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len, filename) {
+	if (filename == "startup.tjs") return;
+	var x = filename[filename.length-1];
+	var declen = 256;
+	if (x == 's' || x == 'd') declen = 0x7FFFFFFF;
+	if(offset < declen) {
+		declen -= offset;
+		if(declen > len) declen = len;
+		hash = ~hash;
+		hash = [hash, hash >> 8, hash >> 16, hash >> 24];
+		for(var i = 0; i < declen; ++i,++offset) {
+			buf[i] ^= offset ^ hash[offset & 3];
+		}
+	}
+});

@@ -1,0 +1,34 @@
+System.setArgument("-library", "krlib.dll");
+function InitKrlib() {}
+function AddFilterList() {}
+function Win32API(m,f,a1,a2,a3) {
+	if(f=="HeapAlloc") return 1;
+	else if(f=="MessageBoxA") return System.inform(a2, a3, 2) == 0 ? 6 : 0;
+	return 0;
+}
+function RefMemory() {}
+function RegisterMessage() {}
+function KrlibInput() {return "savedata";}
+
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(name) {
+	var ret = Scripts._execStorage(*);
+	if (name == "Override.tjs") {
+		//Scripts._execStorage(System.exePath + "Override2.tjs");
+		ExKAGWindow.ExKAGWindow = function() {
+			KAGWindowOrg.KAGWindow(...);
+			//autoModePageWait = autoModePageWaitProp;
+			//autoModeLineWait = autoModeLineWaitProp;
+			hideCursor = new HideCursor(this);
+			hideCursor.enabled = true;
+		};
+		ExKAGWindow.saveSystemVariables = function() {
+			autoModePageWait = autoModePageWaitBase;
+			autoModeLineWait = autoModeLineWaitBase;
+			KAGWindowOrg.saveSystemVariables();
+			autoModePageWait = autoModePageWaitProp;
+			autoModeLineWait = autoModeLineWaitProp;
+		};
+	}
+	return ret;
+};
