@@ -4,5 +4,5 @@ Please unpack all original xp3 using:
 https://github.com/xmoeproject/KrkrExtract
 or
 https://github.com/morkt/GARbro/releases [some files may lost]
-Then repack it by ZIP or TAR (or XP3 if you has tools)
+Then repack it by ZIP or TAR (or XP3 if you have tools)
 Replace the original xp3 and run.
