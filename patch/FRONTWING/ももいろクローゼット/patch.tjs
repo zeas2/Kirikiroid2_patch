@@ -1,0 +1,12 @@
+var kirikiriz = false;
+var debugWindowEnabled = false;
+var inXP3archivePacked = true;
+var convertMode = false;
+
+System.getCurrentUILangName = function() {
+	return "";
+};
+
+System.getCurrentLocaleName = function() {
+	return "";
+};

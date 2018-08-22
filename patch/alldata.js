@@ -1,4 +1,6 @@
 var all_data = [
+[1534950009, "FRONTWING", "ももいろクローゼット", "ももいろクローゼット", ["../tools/krz_xp3conv_v2.exe", "FRONTWING/ももいろクローゼット/krz_xp3conv.key", "FRONTWING/ももいろクローゼット/patch.tjs", "FRONTWING/ももいろクローゼット/xp3filter.tjs"]],
+[1534908284, "NanaWind", "春音アリス＊グラム", "春音アリス＊グラム", ["../tools/krz_xp3conv_v2.exe", "NanaWind/春音アリス＊グラム/krz_xp3conv.key", "NanaWind/春音アリス＊グラム/patch.tjs", "NanaWind/春音アリス＊グラム/xp3filter.tjs"]],
 [1534706887, "NEKO WORKs", "ネコぱら Extra", "ネコぱら Extra", ["../tools/krz_xp3conv.exe", "NEKO WORKs/ネコぱら Extra/xp3filter.tjs"]],
 [1534436590, "rootnuko+H", "Tenioha! Girls Can Be Pervy Too! (てにおはっ！[ENG])", "Tenioha! Girls Can Be Pervy Too! (てにおはっ！[ENG])", ["rootnuko+H/Tenioha! Girls Can Be Pervy Too! (てにおはっ！[ENG])/Override2.tjs"]],
 [1533394053, "hollowings", "紫罗兰·里：水中倒影", "紫罗兰·里：水中倒影", ["hollowings/紫罗兰·里：水中倒影/xp3filter.tjs"]],
@@ -191,6 +193,7 @@ var all_data = [
 [1488814832, "ディーゼルマイン dieselmine", "ディーゼルマイン dieselmine", "生意気だった、茜ちゃん～47才無職キモデブが飼育して特濃SEXに嵌らせちゃう日記～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
 [1488814832, "ディーゼルマイン dieselmine", "ディーゼルマイン dieselmine", "聖・逆レイプ学園 ～俺の精液を根こそぎ搾り尽くすオンナたち～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
 [1488814832, "ディーゼルマイン dieselmine", "ディーゼルマイン dieselmine", "問答無用!種付け許可証 ～劣等遺伝子の俺でも国家権力でナカ出し放題～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
+[1488814832, "ディーゼルマイン dieselmine", "ディーゼルマイン dieselmine", "妖蟲ノ檻", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
 [1488814832, "ディーゼルマイン dieselmine", "ディーゼルマイン dieselmine", "自由自在にエロ催眠～ダメダメの俺でも美少女退魔士と犯りまくり！～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
 [1488814832, "すたじおもみじ", "ディーゼルマイン dieselmine", "for your smile　～あなたのことは、好きでした～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
 [1488814832, "すたじおもみじ", "ディーゼルマイン dieselmine", "びんかん!彼女～オレの清楚な彼女は敏感すぎてすぐにアヘっちゃう!～", ["ディーゼルマイン dieselmine/xp3filter.tjs"]],
@@ -336,6 +339,7 @@ var all_data = [
 [1488792756, "アンモライト", "Monogram", "お兄ちゃん、教えて…… ～義妹とヒミツの保健実習～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "アンモライト", "Monogram", "お姉ちゃんとショータくんと。 ～ナカを良くするHのカンケイ～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "アンモライト", "Monogram", "かぐや姫はバブみたっぷりのロリBBAでした。 ～うさみみメイドと責められムコ殿～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
+[1488792756, "アンモライト", "Monogram", "ハブられ。", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "アンモライト", "Monogram", "りとる☆ついんず ～すぐにトリコにしてあげる♪～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "アンモライト", "Monogram", "すうぃ～と☆SwitcH ～まじわるシセンでとろけるカラダ～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "アンモライト", "Monogram", "ツンえむ！ ～ぎゅっと縛って指導して～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],

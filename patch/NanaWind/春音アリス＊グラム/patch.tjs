@@ -1,0 +1,4 @@
+var kirikiriz = false;
+var debugWindowEnabled = false;
+var inXP3archivePacked = true;
+var convertMode = false;
