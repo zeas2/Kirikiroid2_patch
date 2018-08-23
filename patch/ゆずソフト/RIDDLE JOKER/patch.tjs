@@ -1,4 +1,9 @@
 //@set (kirikiriz=1)
+var kirikiriz = false;
+var debugWindowEnabled = false;
+var inXP3archivePacked = true;
+var convertMode = false;
+
 if (typeof global.GamepadPort == "undefined") {
 class GamepadPort {
 	function initialize() {}
