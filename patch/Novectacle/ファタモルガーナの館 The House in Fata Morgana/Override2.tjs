@@ -1,0 +1,4 @@
+AdjustMoni(askYesNo);
+askYesNo = function(title, text) {
+	return System.inform(text, title, 2) == 0;
+};

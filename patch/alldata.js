@@ -1,4 +1,7 @@
 var all_data = [
+[1538189990, "Novectacle", "ファタモルガーナの館 The House in Fata Morgana", "ファタモルガーナの館 The House in Fata Morgana", ["Novectacle/ファタモルガーナの館 The House in Fata Morgana/Override2.tjs", "Novectacle/ファタモルガーナの館 The House in Fata Morgana/patch.tjs"]],
+[1538148844, "暁WORKS", "コミュ―黒い竜と優しい王国―", "コミュ―黒い竜と優しい王国―", ["暁WORKS/コミュ―黒い竜と優しい王国―/if_files_are_unpacked.zip", "暁WORKS/コミュ―黒い竜と優しい王国―/patch.tjs", "暁WORKS/コミュ―黒い竜と優しい王国―/patch2.xp3", "暁WORKS/コミュ―黒い竜と優しい王国―/xp3filter.tjs"]],
+[1537177754, "softhouse-seal", "さえない彼女のエッチの仕方 ～清純な女子大生の淫らな痴態～", "さえない彼女のエッチの仕方 ～清純な女子大生の淫らな痴態～", ["softhouse-seal/さえない彼女のエッチの仕方 ～清純な女子大生の淫らな痴態～/patch.tjs"]],
 [1536246906, "Chien（シアン）", "委員界の異端者 ～IINCHO-Re.co～", "委員界の異端者 ～IINCHO-Re.co～", ["Chien（シアン）/委員界の異端者 ～IINCHO-Re.co～/patch.tjs", "Chien（シアン）/委員界の異端者 ～IINCHO-Re.co～/xp3filter.tjs"]],
 [1535041105, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3", ["../tools/krz_xp3conv_v2.exe", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/krz_xp3conv.key", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/patch.tjs", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/xp3filter.tjs"]],
 [1535041105, "FrontWing(フロントウイング)", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3", "グリザイア ファントムトリガー Grisia Phantom Trigger Vol.4", ["../tools/krz_xp3conv_v2.exe", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/krz_xp3conv.key", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/patch.tjs", "フロントウイング FrontWing/グリザイア ファントムトリガー Grisia Phantom Trigger Vol.3/xp3filter.tjs"]],
@@ -15,7 +18,6 @@ var all_data = [
 [1533144283, "XANADU", "ひめしょ！", "ひめしょ！", ["../patch/old_core_patch/Override2.tjs", "XANADU/ひめしょ！/patch.tjs", "XANADU/ひめしょ！/xp3filter.tjs"]],
 [1532609593, "C：drive／D：drive", "おいしい魔法のとなえかた。", "おいしい魔法のとなえかた。", ["C：drive／D：drive/おいしい魔法のとなえかた。/patch.tjs", "C：drive／D：drive/おいしい魔法のとなえかた。/xp3filter.tjs"]],
 [1531932361, "ローズティアラ", "ロイヤルスレイブ", "ロイヤルスレイブ", ["ローズティアラ/ロイヤルスレイブ/xp3filter.tjs"]],
-[1531241583, "Novectacle", "ファタモルガーナの館 The House in Fata Morgana", "ファタモルガーナの館 The House in Fata Morgana", ["Novectacle/ファタモルガーナの館 The House in Fata Morgana/patch.tjs"]],
 [1531227658, "LimeCat", "ハタラカナイはにーらいふ", "ハタラカナイはにーらいふ", ["LimeCat/ハタラカナイはにーらいふ/patch.tjs", "LimeCat/ハタラカナイはにーらいふ/xp3filter.tjs"]],
 [1531150818, "AXL（アクセル）", "キュリオディーラー", "キュリオディーラー", ["AXL（アクセル）/キュリオディーラー/AfterStartup.tjs", "AXL（アクセル）/キュリオディーラー/pbd.xp3"]],
 [1531149372, "箱贰伍遗体", "箱贰伍遗体", "箱贰伍遗体", ["箱贰伍遗体/箱贰伍遗体/patch.tjs"]],
@@ -369,7 +371,6 @@ var all_data = [
 [1488792756, "スピンドル SPINDLE", "Monogram", "少女洗脳 ～可愛いあの子が僕の愛ペットになってくれるまで～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "スピンドル SPINDLE", "Monogram", "淫辱痴感 ～あなたなんかには、屈しない！～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
 [1488792756, "スピンドル SPINDLE", "Monogram", "悦楽剤 ～人妻は媚薬で母乳を垂れ流す～", ["Monogram/data.cf", "Monogram/patch.tjs", "Monogram/xp3filter.tjs"]],
-[1488716935, "暁WORKS", "コミュ―黒い竜と優しい王国―", "コミュ―黒い竜と優しい王国―", ["暁WORKS/コミュ―黒い竜と優しい王国―/if_files_are_unpacked.zip", "暁WORKS/コミュ―黒い竜と優しい王国―/patch.tjs", "暁WORKS/コミュ―黒い竜と優しい王国―/patch2.xp3", "暁WORKS/コミュ―黒い竜と優しい王国―/xp3filter.tjs"]],
 [1488716028, "hibiki works", "LOVELY×CATION", "LOVELY×CATION", ["hibiki works/LOVELY×CATION/patch.tjs", "hibiki works/LOVELY×CATION/xp3filter.tjs"]],
 [1488715845, "AKABEiSOFT3 あかべぇそふとすりぃ", "手垢塗れの天使", "手垢塗れの天使", ["AKABEiSOFT3 あかべぇそふとすりぃ/手垢塗れの天使/arc.7z", "AKABEiSOFT3 あかべぇそふとすりぃ/手垢塗れの天使/patch.tjs", "AKABEiSOFT3 あかべぇそふとすりぃ/手垢塗れの天使/xp3filter.tjs"]],
 [1488622560, "hibiki works", "LOVELY×CATION2", "LOVELY×CATION2", ["../patch/hibiki works/LOVELY×CATION/xp3filter.tjs", "hibiki works/LOVELY×CATION2/patch.tjs"]],
