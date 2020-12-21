@@ -1,4 +1,5 @@
 var all_data = [
+[1608565016, "HL-Galgame", "三色△绘恋 -Tricolour Lovestory-", "三色△绘恋 -Tricolour Lovestory-", ["HL-Galgame/三色△绘恋 -Tricolour Lovestory-/patch.tjs"]],
 [1608564436, "Hending", "自爆カノジョ ～彼女は隠れて身悶える～", "自爆カノジョ ～彼女は隠れて身悶える～", ["Hending/自爆カノジョ ～彼女は隠れて身悶える～/xp3filter.tjs"]],
 [1608554558, "GIRL SCORE", "カヨイカノジョ ～妊娠するまで毎日使える僕の専用JKマンコ～", "カヨイカノジョ ～妊娠するまで毎日使える僕の専用JKマンコ～", ["GIRL SCORE/カヨイカノジョ ～妊娠するまで毎日使える僕の専用JKマンコ～/patch.tjs"]],
 [1608554554, "45-World", "Criss Cross", "Criss Cross", ["45-World/Criss Cross/patch.tjs"]],
