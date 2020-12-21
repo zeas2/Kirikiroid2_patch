@@ -1,0 +1,28 @@
+class filter {
+	var cache = %[];
+	var hashes = [];
+	
+	function dec(h,o,b,l){
+		var hashes = this.hashes;
+		var cache = this.cache;
+		var t = cache[h];
+		if (!t) {
+			hashes.push(h);
+			if (hashes.length > 127) {
+				delete hashes[hashes.unshift()];
+			}
+			cache[h] = t = []; t[0x1FF] = 0;
+			h = 0x15A4E35 * h + 1; h &= 0xFFFFFFFF;
+			for(var i = 0; i < 0x200; ++i) {
+				h = 0x15A4E35 * h + 1; h &= 0xFFFFFFFF;
+				t[i] = h >> 16;
+			}
+		}
+
+		for(var i = 0; i < l; ++i) {
+			var off = o + i;
+			b[i] ^= t[off & 0x1FF];
+		}
+	}
+}
+Storages.setXP3ArchiveExtractionFilter((new filter()).dec);

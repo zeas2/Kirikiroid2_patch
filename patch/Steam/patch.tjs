@@ -1,0 +1,29 @@
+class Steam {
+	function getLanguage() {return "japanese";}
+	function requestInitialize() {}
+	function initialized() {return true;}
+	function achievementsCount() {return 0;}
+	function setAchievement() {}
+	function clearAchievement() {}
+	function getCloudQuota() {return %[total:0,available:0];}
+	function cloudFileCount() {return 0;}
+	function getCloudFileInfo() {}
+	function deleteCloudFile() {}
+	function copyCloudFile() {}
+	function triggerScreenshot() {}
+	function hookScreenshots() {return false;}
+	function writeScreenshot() {}
+	function isBroadcasting() {return false;}
+	function hookBroadcasting() {return false;}
+}
+Steam.cloudEnabled = false;
+
+class CFBFSteam {
+	function InitSteamAPI() {}
+	function ShutDownSteamAPI() {}
+	function ResetAllStats() {}
+	function RunCallBacks() {}
+	function UnlockAchievement() {}
+	function UploadStats() {}
+	function GetUserLanguage() {return "JP";}
+}

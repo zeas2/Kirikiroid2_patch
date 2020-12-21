@@ -1,7 +1,7 @@
 @echo off
 rem ='''
 set pypath="%~dp0python\python.exe"
-if not exist %pypath% set pypath="D:\tools\dev\python-2.7.3\python.exe"
+if not exist %pypath% set pypath="E:\tools\dev\python-2.7.3\python.exe"
 if not exist %pypath% ( echo I can't find "%~dp0python\python.exe" !
 pause
 goto :EOF
