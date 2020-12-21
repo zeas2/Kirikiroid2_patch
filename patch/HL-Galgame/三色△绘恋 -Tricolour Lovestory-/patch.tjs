@@ -1,0 +1,74 @@
+class HttpRequest
+
+{
+
+function HttpRequest() {}
+
+function open() {}
+
+function setRequestHeader() {}
+
+function send() {}
+
+function sendStorage() {}
+
+function abort() {}
+
+function getAllResponseHeaders() {return %[];}
+
+function getResponseHeader() {return "";}
+
+function getResponseText() {return "";}
+
+var readyState = 0;
+
+var response = "";
+
+var responseData = <% 00 %>;
+
+var status = 404;
+
+var statusText = "Not Found";
+
+var contentType = "text/html";
+
+var contentTypeEncoding = "utf-8";
+
+var contentLength = 0;
+
+function onReadyStateChange() {}
+
+function onProgress() {}
+
+function finalize() {}
+
+};
+
+with(HttpRequest)
+
+{
+
+.UNINITIALIZED = 0;
+
+.OPEN = 1;
+
+.SENT = 2;
+
+.RECEIVING = 3;
+
+.LOADED = 4;
+
+}
+
+with(System) {._getArgument = .getArgument;}
+System.getArgument = function(name) {
+	if(name == '-fontcharset') {
+        return "0";
+        // return "134"; // for chinese
+		};
+	return System._getArgument(name);
+};
+
+Plugins.link("kirikiroid2.dll");
+
+Storages.setTextEncoding("gbk");
