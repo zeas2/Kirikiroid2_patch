@@ -1,0 +1,18 @@
+//@set (kirikiriz=1)
+class GamepadPort {
+	function initialize() {}
+	property count {
+		getter () { return 0; }
+	}
+}
+System.setArgument("-patchdetect", "no");
+Storages.setupArchiveData = function(){};
+var helpBootStrapMenuItem = %[]; // for helpBootStrapMenuItem issue
+class WIN32Dialog {
+	function messageBox(win, msg, title, type) {
+		return System.inform(msg, title, 2);
+	}
+}
+WIN32Dialog.MB_YESNO = 0;
+WIN32Dialog.MB_ICONINFORMATION = 0;
+WIN32Dialog.IDYES = 0;
