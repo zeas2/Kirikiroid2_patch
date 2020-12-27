@@ -1,0 +1,1 @@
+Clear savedata before first run.

@@ -60,13 +60,15 @@ with(HttpRequest)
 
 }
 
-with(System) {._getArgument = .getArgument;}
-System.getArgument = function(name) {
-	if(name == '-fontcharset') {
-        return "0";
-        // return "134"; // for chinese
-		};
-	return System._getArgument(name);
+System.setArgument("-fontcharset", "0");
+// System.setArgument("-fontcharset", "134"); // for chinese
+
+class LineParser{
+	var result;
+	function parseStorage(filename, utf8=false) {
+		result = [];
+		result.load(filename);
+	}
 };
 
 Plugins.link("kirikiroid2.dll");

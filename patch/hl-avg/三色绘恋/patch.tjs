@@ -1,8 +1,0 @@
-class HttpRequest{};
-class LineParser{
-	var result;
-	function parseStorage(filename, utf8=false) {
-		result = [];
-		result.load(filename);
-	}
-};
