@@ -1,0 +1,10 @@
+var t = <% 53 33 80 F0 60 CC FF 10 02 90 13 39 8A FE 23 E8 B5 B7 75 6D 10 %>;
+Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l){
+	// var t = this;
+	var n = h % 20;
+	b.xor(0,l,t[n]^t[n + 1]);
+	for (var i = 0; i < l; ++i) {
+		n = b[i];
+		b[i] = (n >> 4) | (n << 4);
+	}
+});
