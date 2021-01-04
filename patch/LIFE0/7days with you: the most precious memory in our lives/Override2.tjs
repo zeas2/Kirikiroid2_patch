@@ -1,0 +1,5 @@
+function FBFSteam(){}
+FBFSteam.GetUserLanguage = function(){};
+FBFSteam.ShutDownSteamAPI = function(){};
+FBFSteam.SetGUICorner = function(){};
+FBFSteam.UnlockAchievement = function(){};
