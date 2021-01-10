@@ -1,5 +1,26 @@
+Plugins.link("kirikiroid2.dll");
+
 class Steam {
-	function getLanguage() {return "japanese";}
+	function __getLanguage__() {
+		var lang = System.getLanguage().split("_");
+		var region = lang[1];
+		lang = lang[0];
+		
+		if (lang == "zh") {
+			if (region = "cn") return ["schinese", "ZH"];
+			return ["schinese", "ZH"];
+		}
+		switch (lang) {
+			case "en": return ["english", "EN"];
+			case "fr": return ["french", "FR"];
+			case "ru": return ["russian", "RU"];
+			// TODO other languages
+			default: return ["japanese", "JP"];
+		}
+	}
+	function getLanguage() {
+		return Steam.__getLanguage__()[0];
+	}
 	function requestInitialize() {}
 	function initialized() {return true;}
 	function achievementsCount() {return 0;}
@@ -25,5 +46,7 @@ class CFBFSteam {
 	function RunCallBacks() {}
 	function UnlockAchievement() {}
 	function UploadStats() {}
-	function GetUserLanguage() {return "JP";}
+	function GetUserLanguage() {
+		return Steam.__getLanguage__()[1];
+	}
 }
