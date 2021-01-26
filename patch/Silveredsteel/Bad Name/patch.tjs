@@ -1,0 +1,12 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setArchiveDelimiter('#');
+
+Scripts._execStorage = Scripts.execStorage;
+Scripts.execStorage = function(name) {
+	var Scripts = global.Scripts;
+	Scripts._execStorage(name);
+	if (name == "MessageLayer.tjs") {
+		Scripts._execStorage(System.exePath + "Override2.tjs");
+		Scripts.execStorage = Scripts._execStorage;
+	}
+};
