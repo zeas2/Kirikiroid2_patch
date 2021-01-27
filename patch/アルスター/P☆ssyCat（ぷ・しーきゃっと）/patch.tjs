@@ -1,0 +1,11 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_CURRENT_USER\\Software\\Alster\\Pussycat\\minutes")
+		return (new Date()).getMinutes();
+	if(path == "HKEY_CURRENT_USER\\Software\\Alster\\Pussycat\\second") {
+		var sec = (new Date()).getSeconds();
+		if (sec <= 0) sec++;
+		if (sec > 44) sec = 44;
+		return sec;
+	}
+	return "";
+};

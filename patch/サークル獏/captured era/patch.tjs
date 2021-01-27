@@ -1,0 +1,5 @@
+Plugins.link("fstat.dll");
+Storages._isExistentDirectory = Storages.isExistentDirectory;
+Storages.isExistentDirectory = function(path) {
+  return Storages._isExistentDirectory(path) == true;
+};

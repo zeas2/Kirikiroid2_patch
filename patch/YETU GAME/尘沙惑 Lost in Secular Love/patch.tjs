@@ -1,0 +1,12 @@
+class Mirai_Steam {
+  function Mirai_SteamInit() {return 0;}
+  function InitialAchievement() { }
+  function CallSteamPanel() { }
+  function SetAchievement() { }
+  function DoSteamCallBack() { }
+  function ResetStats() { }
+  property bSteamInit {
+    getter() {return true;}
+  }
+}
+
