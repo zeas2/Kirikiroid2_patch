@@ -1,0 +1,32 @@
+// btmcl.dll
+function btIax(func, param) {
+	if (func == "date::now") return (new Date()).getTime();
+	if (func == "date::formatString") {
+		var date = new Date(param.date);
+		var year = date.getYear();
+		return "%04d/%02d/%02d %02d:%02d:%02d".sprintf(
+			date.getYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+	}
+}
+function btSaveLayerImage(lay, path, ext) {
+	lay.saveLayerImage(path + "." + ext, ext);
+}
+function btScreenShot() {}
+function btGetMD5() {}
+function btGetCharengeCode() {}
+function btIsExistStorage(path) {
+	return Storages.isExistentStorage(path);
+}
+function btGetTempPath() {
+	return System.exePath + "temp_";
+}
+
+function btHttpGetByAsync() {}
+function btHttpPostByAsync() {}
+function btHttpIsFinished() { return true; }
+function btHttpGetProgress() { return %[recvSize : 0, totalSize : 0]; }
+function btHttpGetData() { return ""; }
+function btHttpGetHeader() {}
+function btHttpCancelByAsync() {}
+function btHttpEndByAsync() {}
+function btHttpGetLastError() { return "404"; }

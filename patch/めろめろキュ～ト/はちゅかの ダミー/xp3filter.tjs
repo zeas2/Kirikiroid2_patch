@@ -1,0 +1,26 @@
+
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len, filename) {
+	if (hash == 0xedcc8719) { // startup.tjs
+		return;
+	}
+	var limit;
+	var ext = filename.substr(filename.length - 3, 3);
+	if (ext == ".ks" || ext == "tjs" || ext == "asd") {
+		limit = 0x100000;
+	} else if (ext == "png") {
+		limit = 0x100;
+	} else {
+		limit = 0x200;
+	}
+	if (offset >= limit) return;
+	var hash_t = [
+		hash,
+		hash >> 8,
+		hash >> 16,
+		hash >> 24,
+	];
+	for(var i = 0; i < len; ++i, ++offset) {
+		if (offset >= limit) return;
+		buf[i] ^= offset ^ hash_t[offset & 3];
+	}
+});

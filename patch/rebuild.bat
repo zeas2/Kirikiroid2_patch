@@ -35,7 +35,12 @@ def checkpath(path):
                     filelist.append('../' + external)
             continue
         if name == 'titles.csv':
-            for title in open(fullname).read().decode('utf8').split('\n'):
+            csv = open(fullname).read()
+            try: csv = csv.decode('utf8')
+            except:
+                print fullname
+                sys.exit()
+            for title in csv.split('\n'):
                 if not title: continue
                 titlelist.append(title.split(u',', 1))
             continue
@@ -46,7 +51,7 @@ def checkpath(path):
         if mtime > newest:
             newest = mtime
         filelist.append(subdir + '/' + name)
-    if readme: filelist = []
+    # if readme: filelist = []
     result['files'] = filelist
     result['title'] = titlelist
     result['time'] = int(newest)

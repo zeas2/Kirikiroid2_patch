@@ -1,9 +1,10 @@
 System.setArgument("-library", "krlib.dll");
-function InitKrlib() {}
+function InitKrlib() { }
+function KrlibVersion() { return "1.0"; }
 function AddFilterList() {}
 function Win32API(m,f,a1,a2,a3) {
 	if(f=="HeapAlloc") return 1;
-	else if(f=="MessageBoxA") return System.inform(a3, a2, 2) == 0 ? 1 : 0;
+	else if(f=="MessageBoxA") return System.inform(a3, a2, 2) == 0 ? 6 : 0;
 	return 0;
 }
 function RefMemory() {}

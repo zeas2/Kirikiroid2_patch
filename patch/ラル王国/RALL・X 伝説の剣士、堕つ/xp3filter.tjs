@@ -1,0 +1,21 @@
+var addkey = <%
+	79 9B CF 8A CE 34 A8 28 6F F3 59 D1 99 06 15 E5
+	6D 3E 2B 3A D3 A0 A2 BC CD 67 45 67 1A 54 94 B7
+	F9 AC E8 4C 83 8A F2 36 9F 15 9D 69 50 51 DE E6
+	B3 A2 33 0D 2A CA DB 7C 56 74 A6 41 45 %>;
+
+Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l){
+	h &= 0x7FFFFFFF;
+	var t = []; t[31] = 0;
+	for(var i = 0; i < 31; ++i) {
+		t[i] = h;
+		h = ((h & 0x1FF) << 23) | (h >> 8);
+	}
+
+	var addkey = global.addkey;
+	for(var i = 0; i < l; ++i) {
+		var off = o + i;
+		b[i] ^= t[off % 31];
+		b[i] += addkey[off % 0x3D];
+	}
+});
