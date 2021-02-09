@@ -1,0 +1,21 @@
+function() {
+    var kr2 = Plugins.link("kirikiroid2.dll");
+    if (kr2 && kr2.duplicateTransHandlerProvider) {
+        kr2.duplicateTransHandlerProvider("crossfade", "blurquake");
+    }
+}();
+
+function blurcopy_h(dst, dpitch, src, spitch, w, h, opa) {
+    ;
+}
+function blurcopy_v(dst, dpitch, src, spitch, w, h, opa) {
+    ;
+}
+function filterimage(dst, dpitch, width, height, filter) {
+    ;
+}
+function loadbgforblurquake() {}
+function freebgforblurquake() {}
+function messagebox(msg, caption) {
+    return System.inform(msg, caption, 2) == 0 ? "Yes" : "No";
+}
