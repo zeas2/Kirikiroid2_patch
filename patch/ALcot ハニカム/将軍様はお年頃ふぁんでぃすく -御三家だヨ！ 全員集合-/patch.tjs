@@ -1,0 +1,7 @@
+Plugins.link("TextRender.dll");
+
+if (typeof TextRenderBase.getLinkNames == "undefined") {
+	TextRenderBase.getLinkNames = function() {
+		return [];
+	};
+}

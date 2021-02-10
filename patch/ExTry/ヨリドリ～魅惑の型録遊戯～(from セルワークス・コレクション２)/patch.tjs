@@ -1,0 +1,3 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setArchiveDelimiter('#');
+System.readRegValue = function() {return 4128;};

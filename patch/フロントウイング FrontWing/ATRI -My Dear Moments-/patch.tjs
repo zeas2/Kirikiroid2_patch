@@ -1,0 +1,7 @@
+System.getCurrentUILangName = function() {
+	return "";
+};
+
+System.getCurrentLocaleName = function() {
+	return "";
+};

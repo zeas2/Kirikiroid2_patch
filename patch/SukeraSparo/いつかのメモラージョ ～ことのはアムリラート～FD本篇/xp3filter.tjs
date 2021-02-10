@@ -1,6 +1,5 @@
 Storages.setXP3ArchiveExtractionFilter(function(h,o,b,l){
-	for(var i = 0; i < l; ++i) {
-		var off = i + o;
-		b[i]^=(off&1)?off:h;
+	for(var i = 0; i < l; ++i, ++o) {
+		b[i]^=(o&1)?o:h;
 	}
 });
