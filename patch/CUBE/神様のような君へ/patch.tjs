@@ -1,0 +1,2 @@
+@set(kirikiriz=1)
+System.setArgument("-debugwin", "no");

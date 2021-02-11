@@ -1,0 +1,7 @@
+Storages.searchCD=function(){return '.';};
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\EAP\\reg")
+		return 'EAPCHT';
+	else
+		return "";
+};

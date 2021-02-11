@@ -1,0 +1,4 @@
+KAGWindow.onConductorScenarioLoad = function(name) {
+	return [].load(name).join('\n').replace(/ cond exp=/g,' cond=');
+};
+
