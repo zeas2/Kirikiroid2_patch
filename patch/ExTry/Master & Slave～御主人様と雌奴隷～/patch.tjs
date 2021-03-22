@@ -1,0 +1,10 @@
+Plugins.link("kirikiroid2.dll");
+Storages.setArchiveDelimiter('#');
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\ExTry\\MandS\\Install")
+		return 1;
+	else if (path == "HKEY_LOCAL_MACHINE\\SOFTWARE\\ExTry\\MandS\\regkey")
+		return "2003 ExTry";
+	else
+		return "";
+};
