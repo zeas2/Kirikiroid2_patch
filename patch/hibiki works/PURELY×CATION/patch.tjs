@@ -69,3 +69,5 @@ Scripts.evalStorage = function(name) {
 	Scripts.evalStorage = Scripts._evalStorage;
 	return Scripts._evalStorage(name);
 };
+
+System._inputString = System.inputString;
