@@ -1,0 +1,10 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash,off,buf,len){
+    var endoff = off + len;
+    if ( off <= 259 && endoff > 259 )
+        buf[259 - off] -= 1;
+    if ( off <= 16258 && endoff > 16258 )
+        buf[16258 - off] ^= 1;
+    if ( off <= 131 && endoff > 131 )
+        buf[131 - off] ^= 3;
+    buf.xor(0, len, 0xB6);
+});

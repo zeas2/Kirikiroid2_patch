@@ -1,0 +1,7 @@
+System.readRegValue = function(path) {
+	if(path == "HKEY_LOCAL_MACHINE\\Software\\extry\\yomibito\\status") {
+		return 3939;
+	} else {
+		return void;
+	}
+};

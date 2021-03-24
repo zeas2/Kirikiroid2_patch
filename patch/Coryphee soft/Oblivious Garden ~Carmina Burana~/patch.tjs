@@ -1,0 +1,11 @@
+class SteamAPILink {
+	function InitSteam() {return true;}
+	function UnlockAchievementByID() {}
+	function UnlockAchievement() {}
+	function HasDLC() {return true;}
+	function WipeAchievements() {}
+	function CheckCallback() {}
+	function SetStat() {}
+	function ShowProgress() {}
+	function CloseSteam() {}
+}

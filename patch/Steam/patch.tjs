@@ -8,7 +8,7 @@ class Steam {
 		
 		if (lang == "zh") {
 			if (region = "cn") return ["schinese", "ZH"];
-			return ["schinese", "ZH"];
+			return ["tchinese", "ZH"];
 		}
 		switch (lang) {
 			case "en": return ["english", "EN"];
