@@ -1,0 +1,507 @@
+@set(_DEBUG=0)
+
+class cxdec
+{
+    var EncryptionControlBlock;
+	var address_list;
+	
+	function cxdec() {
+	    EncryptionControlBlock = [];
+        var tempBlock = <%
+20 45 6E 63 72 79 70 74 69 6F 6E 20 63 6F 6E 74 72 6F 6C 20 62 6C 6F 63 6B 20 2D 2D 20 53 74 61
+74 69 63 61 6C 6C 79 20 6F 72 20 64 79 6E 61 6D 69 63 61 6C 6C 79 2C 20 64 69 72 65 63 74 6C 79
+20 6F 72 20 69 6E 64 69 72 65 63 74 6C 79 2C 20 75 73 69 6E 67 20 74 68 69 73 20 70 72 6F 67 72
+61 6D 20 61 6E 64 2F 6F 72 20 62 6C 6F 63 6B 20 66 72 6F 6D 20 6F 74 68 65 72 20 70 72 6F 67 72
+61 6D 73 20 77 69 6C 6C 20 62 65 20 69 6C 6C 65 67 61 6C 20 62 79 20 74 68 65 20 6C 69 63 65 6E
+73 65 20 61 67 72 65 65 6D 65 6E 74 2E 20 82 B1 82 CC 83 76 83 8D 83 4F 83 89 83 80 82 E2 83 75
+83 8D 83 62 83 4E 82 F0 81 41 90 C3 93 49 82 C5 82 A0 82 EA 93 AE 93 49 82 C5 82 A0 82 EA 81 41
+92 BC 90 DA 93 49 82 C5 82 A0 82 EA 8A D4 90 DA 93 49 82 C5 82 A0 82 EA 81 41 91 BC 82 CC 83 76
+83 8D 83 4F 83 89 83 80 82 A9 82 E7 97 70 82 A2 82 E9 82 B1 82 C6 82 CD 83 89 83 43 83 5A 83 93
+83 58 82 C9 82 E6 82 E8 8B D6 82 B6 82 E7 82 EA 82 C4 82 A2 82 DC 82 B7 81 42 0A 43 6F 70 79 72
+69 67 68 74 20 28 43 29 20 32 30 31 31 20 6F 6E 6F 6D 61 74 6F 70 65 2A 0A 0A 89 9C 82 B3 82 F1
+82 F0 82 A2 82 C1 82 CF 82 A2 9B 57 82 E7 82 C8 82 A2 82 C6 82 A2 82 AF 82 DC 82 B9 82 F1 81 49
+20 0A 96 40 97 A5 82 C5 8C 88 82 DF 82 E7 82 EA 82 C4 82 E9 82 F1 82 C5 82 B7 81 49 20 0A 35 90
+6C 82 CC 89 9C 82 B3 82 F1 82 C6 89 C6 91 B0 82 C9 82 C8 82 C1 82 C4 82 A2 82 AD 81 41 83 74 83
+40 83 7E 83 8A 81 5B 83 6E 81 5B 83 8C 83 80 81 45 83 89 83 75 83 52 83 81 83 66 83 42 0A 0A 90
+AD 95 7B 82 AA 93 CB 94 40 8E B7 8D 73 82 B5 82 BD 8F AD 8E 71 89 BB 91 CE 8D F4 81 42 82 BB 82
+EA 82 CD 81 41 8B E0 8E 9D 82 BF 82 CD 91 BD 82 AD 82 CC 8D C8 82 F0 9B 57 82 E8 81 41 82 BD 82
+AD 82 B3 82 F1 82 CC 8E 71 8B 9F 82 F0 0A 82 E0 82 A4 82 AF 82 C8 82 AF 82 EA 82 CE 82 C8 82 E7
+82 C8 82 A2 82 C6 82 A2 82 A4 82 E0 82 CC 82 BE 82 C1 82 BD 81 45 81 45 81 45 0A 82 C6 82 CD 82
+A2 82 A6 81 41 82 BB 82 F1 82 C8 96 40 88 C4 82 AA 89 C2 8C 88 82 B5 82 C4 82 A9 82 E7 31 30 94
+4E 81 45 81 45 81 45 0A 88 EA 95 76 91 BD 8D C8 82 C8 89 C6 92 EB 82 E0 91 BD 82 AD 8C A9 82 E7
+82 EA 82 E9 82 E6 82 A4 82 C9 82 C8 82 C1 82 BD 8C BB 91 E3 0A 0A 82 D0 82 E5 82 F1 82 C8 82 B1
+82 C6 82 A9 82 E7 81 41 94 9C 91 E5 82 C8 88 E2 8E 59 82 C6 82 B5 82 C4 91 E5 8A E9 8B C6 82 F0
+91 8A 91 B1 82 B7 82 E9 82 B1 82 C6 82 C9 82 C8 82 C1 82 BD 8E E5 90 6C 8C F6 0A 94 DE 8F 97 82
+E0 82 A2 82 C8 82 A2 8E E5 90 6C 8C F6 82 CD 81 41 83 4E 83 89 83 58 83 81 83 43 83 67 82 E2 8A
+77 89 80 82 CC 8C E3 94 79 81 41 0A 97 63 93 E9 90 F5 82 C8 82 C7 82 C8 82 C7 90 67 8B DF 82 C8
+8F 97 82 CC 8E 71 82 BD 82 BF 82 C9 83 76 83 8D 83 7C 81 5B 83 59 82 B7 82 E9 0A 0A E2 FC 97 5D
+8B C8 90 DC 82 CC 96 96 81 41 8C A9 8E 96 88 EA 95 76 91 BD 8D C8 82 C6 82 C8 82 C1 82 BD 8E E5
+90 6C 8C F6 82 AA 81 41 35 90 6C 82 CC 90 56 95 C4 89 9C 82 B3 82 F1 82 BD 82 BF 82 C6 0A 82 A2
+82 BF 82 E1 82 A2 82 BF 82 E1 82 B5 82 BD 82 E8 81 41 82 A2 82 EB 82 A2 82 EB 94 59 82 F1 82 BE
+82 E8 82 B5 82 C8 82 AA 82 E7 81 41 89 C6 91 B0 82 F0 8D EC 82 C1 82 C4 82 A2 82 AD 83 6E 81 5B
+83 67 83 74 83 8B 88 EA 95 76 91 BD 8D C8 41 44 56 81 49 0A 57 C3 2C C1 5D 92 6F 1A F7 29 3C DC
+93 CC D6 D8 F1 40 0D 59 03 37 59 F7 3C 74 08 92 DC E9 43 0F BC D5 41 19 A3 C0 A4 03 66 3A 09 62
+E3 23 B2 66 84 76 20 2B B5 8E 57 C9 24 F9 BA 1C 22 0F A8 D8 69 32 93 D5 CB 3D 2F F8 61 D2 4B 50
+58 D5 BE 29 76 3F B6 39 D3 88 1F ED 98 E8 A5 34 37 4A 65 93 3B F1 D7 A5 26 19 4D B7 B2 71 8B C4
+40 60 BD 1C 9E F5 33 25 17 48 F6 63 9A C4 FB 8D 7E 57 94 80 62 C2 57 7E 06 FA 7C 50 78 6C 1A 33
+6B C1 C3 D2 5A 47 45 23 BD 74 C6 7C 02 E6 C5 2E 34 D6 93 21 A4 D3 F0 D6 C3 68 C1 58 E3 EF 46 A8
+2C 09 69 B0 05 B9 F8 90 18 C9 DD 11 6E 69 8F 22 57 7D A5 90 1A 6A 44 8B 18 03 F3 36 7A 66 08 BF
+ED 30 8A 21 E4 11 D6 DA CB 65 CC C9 BC BD 29 48 78 03 32 86 EF 61 F6 CD A5 EA BE E9 58 45 EC 6A
+E9 C0 E8 13 4E 69 AD B1 93 7D AA B6 F0 27 F8 94 10 35 A4 D5 28 E2 51 51 8E 85 21 B1 E9 0F 7C 9C
+73 C8 E8 C4 DE 00 60 0E 2C C8 92 B9 E4 AE F3 0C 98 F3 2A 90 07 71 B3 4C 7A BB 71 62 31 31 ED A1
+AD E9 74 DD 02 EB E8 F8 57 C1 DE BA 71 AE A8 0D 0F A2 D5 5E 16 52 FC CE 25 0B D6 25 36 58 85 D5
+51 5B B7 57 F0 FF D0 50 39 B7 D2 23 0B A6 B6 73 88 39 8F 3B 32 1C E2 C3 9E 54 7C 76 00 73 BF 27
+9C D7 72 B0 9B 98 35 F7 5D 1E D4 E2 23 6C D1 75 68 C6 00 A8 CC 3F 1E 74 09 0F D1 E8 FE DC 27 61
+4D AC 2B E9 20 55 CD 22 D0 6E 4D 3A 01 96 43 57 AB D9 EA 75 29 EA 7C 25 0D B2 A9 4C 34 7B F1 47
+08 3E B8 57 6F 27 DF 9D A4 A0 EB 52 92 90 E7 26 1E 95 CC 8F D2 A1 6F 74 56 CC AE 0E E5 BE 54 FA
+89 F1 D9 65 F9 A6 F6 45 7E 56 71 A4 87 1C 5E 00 A6 35 AF 9D 94 8F 6C 92 F2 7F C9 E9 AD 57 C8 A9
+C9 BF 0D 40 96 3E 1F 1C 88 B4 33 B0 D2 BC 4B A9 28 F3 BD 61 5F 30 AC F1 88 70 7C 9E EA CC DD 4A
+1B 09 D9 AA 32 9D 41 EB EE 5E 9B C6 BC F9 F7 29 0E A1 85 EE CA 45 7C 4C 7C D7 0A C0 3D F7 34 66
+92 40 16 07 2B C6 10 28 C2 A2 59 D0 21 ED C0 08 58 F2 5A 2A 2E 14 BE EC 0C 84 0A 4B EC C5 85 5A
+D6 5A 71 D3 24 90 1A 72 7C 4F 6B 77 B1 1A 34 39 56 B0 93 95 26 A4 67 C2 B5 46 F9 BA 62 BA 19 88
+75 93 6B 4B 63 95 3C 8E 93 B7 39 F9 B0 12 77 AD F2 26 DA EA A4 52 00 54 8D 83 16 FD CC 59 CE 23
+7F 27 D7 C0 D5 C5 2B C0 85 D4 6E 6A 36 70 D3 1A E3 E6 5F 80 AD 20 26 E9 8A 05 25 69 9D 3F 17 77
+09 6B 60 D8 29 E3 1E D3 64 6F 36 E1 20 8D 14 DE 7B 83 93 FD 9B E3 BC 8D 28 29 3E B7 9B 97 FA 5E
+09 92 01 BD 51 44 0F 14 95 19 13 46 0D 19 4A E7 59 A6 4E DC 0B B3 25 5F 67 D1 4C E3 1F E4 C3 0D
+10 EB 0C EB 14 D6 DD A6 12 34 DA E9 40 1A 67 67 36 DA 0A AF 5D 7D EA D6 29 A2 10 FF 58 FE 3D 35
+6B C1 56 F7 CD 85 0E 8E 28 FA B7 6E 54 56 87 57 CD C2 48 C8 95 03 2C 68 68 46 1D EF 39 7C 0E E3
+40 76 F6 B3 AC D6 A8 28 6A E2 A6 FB 61 EA 44 C1 5A 80 C7 8E DE C8 88 E1 5D F9 0C 1B F5 4C A8 31
+77 84 9C 0B 23 5F F5 D1 AB 40 2A 3A 1B 94 7F 05 B2 4E E2 BF 25 27 77 F2 1A DC 36 F1 99 B3 59 D2
+8C 62 05 3C 6A BB 87 BB 67 34 07 5A B4 EB DE 85 FA F8 00 99 4B CC 6F A0 70 A8 5C 30 C1 B3 EE 4B
+E1 1F 89 08 5A 98 6E 2E EA F7 E8 DE 33 44 86 F9 6D 4F 22 60 C2 28 7F F1 C8 12 94 AE E0 28 48 A4
+5A 60 BE 83 F4 3C 63 B2 06 55 CC 2B C7 7D C4 7B 99 35 8B 2B E8 7F D8 43 6E EA B3 83 FC 41 EF 3C
+DF 48 92 A8 7B E9 81 E5 A1 1C F2 7E DE 04 CA FC 22 A6 00 76 96 EB AF 05 B0 11 27 AA 6F 3C 6D 02
+ED 12 D7 C5 F5 7F 28 BC F4 30 B2 15 2C AF 0C EE 2E 6A EC 11 FF 49 FE 6C E3 6D 6D 88 A6 74 90 2E
+D4 8F A0 AC 3F E9 BA AA 4C 89 A5 81 BA 95 00 18 66 A6 20 D0 F7 C9 52 71 EE F5 9B EE E5 BF BA B7
+F9 DE 87 B1 45 EC 70 FA FC A1 38 EB 23 11 75 56 8A BB 2D 8B 19 40 4C 9D 0B B9 89 36 B1 0D 62 29
+C5 78 78 FF CC 9E 53 8B D8 89 BE 3C 58 E4 8A C7 2C 64 AA EB 40 57 21 A2 0C 4A 60 9C 53 5E 11 38
+24 16 B4 53 5C 5B C4 4E CB 63 4D F3 5C 13 33 9C F3 2B 82 83 9E 7C 9A 45 93 CC 33 31 6C 3A E6 A8
+65 C7 4F AF BD D0 F5 8B 91 A7 7D 64 08 62 EA 60 D9 E3 A4 34 F7 20 96 0E 59 48 55 8A AA 39 94 82
+BF 6D 33 A8 91 D1 EF 0B FD A1 BE 64 F8 81 38 9C 6D 2D 42 68 65 45 36 C9 18 5F 9C 8F 96 5B 91 62
+69 FE 4E 29 89 06 BD EB B3 E0 50 9E 0B AD 51 AF 10 D4 F3 09 45 57 1D 54 10 AF B6 3E 49 E1 56 BC
+A1 86 CD 6E 2D 89 AD 5F ED 47 C9 20 C5 AD E7 0C 3B A4 F2 D7 B8 82 47 35 95 9F 22 56 B2 4F 34 03
+36 12 47 CA 97 38 A3 5D B9 0D 94 4E 80 06 73 BA E8 ED 7F 27 33 B6 7F 36 CD 97 B3 AC 51 11 4A 81
+CD F6 A7 52 B8 57 16 6E 39 FE ED 8F 96 96 01 17 14 23 1A 0E BE 49 E8 9F F6 96 43 EA FE D6 10 93
+1F 56 95 30 91 3C 12 40 12 7B E8 4D 78 DA B2 7E 53 C1 5D 39 87 D5 F5 23 1D FC 6A 0A D2 0D D0 5A
+E8 FE D6 E1 FA 13 B5 48 6D 64 1A F6 9A AA B9 25 0A 3F 70 78 90 B3 F3 F7 67 C0 2B 20 2B 8D A8 0A
+69 3D 3B B7 8F DA 33 A9 89 E4 DB CD C4 9A 90 D2 36 C1 93 2F 8C A8 FC 10 4B DA D9 7E 3D F2 BC 7E
+F7 E2 30 98 2D 55 85 2D 75 F4 EA F9 E1 C9 31 11 D4 EA 4A 04 05 86 83 0C 87 57 0B 8E CA 17 BF 22
+B8 E8 61 AE 09 CB 23 45 D9 B4 DA F4 23 65 3E FF 34 62 E8 B5 A8 28 FD 1B 16 DB EE 0D 70 3F 0E 28
+6C 96 7F B5 68 94 AD E1 2D C8 B0 3D FC 02 EC 13 52 77 2C D0 E7 2B 22 32 1E 08 C0 3A 8C BF 87 86
+21 FD 5C C0 67 72 DA 47 80 D6 44 27 B6 FA 70 C0 64 47 93 E9 75 7D C1 08 17 9A 57 2B 3E 74 CC 73
+7C AE B4 65 B3 68 5C 53 E2 AB 57 19 AB 65 5A 54 6B BA A0 18 2C E7 3B E9 7B DE C9 08 4E 79 12 3D
+F6 4F 03 8C 51 3A C2 22 EA 65 68 3D 8C 46 08 AD B8 35 A9 C8 BA 3D 84 C5 5C 25 33 BE A5 40 25 D5
+1C 6A 4A 36 07 15 69 16 C0 E9 4D D1 9D E2 2F 3E 33 B5 5A C8 4E 40 A7 A2 CB D3 53 4E F3 5F 94 C1
+7E 1F 0D A0 E0 69 86 25 E2 1E C2 E9 F7 BC 57 1E 14 1B B1 3E 30 F1 F1 C6 E1 33 CF 5B 27 C1 EE C9
+30 90 95 A3 8B 66 D0 E9 B1 7E 43 9B 75 45 5D 2A AD 5C B2 50 A6 C3 B1 BF 98 A3 0E A0 0A 14 6B 7C
+DC A4 8E 36 8C A6 C2 C2 A5 1A 52 D1 B6 7A A1 6F CF F0 A1 2B CE FE DF AB D1 03 FB 17 F3 D8 A5 F9
+7C 93 CA EA E8 51 39 0F A5 D3 C6 DB FF E0 47 A1 CF 63 2B CC 6A 11 84 D0 F0 FA D6 D3 13 E5 7D 05
+24 BD 9F 8F BD 99 3C 1A AF 65 77 DA 6A 3F 87 97 E9 56 CF CA FF BD AB 85 DB 30 E5 38 DB D4 51 7C
+B5 86 A2 3B A8 6E 51 AB 25 46 04 F7 90 32 AE DD 3C 6C CE 7A 54 05 38 E8 8E 62 2C 2F 00 93 DB 78
+2A 51 04 46 1B 98 43 CF EE 4A 6D 5B A3 78 9C C1 6A 90 81 C8 89 44 5E 57 58 32 19 25 8E E4 A2 5D
+7F AA 82 EF 30 01 22 3A 70 91 5A 36 D6 29 45 37 19 7C D1 75 4C A5 28 F8 9E D7 6D 58 A1 CD 06 9D
+B3 A2 74 D9 C0 6B FF 31 2C D4 F4 08 B1 98 B1 45 05 91 BE 94 A4 1B A3 01 48 88 29 A0 7A 27 EA 85
+2C C6 BF 18 EA D5 13 40 71 5F A8 39 E0 25 AE 06 EB 84 8A 9C 29 E9 6F D0 3F 93 B5 93 B4 A2 74 DE
+33 51 E4 45 F1 4A 79 82 26 00 F9 85 D5 3D 8A 6C 8E CD CB 0A C9 78 D4 54 04 5B 50 DF 94 AD 5D CC
+14 4B A2 DE EE 60 12 ED 03 9A FC 2A 41 35 BB 67 94 E9 FD CD 35 06 18 C2 EA 43 A7 53 3A 10 42 D2
+1E 84 BE B7 79 9A BE F4 D8 27 DB 39 AE A6 C9 C0 08 E7 60 B7 E1 14 CB E1 28 C6 3D D8 E9 B4 E9 4C
+B8 4E CF F2 44 BA B7 63 75 21 05 5B B7 E9 BE D2 7A ED B4 83 17 A7 0C CF 0D 72 7C 11 A5 D7 C8 95
+CA 0E C4 CC 01 C4 06 18 2F 96 38 79 CD 41 7E BB FA 72 12 29 33 86 92 AA D4 57 90 BF BA FC 86 DF
+3F C0 DD C0 B5 27 8D 83 C0 7A 1E 12 F3 B1 6B 60 30 13 63 6D E7 50 A5 68 53 1A 27 F1 13 A8 F3 EF
+E8 B1 AF 61 8D E0 AD 6D 77 57 1F 79 82 7F FD 35 96 F2 67 4F F8 C4 55 91 41 C5 C5 3B 77 F4 C2 4E
+AC D5 22 16 79 72 DE 1F E2 66 29 86 17 D9 D2 D8 BC 61 62 67 7E F9 AF F0 DA 77 12 87 58 91 38 C9
+AF A2 74 C6 AA 24 BB B7 EB 66 FD 60 8F FE 89 77 B3 49 58 72 27 C7 EB 65 5C CF 4B D1 00 AC 62 41
+C1 41 65 61 A8 90 E5 67 B9 3C 32 19 EF 33 87 07 11 77 B4 C0 F4 DA 52 F5 EB B5 DF D9 5F 10 4A BC
+03 72 7A A6 0D A8 3D F5 09 9E B1 12 92 FF 44 3D D1 4C 38 E2 AB 35 31 39 C1 90 51 F5 76 93 D6 D3
+C7 D6 CC 3C CA 1B BB FD FE D8 B8 B3 4F BE CB 63 D2 2A E3 83 D2 1A 2A 8C 56 5E C9 CD 1C E5 39 63
+E7 26 06 1D 91 72 EB 1B BD CB 8A 65 9B EF BE EB 78 8C CE 1D C9 24 30 0E FD 00 44 5D EA 08 01 0D
+1E 99 EC C8 D8 D6 EB C2 6F D7 AA 99 E7 68 D1 89 26 7D 22 AF FF C1 10 F3 C7 ED 41 B8 3E 0F 08 05
+0F 00 D0 BC BB C9 70 F8 53 27 83 0E FB 3F CB 6F 5A 0E 20 8E 3B 1F 94 45 5C 9D 03 2F 4A A9 05 D7
+DD 3C 9C CF 79 0C F1 88 78 B3 55 EE C5 12 8A BE 11 E3 CA 21 54 C4 9E 0E C7 1E 64 AD D5 7F 2B 8E
+31 83 FD 6D 15 36 67 FF 06 9D 9E 32 74 0D 2E 92 4D B5 F6 94 79 0A B4 2F 9A 12 4D 6F 78 D7 F5 0B
+47 E2 F3 41 56 B2 F3 FF 75 89 78 DA FC 48 DA CE F4 C0 DF A6 1A 8D 60 9D 66 1D C0 35 13 83 F2 93
+2F A5 E3 8E 58 B0 49 4F 54 1A 39 36 24 9A 89 FA 53 54 05 6B 6C BE 6E DD 53 79 4E 93 45 E1 44 C2
+90 EF 76 39 F9 31 9F C9 82 A0 10 B0 49 9D 03 B1 37 25 E9 4B 78 B1 BF 50 DD 75 22 B3 55 8B A0 32
+DF B7 59 3D 5C 8D 81 0B 29 B8 90 71 9C D3 6C D3 F3 7D E3 C2 DB D0 49 52 94 AF 27 80 2E 75 52 D5
+AC B7 0D 55 47 5F 4D 78 2D 47 0D B7 DF 80 B6 51 6D A7 9D 0E 07 C8 95 9A DA A0 4C 7C FE B5 37 B1
+86 2D 66 D6 A7 95 B9 04 9F B4 63 16 2C A9 2B 75 5F B6 17 83 FF CA 72 EE 29 FE D5 4B B7 34 42 8E
+01 EB BE 63 2B 74 FA CA 60 F9 BD A4 DE BD 17 88 99 8A A2 CB 9E 9A 2E 2A FA 59 DA 26 1E 20 2B FB
+C7 28 2F A7 44 00 8C 7A 86 F5 9F 4B 95 BA 09 A9 ED AF 97 10 80 61 40 82 4E 12 46 89 0D 7C A8 97
+52 B0 3C D0 3B 16 FE 85 F8 9F DD DA 94 26 27 0D B1 31 0E D0 86 8E 33 25 38 CE 59 86 34 1D 9A 27
+35 CF 3B 5E 6A E5 C2 20 C8 EB 22 F5 F6 48 A8 F9 1F 4F 08 F1 35 4E 11 1F 1F 85 27 00 83 9D F5 B8
+53 E8 C1 38 80 AD 72 96 43 97 EC 42 D4 BA 58 8B 08 DE 58 2A 37 39 BE 0A 80 08 19 E2 B1 6A 2B D2
+26 73 CE 17 C1 18 59 07 50 E0 0C EB E0 EE 18 5F FB 15 12 37 F9 A9 6C 47 29 E4 E8 96 C8 C6 8A 69
+A9 E8 B2 3A C3 11 F4 92 EB 9A D9 9F 4E 67 DC EA E3 44 E5 D7 AA B6 29 4A 7F 02 D8 DE 65 B7 DF C2
+5E 57 32 61 62 76 68 AF CD FD 6A E0 A3 0D AD 33 35 07 BC CF 52 E5 FE 5C 69 1A E8 8F 4B 16 8B A6
+A7 E2 65 21 BC 79 BB B7 8C 55 C0 96 8F 0E 27 86 45 D7 DB 34 38 4A 0E 47 D1 78 B4 41 11 12 16 62
+81 B0 4A 76 45 71 89 DA 4A EF 2B 7A 01 07 2A 3F 22 E9 EA 83 EA 7E 1F 2D 08 00 E4 A0 7F 1D 0A 97
+23 FA 21 2D 83 0B B3 48 04 31 F2 CD AB ED 1A 15 F3 CB D2 0D 97 5D F9 C2 C2 16 3B FE 34 7C 35 FA
+        %>;
+		
+		address_list = []; address_list[127] = void;
+
+		for(var i = 0; i < 4096; i += 4) {
+		    EncryptionControlBlock.add(
+                (tempBlock[i]) |
+                (tempBlock[i+1] << 8) |
+                (tempBlock[i+2] << 16) |
+                (tempBlock[i+3] << 24)
+                );
+		}
+	}
+    
+    var xcode_seed;
+    function xcode_rand() {
+        var seed = xcode_seed;
+        xcode_seed = (1103515245 * seed + 12345) & 0xFFFFFFFF;
+        //Debug.message("xcode_rand: " + xcode_seed);
+        return (xcode_seed ^ (seed << 16) ^ (seed >> 16)) & 0xFFFFFFFF;
+    }
+
+    var xcode_op_mov_val = 0;
+    var xcode_op_mov_reg = 1;
+    var xcode_op_not = 2;
+    var xcode_op_neg = 3;
+    var xcode_op_inc = 4;
+    var xcode_op_dec = 5;
+    var xcode_op_add_val = 6;
+    var xcode_op_sub_val = 7;
+    var xcode_op_xor_val = 8;
+    var xcode_op_add_reg = 9;
+    var xcode_op_sub_reg = 10;
+    var xcode_op_push = 11;
+    var xcode_op_pop = 12;
+    var xcode_op_shr_reg = 13;
+    var xcode_op_shl_reg = 14;
+    var xcode_op_imul_reg = 15;
+	var xcode_op_load_arg = 16;
+    var xcode_op_interlace = 79;
+    var xcode_op_table_ECB = 80;
+
+    function xcode_push(xcode, n, inst)
+    {
+        xcode[0] += n;
+        if(xcode[0] > 128) return false;
+        xcode.add(inst);
+        return true;
+    }
+
+    function xcode_building_first_stage(xcode)
+    {
+        switch (xcode_rand() % 3) {
+            case 1
+               :// MOV ESI, EncryptionControlBlock : BE
+                // MOV EAX, DWORD PTR DS:[ESI+((xcode_rand() & 0x3ff) << 2)]
+                xcode[0] += 7;
+                if(xcode[0] > 128) return false;
+                if(!xcode_push(xcode, 4, [xcode_op_mov_val, EncryptionControlBlock[xcode_rand() & 0x3ff]]))
+                    return false;
+                break;
+            case 0
+               :// MOV EAX, xcode_rand() : B8
+                if(++xcode[0] > 128) return false;
+                if(!xcode_push(xcode, 4, [xcode_op_mov_val, xcode_rand()]))
+                    return false;
+                break;
+            case 2
+               :// MOV EAX, EDI : C7 8B
+                if(!xcode_push(xcode, 2, [xcode_op_load_arg]))
+                    return false;
+                break;
+        }
+        return true;
+    }
+
+    function xcode_building_stage0(xcode, stage)
+    {
+        //Debug.message("xcode_building_stage0: " + stage);
+        if (stage-- == 1)
+            return xcode_building_first_stage(xcode);
+
+        if (xcode_rand() & 1) {
+            if(!xcode_building_stage1(xcode, stage)) return false;
+        } else {
+            if(!xcode_building_stage0(xcode, stage)) return false;
+        }
+
+        switch (xcode_rand() & 7) {
+            case 1
+               :// NOT EAX :D0 F7
+                if(!xcode_push(xcode, 2, [xcode_op_not]))
+                    return false;
+                break;
+            case 6
+               :// NEG EAX : D8 F7
+                if(!xcode_push(xcode, 2, [xcode_op_neg]))
+                    return false;
+                break;
+            case 5
+               :// INC EAX : 40
+                if(!xcode_push(xcode, 1, [xcode_op_inc]))
+                    return false;
+                break;
+            case 4
+               :// DEC EAX :48
+                if(!xcode_push(xcode, 1, [xcode_op_dec]))
+                    return false;
+                break;
+            case 3
+               :// PUSH EBX : 53
+                // MOV EBX, EAX
+                // AND EBX, AAAAAAAA
+                // AND EAX, 55555555
+                // SHR EBX, 1
+                // SHL EAX, 1
+                // OR EAX, EBX
+                // POP EBX
+                if(!xcode_push(xcode, 21, [xcode_op_interlace]))
+                    return false;
+                break;
+            case 7
+               :// XOR EAX, xcode_rand() : 35
+                if(++xcode[0] > 128) return false;
+                if(!xcode_push(xcode, 4, [xcode_op_xor_val, xcode_rand()]))
+                    return false;
+                break;
+            case 0
+               :if ( xcode_rand() & 1) {
+					if(++xcode[0] > 128) return false;
+                    // ADD EAX, xcode_rand()
+                    if(!xcode_push(xcode, 4, [xcode_op_add_val, xcode_rand()]))
+                        return false;
+                } else {
+					if(++xcode[0] > 128) return false;
+                    // SUB EAX, xcode_rand()
+                    if(!xcode_push(xcode, 4, [xcode_op_sub_val, xcode_rand()]))
+                        return false;
+                }
+                break;
+            case 2
+               :// MOV ESI, EncryptionControlBlock : BE
+                // AND EAX, 3FFh
+                // MOV EAX, DWORD PTR DS:[ESI+EAX*4]
+                if(!xcode_push(xcode, 1+4+1+4+3, [xcode_op_table_ECB]))
+                    return false;
+                break;
+        }
+        return true;
+    }
+
+    function xcode_building_stage1(xcode, stage)
+    {
+        //Debug.message("xcode_building_stage1: " + stage);
+        if (stage-- == 1)
+            return xcode_building_first_stage(xcode);
+        
+        // PUSH EBX
+        if(!xcode_push(xcode, 1, [xcode_op_push])) return false;
+
+        if (xcode_rand() & 1) {
+            if(!xcode_building_stage1(xcode, stage)) return false;
+        } else {
+            if(!xcode_building_stage0(xcode, stage)) return false;
+        }
+
+        // MOV EBX, EAX
+        if(!xcode_push(xcode, 2, [xcode_op_mov_reg]))
+            return false;
+
+        if (xcode_rand() & 1) {
+            if(!xcode_building_stage1(xcode, stage)) return false;
+        } else {
+            if(!xcode_building_stage0(xcode, stage)) return false;
+        }
+
+        switch (xcode_rand() % 6) {
+            case 1
+               :// ADD EAX, EBX  : D8 01
+                if(!xcode_push(xcode, 2, [xcode_op_add_reg]))
+                    return false;
+                break;
+            case 0
+               :// SUB EAX, EBX : D8 29
+                if(!xcode_push(xcode, 2, [xcode_op_sub_reg]))
+                    return false;
+                break;
+            case 2
+               :// NEG EAX, ADD EAX, EBX : D8 F7
+                if(!xcode_push(xcode, 2, [xcode_op_neg]) ||
+                   !xcode_push(xcode, 2, [xcode_op_add_reg]))
+                    return false;
+                break;
+            case 5
+               :// IMUL EAX, EBX : C3 AF 0F
+                if(!xcode_push(xcode, 3, [xcode_op_imul_reg]))
+                    return false;
+                break;
+            case 3
+               :// PUSH ECX : 51
+                // MOV ECX, EBX
+                // AND ECX, 0F
+                // SHL EAX, CL : E0 D3
+                // POP ECX
+                if(!xcode_push(xcode, 1+2+3+2+1, [xcode_op_shl_reg]))
+                    return false;
+                break;
+            case 4
+               :// PUSH ECX : 51
+                // MOV ECX, EBX
+                // AND ECX, 0F
+                // SHR EAX, CL : E8 D3
+                // POP ECX
+                if(!xcode_push(xcode, 1+2+3+2+1, [xcode_op_shr_reg]))
+                    return false;
+                break;
+        }
+        // POP EBX
+        if(!xcode_push(xcode, 1, [xcode_op_pop]))
+            return false;
+        return true;
+    }
+
+    function xcode_building(seed)
+    {
+        xcode_seed = seed;
+        var xcode;
+        for (var stage = 5; stage > 0; --stage) {
+            xcode = [5 + 4]; // xcode limit = 128
+            if(xcode_building_stage1(xcode, stage) && xcode[0] + 5 + 1 <= 128)
+                break;
+        }
+		// compile function
+		var funcstr = [
+			"function(arg) {",
+			"var v,v2,st=[];"
+		];
+		for (var i = 1; i < xcode.count; ++i) {
+            var inst = xcode[i];
+			switch(inst[0]) { // op
+                case 0://xcode_op_mov_val:
+                    funcstr.add("v=" + inst[1] + ";");
+                    break;
+				case 16://xcode_op_load_arg:
+					funcstr.add("v=arg;");
+					break;
+                case 1://xcode_op_mov_reg:
+					funcstr.add("v2=v;");
+                    break;
+                case 2://xcode_op_not:
+					funcstr.add("v^=0xFFFFFFFF;");
+                    break;
+                case 3://xcode_op_neg:
+					funcstr.add("v=-v;v&=0xFFFFFFFF;");
+                    break;
+                case 4://xcode_op_inc:
+					funcstr.add("++v;v&=0xFFFFFFFF;");
+                    break;
+                case 5://xcode_op_dec:
+					funcstr.add("--v;v&=0xFFFFFFFF;");
+                    break;
+                case 6://xcode_op_add_val:
+					funcstr.add("v+=" + inst[1] + ";v&=0xFFFFFFFF;");
+                    break;
+                case 7://xcode_op_sub_val:
+					funcstr.add("v-=" + inst[1] + ";v&=0xFFFFFFFF;");
+                    break;
+                case 8://xcode_op_xor_val:
+					funcstr.add("v^=" + inst[1] + ";");
+                    break;
+                case 9://xcode_op_add_reg:
+					funcstr.add("v+=v2;v&=0xFFFFFFFF;");
+                    break;
+                case 10://xcode_op_sub_reg:
+					funcstr.add("v-=v2;v&=0xFFFFFFFF;");
+                    break;
+                case 11://xcode_op_push:
+					funcstr.add("st.add(v2);");
+                    break;
+                case 12://xcode_op_pop:
+					funcstr.add("v2=st.pop();");
+                    break;
+                case 13://xcode_op_shr_reg:
+					funcstr.add("v>>=v2&0xF;");
+                    break;
+                case 14://xcode_op_shl_reg:
+					funcstr.add("v<<=v2&0xF;v&=0xFFFFFFFF;");
+                    break;
+                case 15://xcode_op_imul_reg:
+					funcstr.add("v*=v2;v&=0xFFFFFFFF;");
+                    break;
+                case 80://xcode_op_table_ECB:
+					funcstr.add("v=EncryptionControlBlock[v&0x3FF];");
+                    break;
+                case 79://xcode_op_interlace:
+                    // PUSH EBX
+                    // MOV EBX, EAX
+                    // AND EBX, AAAAAAAA
+                    // AND EAX, 55555555
+                    // SHR EBX, 1
+                    // SHL EAX, 1
+                    // OR EAX, EBX
+                    // POP EBX
+					funcstr.add("v = ((v & 0xAAAAAAAA) >> 1) | ((v & 0x55555555) << 1);");
+                    break;
+            }
+		}
+		funcstr.add("return v&0xFFFFFFFF;}");
+        return funcstr.join("\n")! incontextof this;
+    }
+
+    function cxdec_execute_xcode(hash)
+    {
+        var index = hash & 0x7f;
+        hash = hash >> 7;	
+
+        if (!address_list[index]) {
+            address_list[index] = xcode_building(index);
+        }
+        return [address_list[index](hash), address_list[index](hash^0xFFFFFFFF)];
+    }
+
+    function __cxdec_decode(hash, offset, buf, len)
+    {
+        var ret = cxdec_execute_xcode(hash);
+
+        var key_8 = (ret[0] >> 8) & 0xFF;
+        var key_9 = (ret[0] >> 16) & 0xFF;
+        var key_10 = ret[0] & 0xFF;
+        var key1 = ret[1] >> 16;
+        var key2 = ret[1] & 0xffff;
+
+        if (key1 == key2)
+            ++key2;
+	
+        if (!key_10)
+            key_10 = 1;
+
+        if ((key2 >= offset) && (key2 < offset + len))
+            buf[key2 - offset] ^= key_9;
+	
+        if ((key1 >= offset) && (key1 < offset + len))
+            buf[key1 - offset] ^= key_8;
+
+        buf.xor(0, len, key_10);
+    }
+
+    function cxdec_decode(hash, offset, buf, len)
+    {
+        var bondary = (hash & 0x119) + 0x133;
+        var dec_len;
+        if (offset < bondary) {
+            if (offset + len > bondary)
+                dec_len = bondary - offset;
+            else
+                dec_len = len;
+            __cxdec_decode(hash, offset, buf, dec_len);
+            offset += dec_len;
+            buf.ptr += dec_len;
+            dec_len = len - dec_len;
+        } else
+            dec_len = len;
+
+        if (dec_len)
+            __cxdec_decode((hash >> 16) ^ hash, offset, buf, dec_len);
+    }
+}
+
+Storages.setXP3ArchiveExtractionFilter((new cxdec()).cxdec_decode);
