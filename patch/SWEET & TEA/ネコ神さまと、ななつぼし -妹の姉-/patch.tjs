@@ -1,0 +1,36 @@
+System.setArgument("-debugwin", "no");
+
+function GetUserDefaultLCID() {return 0x411;}
+function GetSystemDefaultLCID() {return 0x411;}
+
+function ProductKeyCheck() {
+	var ret = [];
+	ret[12] = 0;
+	ret[7] = 0x6E;
+	ret[6] = 0x6B;
+	ret[5] = 0x74;
+	ret[4] = 0x62;
+	return ret;
+}
+System._readRegValue = System.readRegValue;
+System.readRegValue = function(path) {
+	var prefix = "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+	if(path.substr(0, prefix.length) == prefix) return "1";
+	return "";
+};
+
+// wumtrack.dll
+WaveSoundBuffer.multiTrackOpenCallbacks = []; // TODO
+WaveSoundBuffer.rebindMultiTrackID = function() {};
+WaveSoundBuffer.setMultiTrackMask = function() {};
+
+WaveSoundBuffer._open = WaveSoundBuffer.open;
+WaveSoundBuffer.open = function(name) {
+	if (Storages.extractStorageExt(name).toLowerCase() == ".mtrk") {
+		// [].load(name);
+		// redirect to actual name
+		return global.WaveSoundBuffer._open(name.substr(1, 5) + ".ogg");
+	} else {
+		return global.WaveSoundBuffer._open(*);
+	}
+};
