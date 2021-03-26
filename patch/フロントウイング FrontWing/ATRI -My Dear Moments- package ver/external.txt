@@ -1,0 +1,2 @@
+tools/krz_xp3conv.exe
+patch/フロントウイング FrontWing/ATRI -My Dear Moments- steam DL ver/pbd.xp3
