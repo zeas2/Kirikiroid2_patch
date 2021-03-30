@@ -1,0 +1,1 @@
+function CheckGamesInstalled() { return 1;}
