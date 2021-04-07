@@ -15,9 +15,7 @@ if(typeof Layer.AddMosaic == "undefined")
 	Layer.AddMosaic = function(){};
 
 // krz window
-with(Window) {
-	.enableTouch = false;
-}
+&Window.enableTouch = false;
 
 Plugins.link("layerExAlpha.dll");
 if(typeof Layer.AlphaColorBlend2 == "undefined")

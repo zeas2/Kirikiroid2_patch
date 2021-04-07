@@ -1,0 +1,22 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len, filename) {
+	if (hash == 0xe23e80e2) return; // startup.tjs
+	var declen = 512;
+	switch (filename.substr(filename.length - 3)) {
+	case 'png':
+		declen = 256;
+		break;
+	case '.ks':
+	case 'tjs':
+	case 'asd':
+		declen = 0x7FFFFFFF;
+		break;
+	}
+	if(offset < declen) {
+		declen -= offset;
+		if(declen > len) declen = len;
+		for(var i = 0; i < declen; ++i) {
+			var off = i + offset;
+			buf[i] ^= off ^ (hash >> ((off & 3) << 3));
+		}
+	}
+});
