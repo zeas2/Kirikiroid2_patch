@@ -1,0 +1,9 @@
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'Conductor.tjs') {
+		VoiceCheckConductor.getTextLength = function() {};
+		VoiceCheckConductor.checkNextText = function() {};
+		ExtasyCheckConductor.getCount = function() {};
+	}
+};

@@ -1,7 +1,0 @@
-class Process {
-	function Process() {}
-	function terminate() {}
-	function execute() {}
-	function run() {return false;}
-	var status = false;
-}

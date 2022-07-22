@@ -1,0 +1,1 @@
+patch2.xp3 is patch for Kirikiroid2 (Game Version1.31)

@@ -1,7 +1,3 @@
-var kirikiriz = false;
-var debugWindowEnabled = false;
-var inXP3archivePacked = true;
-var convertMode = false;
 System.setArgument("-debugwin", "no");
 Plugins.link("textrender.dll");
 if(typeof TextRenderBase.getLinkNames == "undefined") {

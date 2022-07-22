@@ -1,0 +1,28 @@
+//@set (kirikiriz=1)
+var kirikiriz = false;
+var debugWindowEnabled = false;
+var inXP3archivePacked = true;
+var convertMode = false;
+
+if (typeof global.GamepadPort == "undefined") {
+class GamepadPort {
+	function initialize() {}
+	property count {
+		getter () { return 0; }
+	}
+}
+}
+
+// ゲーム起動時に【オンラインでの修正パッチ問い合わせ機能を有効にしますか？（※この設定はメニューバー内「ヘルプ／修正パッチの有無確認」で後から変更することができます）】を無効にする
+System.setArgument("-patchdetect", "no");
+
+Storages.setupArchiveData = function(){};
+var helpBootStrapMenuItem = %[]; // for helpBootStrapMenuItem issue
+class WIN32Dialog {
+	function messageBox(win, msg, title, type) {
+		return System.inform(msg, title, 2);
+	}
+}
+WIN32Dialog.MB_YESNO = 0;
+WIN32Dialog.MB_ICONINFORMATION = 0;
+WIN32Dialog.IDYES = 0;

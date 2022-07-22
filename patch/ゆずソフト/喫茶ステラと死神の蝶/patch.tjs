@@ -4,6 +4,11 @@ var debugWindowEnabled = false;
 var inXP3archivePacked = true;
 var convertMode = false;
 
+class HttpRequest {
+	function open (){}
+	function send (){}
+}
+
 if (typeof global.GamepadPort == "undefined") {
 class GamepadPort {
 	function initialize() {}
@@ -12,6 +17,9 @@ class GamepadPort {
 	}
 }
 }
+
+// ゲーム起動時に【オンラインでの修正パッチ問い合わせ機能を有効にしますか？（※この設定はメニューバー内「ヘルプ／修正パッチの有無確認」で後から変更することができます）】を無効にする
+System.setArgument("-patchdetect", "no");
 
 Storages.setupArchiveData = function(){};
 var helpBootStrapMenuItem = %[]; // for helpBootStrapMenuItem issue

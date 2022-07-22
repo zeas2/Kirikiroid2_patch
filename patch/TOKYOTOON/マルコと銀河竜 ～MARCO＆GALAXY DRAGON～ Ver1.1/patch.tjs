@@ -1,0 +1,23 @@
+System.setArgument("-debugwin", "no");
+
+class Process {
+	function Process() {}
+	function terminate() {}
+	function execute() {}
+	function run() {return false;}
+	var status = false;
+}
+
+System.rng = function(){};
+System.deriveKey = function(){};
+System.encryptRijndael = function(){};
+System.hex2base64 = function(){};
+
+// fix kag.dispHWND not exist
+with(Scripts) {._execStorage = .execStorage;}
+Scripts.execStorage = function(name) {
+	Scripts._execStorage(*);
+	if(name == 'execunityapp.tjs') {
+		ExecUnityAppPlugin.execute = function() {};
+	}
+};
