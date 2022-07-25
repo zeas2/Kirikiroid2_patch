@@ -1,4 +1,6 @@
 var all_data = [
+[1658763653, "チェーンリアクション", "妹恋だいあり～妹に恋してるっ！DL版", "妹恋だいあり～妹に恋してるっ！DL版", ["チェーンリアクション/妹恋だいあり～妹に恋してるっ！DL版/Override2.tjs", "チェーンリアクション/妹恋だいあり～妹に恋してるっ！DL版/patch.tjs", "チェーンリアクション/妹恋だいあり～妹に恋してるっ！DL版/xp3filter.tjs"]],
+[1658509220, "Festival", "ABYSS～殺人クラブ～ DL版", "ABYSS～殺人クラブ～ DL版", ["Festival/ABYSS～殺人クラブ～ DL版/xp3filter.tjs"]],
 [1658508506, "LOVER-SOUL", "希望入りパン菓子", "希望入りパン菓子", ["LOVER-SOUL/希望入りパン菓子/Override2.tjs", "LOVER-SOUL/希望入りパン菓子/patch.tjs", "LOVER-SOUL/希望入りパン菓子/patch2.xp3", "LOVER-SOUL/希望入りパン菓子/patch3.xp3", "LOVER-SOUL/希望入りパン菓子/readme.md"]],
 [1658508447, "SAGA PLANETS", "金色ラブリッチェ -Golden Time-", "金色ラブリッチェ -Golden Time-", ["SAGA PLANETS/金色ラブリッチェ -Golden Time-/AfterStartup.tjs", "https://github.com/zeas2/Kirikiroid2_patch/releases/download/%E3%81%8B%E3%81%91%E3%81%AC%E3%81%91%E2%98%85%E9%9D%92%E6%98%A5%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%EF%BC%81/patch2.xp3", "SAGA PLANETS/金色ラブリッチェ -Golden Time-/patch.tjs", "SAGA PLANETS/金色ラブリッチェ -Golden Time-/patch3.xp3", "SAGA PLANETS/金色ラブリッチェ -Golden Time-/pbd.xp3", "SAGA PLANETS/金色ラブリッチェ -Golden Time-/readme.md"]],
 [1658508059, "ゆずソフト", "喫茶ステラと死神の蝶", "喫茶ステラと死神の蝶", ["../tools/krz_xp3conv_v2.exe", "https://github.com/zeas2/Kirikiroid2_patch/releases/download/%E5%96%AB%E8%8C%B6%E3%82%B9%E3%83%86%E3%83%A9%E3%81%A8%E6%AD%BB%E7%A5%9E%E3%81%AE%E8%9D%B6/patch2.xp3", "ゆずソフト/喫茶ステラと死神の蝶/krz_xp3conv.key", "ゆずソフト/喫茶ステラと死神の蝶/patch.tjs", "ゆずソフト/喫茶ステラと死神の蝶/readme.md", "ゆずソフト/喫茶ステラと死神の蝶/xp3filter.tjs"]],
@@ -978,7 +980,6 @@ var all_data = [
 [1407254322, "Inspire／PHASE", "old_core_patch", "立秋", ["old_core_patch/Override2.tjs"]],
 [1407254322, "Inspire／PHASE", "old_core_patch", "審問 -examination- DL版 Ver1.0.1", ["old_core_patch/Override2.tjs"]],
 [1407254322, "LOVER-SOUL", "old_core_patch", "ARIA", ["old_core_patch/Override2.tjs"]],
-[1407254322, "LOVER-SOUL", "old_core_patch", "CAROL Ver1.1", ["old_core_patch/Override2.tjs"]],
 [1407254322, "LOVER-SOUL", "old_core_patch", "花咲くオトメのための嬉遊曲 イレギュラーズ", ["old_core_patch/Override2.tjs"]],
 [1407254322, "studioWALK", "old_core_patch", "夢見る銀貨", ["old_core_patch/Override2.tjs"]],
 [1407254322, "studioWALK", "old_core_patch", "月の降る夜＋7ven days Ed", ["old_core_patch/Override2.tjs"]],
@@ -992,6 +993,8 @@ var all_data = [
 [1407254322, "MOON GODDESS", "old_core_patch", "マイペット琥珀", ["old_core_patch/Override2.tjs"]],
 [1407254322, "MOON GODDESS", "old_core_patch", "マイペット秋葉", ["old_core_patch/Override2.tjs"]],
 [1407254322, "MOON GODDESS", "old_core_patch", "月闇の魔神", ["old_core_patch/Override2.tjs"]],
+[1407254322, "nuko", "old_core_patch", "天に高く地に深く Ver1.4", ["old_core_patch/Override2.tjs"]],
+[1407254322, "nuko", "old_core_patch", "天に高く地に深く extra disc", ["old_core_patch/Override2.tjs"]],
 [1407254322, "Parthenon（パルテノン）", "old_core_patch", "Chain Slave", ["old_core_patch/Override2.tjs"]],
 [1407254322, "Parthenon（パルテノン）", "old_core_patch", "Cohabitation ～押しかけ女房はお姉さん！？～", ["old_core_patch/Override2.tjs"]],
 [1407254322, "Parthenon（パルテノン）", "old_core_patch", "Lewdness Leccion ～淫らなメイドと孤独なご主人様～", ["old_core_patch/Override2.tjs"]],

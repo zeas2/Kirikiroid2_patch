@@ -1,0 +1,15 @@
+/*var pluginPath = "extrans.dll";
+function ExecuteProcess(){}
+function SaveStorage(){}
+function LoadStorage(){}
+function DeleteFile(){}*/
+
+System.setArgument("-debugwin", "no");
+function AddFilterList(){}
+function RegisterMessage() {}
+function WinAPI(dll, func,a1,a2,a3){
+	Debug.message("Win3API: " + dll + " " + func);
+	if(func=="HeapAlloc") return 1;
+	else if(func=="MessageBoxA") return System.inform(a3, a2, 2) == 0 ? 1 : 0;
+}
+function RefMemory() {}
