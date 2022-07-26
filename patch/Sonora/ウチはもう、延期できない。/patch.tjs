@@ -1,0 +1,3 @@
+@set (kirikiriz = 1)
+Plugins.link("windowEx.dll");
+Scripts.execStorage(System.exePath + "win32dialog.tjs");

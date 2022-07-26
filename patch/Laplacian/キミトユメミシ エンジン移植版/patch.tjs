@@ -1,0 +1,12 @@
+/*
+Plugins.link("csvParser.dll");
+Plugins.link("extrans.dll");
+Plugins.link("fstat.dll");
+Plugins.link("layerExImage.dll");
+Plugins.link("layerExSave.dll");
+Plugins.link("windowEx.dll");
+Plugins.link("layerExMovie.dll");
+*/
+Plugins.link("kirikiroid2.dll");
+Storages.setTextEncoding("utf-8");
+function AdjustMoni() {return %[left:0, top:0, right:800, bottom:600];}

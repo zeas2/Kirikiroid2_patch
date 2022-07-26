@@ -36,3 +36,4 @@ if(typeof Layer.copyVerticalInterpolationRaster == "undefined")
 	
 Window.checkSignature = function() {return 1;};
 Window.stopCheckSignature = function() {};
+function layeredwindow(){}

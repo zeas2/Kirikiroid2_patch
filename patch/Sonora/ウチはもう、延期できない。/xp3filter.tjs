@@ -1,0 +1,4 @@
+Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf/*xp3buffer*/, len)
+{
+	buf.xor(0, len, 2);
+});

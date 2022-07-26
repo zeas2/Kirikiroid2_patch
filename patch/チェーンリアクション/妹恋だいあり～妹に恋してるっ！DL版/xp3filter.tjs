@@ -3,7 +3,7 @@ Storages.setXP3ArchiveExtractionFilter(function(hash, offset, buf, len, filename
 	//if (filename == "startup.tjs") return;
 	// hash is 0x + Adler32
 	if (hash == 0x6C9E727C) return; // startup.tjs
-	var ext = filename[filename.length-1];
+	// var ext = filename[filename.length-1];
 	hash = ~hash;
 	var k = [hash >> 16, hash >> 24, hash, hash >> 8];
 	var l = 256;

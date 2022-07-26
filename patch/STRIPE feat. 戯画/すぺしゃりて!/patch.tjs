@@ -3,3 +3,6 @@ function DtHashCheck() {return true;}
 function DtTofCheck() {return true;}
 function DtAlt1Check() {return true;}
 function DtAlt2Check() {return true;}
+function DtYesNoBox(wnd, message, caption, flag) {
+	return System.inform(message, caption, 2) == 0 ? 1 : 0;
+}
