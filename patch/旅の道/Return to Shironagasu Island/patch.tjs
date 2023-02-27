@@ -1,0 +1,8 @@
+Plugins.link("kirikiroid2.dll");
+class Steam {
+function setAchievement() {}
+function requestInitialize() {}
+function RestartAppIfNecessary() {}
+}
+Steam.updateAchievements = 0;
+global.DrawDeviceForSteam = Window.BasicDrawDevice;
